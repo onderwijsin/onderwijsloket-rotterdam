@@ -1,7 +1,8 @@
 {
-  "name": "nuxt-app",
+  "name": "onderwijsloket-rotterdam",
   "private": true,
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -10,8 +11,18 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.14.1592",
+    "nuxt": "3.13.2",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@iconify-json/bxl": "^1.2.0",
+    "@iconify-json/heroicons": "^1.2.0",
+    "@iconify-json/material-symbols": "^1.2.4",
+    "@iconify-json/mdi": "^1.2.0",
+    "@nuxt/scripts": "^0.9.5",
+    "@nuxthub/core": "^0.8.7",
+    "toucan-js": "^4.0.0",
+    "wrangler": "^3.78.2"
   }
 }
