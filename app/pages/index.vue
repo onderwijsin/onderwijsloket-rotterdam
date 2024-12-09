@@ -8,12 +8,19 @@ useSeoMeta({
   title: 'Home',
   description: "Kom werken in het Rotrterdamse onderwijs",
 })
+
+
+const { slides } = useContent()
 </script>
 
 
 <template>
   <div>
-    <h1>Onderwijsloket Rotterdam</h1>
+    <HeroSlider
+      :slides="slides"
+      :autoplay="12000"
+    />
+
   </div>
 </template>
 
