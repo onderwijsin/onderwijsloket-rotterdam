@@ -45,7 +45,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue';
 
 const scrollTo = (id: string) => {
   document.getElementById(id)?.scrollIntoView({

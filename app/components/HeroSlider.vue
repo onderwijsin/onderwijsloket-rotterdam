@@ -353,7 +353,7 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
   height: 100%;
   position: absolute;
   top: 0;
-  cursor: pointer;
+  cursor: none;
   
   /* Simplified gradient */
   background: linear-gradient(
