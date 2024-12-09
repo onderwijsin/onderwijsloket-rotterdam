@@ -4,6 +4,8 @@ This is an open source single page application for Onderwijsloket Rotterdam. It 
 
 The app is an extension of ``onderwijsloket-core``; an Nuxt 3 layer containing common config for Onderwijsloket apps, UI components and composables and other reusable logic. Currently ``onderwijsloket-core`` is in private pre-release, and thus this repo cannot be cloned without a Github Access token that has read permissions for the ``onderwijsloket-core`` repo.
 
+> if you found a 🐛 bug, have some 💬 feedback or discovered a 🤫 vulnerability, please contact us at [hallo@onderwijs.in](hallo@onderwijs.in)
+
 ## Setup
 
 Make sure to install dependencies:
