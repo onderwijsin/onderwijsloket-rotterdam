@@ -63,9 +63,9 @@ SENTRY_DSN=<string>
 SENTRY_ORG=<string>
 SENTRY_PROJECT=<string>
 SENTRY_AUTH_TOKEN=<string>
-
 ```
 
+If you are in need of access tokens, or have any questions about auth tokens listed above, please contact us at [hallo@onderwijs.in](mailto:hallo@onderwijs.in)
 
 ## Development
 
