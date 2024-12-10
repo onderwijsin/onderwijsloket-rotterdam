@@ -2,7 +2,7 @@ import type { HeroSlide } from '~/types';
 
 export const slides: Array<HeroSlide> = [
     {
-        heading: "Quae in controversiam veniunt, de iis, si placet",
+        heading: `Kom werken <span class="gradient-text">in het Rotterdamse</span>onderwijs`,
         title: 'Hero slide 1',
         description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
         media: 'regios/rotterdam/hero_video_bcgbv5',
@@ -14,7 +14,7 @@ export const slides: Array<HeroSlide> = [
     },
     
     {
-        heading: "Quae in controversiam veniunt, de iis, si placet",
+        heading: `Ontdek activiteiten om het onderwijs <span class="gradient-text">beter te leren kennen</span>`,
         title: 'Hero slide 2',
         description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
         media: 'regios/rotterdam/skyline_ltg10e',
@@ -24,7 +24,7 @@ export const slides: Array<HeroSlide> = [
         ]
     },
     {
-        heading: "Quae in controversiam veniunt, de iis, si placet",
+        heading: `Ga jij voor het <span class="gradient-text">PO, VO, of MBO</span>?`,
         title: 'Hero slide 3',
         description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
         media: 'regios/rotterdam/classmates_ausdox',

@@ -2,7 +2,7 @@
 
 This is an open source single page application for Onderwijsloket Rotterdam. It is a Nuxt 3 app, using Nuxt UI and Tailwind CSS. It is meant to be deployed as a static app on edge runtimes (we use Cloudflare Workers platform); we have been doing so with [NuxtHub](https://hub.nuxt.com/).
 
-The app is an extension of ``onderwijsloket-core``; an Nuxt 3 layer containing common config for Onderwijsloket apps, UI components and composables and other reusable logic. Currently ``onderwijsloket-core`` is in private pre-release, and thus this repo cannot be cloned without a Github Access token that has read permissions for the ``onderwijsloket-core`` repo.
+The app is an extension of ``onderwijsloket-core``; a Nuxt 3 layer containing common config for Onderwijsloket apps, UI components and composables and other reusable logic. Currently ``onderwijsloket-core`` is in private pre-release, and thus this repo cannot be cloned without a Github Access token that has read permissions for the ``onderwijsloket-core`` repo.
 
 > if you found a 🐛 bug, have some 💬 feedback or discovered a 🤫 vulnerability, please contact us at [hallo@onderwijs.in](hallo@onderwijs.in)
 

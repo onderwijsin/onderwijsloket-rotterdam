@@ -1,5 +1,5 @@
 <template>
-  <div class="snap-container fluid">
+  <div ref="scrollContainer" class="snap-container fluid relative z-10">
     <UContainer>
       <section class="snap-section pb-h-[calc(100dvh-3.75rem)] sm:h-[calc(100dvh-2.25rem)] lg:h-[calc(100dvh-4.75rem)]">
         <HeroSlider
@@ -27,6 +27,16 @@ useSeoMeta({
 });
 
 const { slides } = useContent();
+
+const scrollContainer = ref<HTMLElement | null>(null)
+const { y: windowY } = useScroll(scrollContainer)
+const { y } = useSnapScroll()
+
+watchDebounced(windowY, (newVal) => {
+  y.value = newVal
+}, {
+  debounce: 50
+})
 </script>
 
 <style lang="postcss">
@@ -41,4 +51,5 @@ const { slides } = useContent();
   scroll-snap-align: start;
   @apply mb-4 sm:mb-6 lg:mb-8;
 }
+
 </style>

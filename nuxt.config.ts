@@ -83,10 +83,10 @@ export default defineNuxtConfig({
 
   fonts: {
     defaults: {
-      weights: [400, 700],
+      weights: [400, 700, 900],
     },
     families: [
-      { name: 'F37Ginger', provider: 'local' },
+      { name: 'Akrobat', provider: 'local' },
     ]
   },
 

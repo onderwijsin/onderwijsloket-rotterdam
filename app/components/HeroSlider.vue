@@ -89,7 +89,7 @@
         <div class="slide-content z-10 text-white px-32 py-24 relative max-w-full md:max-w-5xl">
           <div class="absolute circle -bottom-[130%] -left-1/2" />
           <div class="relative">
-            <h1 class="text-5xl lg:text-8xl">{{ slide.heading }}</h1>
+            <h1 class="text-5xl lg:text-8xl uppercase font-black" v-html="slide.heading"></h1>
             <div class="text-lg" v-html="slide.description"></div>
           </div>
         </div>
@@ -408,6 +408,10 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
 
 .custom-pointer {
   transform: translate(-50%, -50%);
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-primary-200 to-primary-300 inline text-transparent bg-clip-text
 }
 
 </style>

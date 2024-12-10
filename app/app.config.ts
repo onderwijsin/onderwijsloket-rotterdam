@@ -113,7 +113,9 @@ export default defineAppConfig({
   },
 
   ui: {
-   
+   button: {
+    rounded: 'rounded-none'
+   }
   },
   components: {
     ...components
