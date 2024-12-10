@@ -51,7 +51,7 @@ export default defineAppConfig({
       menu: () => []
     },
     algolia: {
-      enable: false
+      enable: true
     },
     cloudinary: {
       cloudName: 'onderwijsin',
@@ -113,21 +113,27 @@ export default defineAppConfig({
   },
 
   ui: {
-   button: {
-    rounded: 'rounded-none',
-    padding: {
-      lg: 'px-3.5 py-2.5',
-      xl: 'px-3.5 py-2.5'
-    }
-   },
-   container: {
-    constrained: 'max-w-[1480px]'
-   },
-   table: {
-    th: {
-      base: 'whitespace-nowrap',
-      padding: 'py-5'
-    }
+    button: {
+      rounded: 'rounded-none',
+      padding: {
+        lg: 'px-3.5 py-2.5',
+        xl: 'px-3.5 py-2.5',
+        '2xl': 'px-4 py-3'
+      }
+    },
+    buttonGroup: {
+      wrapper: { horizontal: 'flex-wrap' },
+      rounded: 'rounded-none',
+      shadow: 'shadow-none'
+    },
+    container: {
+      constrained: 'max-w-[1480px]'
+    },
+    table: {
+      th: {
+        base: 'whitespace-nowrap',
+        padding: 'py-5'
+      }
     },
     badge: {
       font: 'font-bold',
@@ -136,8 +142,12 @@ export default defineAppConfig({
       }
     },
     card: {
+      rounded: 'rounded-none',
       header: {
-        padding: 'pt-4'
+        padding: 'pt-4 px-4 sm:px-4 pb-0'
+      },
+      footer: {
+        padding: 'pt-0 px-4 sm:px-4 pb-4'
       }
     }
   },

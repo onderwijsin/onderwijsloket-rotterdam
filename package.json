@@ -25,6 +25,9 @@
     "@nuxt/ui": "^2.18.4",
     "@nuxt/icon": "^1.9.0",
     "toucan-js": "^4.0.0",
-    "wrangler": "^3.78.2"
+    "wrangler": "^3.78.2",
+    "@algolia/cache-in-memory": "^4.24.0",
+    "@algolia/requester-fetch": "^5.13.0",
+    "algoliasearch": "^5.13.0"
   }
 }

@@ -1,6 +1,22 @@
+<script lang="ts" setup>
+
+definePageMeta({
+  name: 'index',
+  layout: 'rotterdam',
+});
+
+useSeoMeta({
+  title: 'Home',
+  description: 'Kom werken in het Rotrterdamse onderwijs',
+});
+
+const { slides, activity, cards } = useContent();
+
+
+</script>
+
 <template>
   <div class="fluid relative z-10">
-    <span ref="snapTop"></span>
     <UContainer>
       <section>
         <div class="h-[calc(100dvh-5.5rem)] max-h-[900px]">
@@ -11,92 +27,53 @@
         </div>
         
       </section>
-      <section>
-        <div class="w-full bg-gray-100 dark:bg-gray-800">
-          <InnerContainer class="py-24 md:py-32 flex gap-12">
-            <div class="flex flex-col gap-8 shrink-0 basis-1/2">
-              <div class="flex gap-8 items-center ">
-                <div class="bg-gray-400 dark:bg-gray-700 w-20 h-20 grid place-items-center shrink-0">
-                  <UIcon name="i-heroicons-academic-cap-20-solid" class="w-8 h-8 text-white dark:text-gray-200" />
-                </div>
-                <h2 class="leading-snug mb-0">Ontdek werken in het Rotterdamse onderwijs!</h2>
-              </div>
-              <BadgeGroup wrap>
-                <UBadge color="primary" variant="solid" size="lg">
-                  <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 text-white dark:text-gray-950 mr-0.5" />
-                  <span>29-01 -2025</span>
-                </UBadge>
-                <UBadge color="primary" variant="soft" size="lg">
-                  <span>informatiebijeenkomst</span>
-                </UBadge>
-                <UBadge color="primary" variant="soft" size="lg">
-                  <UIcon name="i-heroicons-currency-euro-20-solid" class="w-4 h-4 text-primary-500 mr-0.5" />
-                  <span>gratis</span>
-                </UBadge>
-              </BadgeGroup>
-            </div>
-            <div class="flex flex-col items-start gap-8">
-              <p>Benieuwd naar een carrière in het onderwijs of de kinderopvang? Kom naar de informatiebijeenkomst op 29 januari en ontdek de mogelijkheden!</p>
-              <UButton color="primary" variant="solid" size="lg" to="https://google.com" target="_blank">
-                Meer informatie en aanmelden
-                <template #trailing>
-                  <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-4" />
-                </template>
-              </UButton>
-            </div>
-            
-          </InnerContainer>
-        </div>
+      <section id="activiteiten">
+        <ActivityBanner :data="activity" />
       </section>
       <section id="ontdek">
-        <div class="w-full py-24 md:py-32">
-          <InnerContainer>
-            <div class="mb-24 grid grid-cols-4">
-              <div class="col-span-3">
+        <div class="w-full pb-12 md:py-20">
+          <InnerContainer from="xl">
+            <div class="mb-8 md:mb-16 lg:mb-24 grid md:grid-cols-4">
+              <div class="md:col-span-3">
                 <h2 class="text-sm sm:text-lg uppercase text-primary-500 dark:text-primary-400">Ontdek het onderwijs</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Quare attende, quaeso.</p>
               </div>
-              <div class="col-span-1 flex flex-col items-end justify-end">
-                <UButton color="gray" variant="soft" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
+              <div class="hidden md:flex col-span-1 flex-col items-end justify-end">
+                <UButton color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
                   Naar kennisbank
                   <template #trailing>
-                    <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-4" />
+                    <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
                   </template>
                 </UButton>
               </div>
             </div>
-            <div class="mb-24 grid lg:grid-cols-3 gap-8">
-              <NuxtLink to="https://google.com" target="_blank" class="transition-all hover:scale-[101%]">
+            <div class="mb-8 md:mb-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <NuxtLink 
+                v-for="card in cards"
+                :to="card.to" 
+                target="_blank" 
+                class="grid transition-all hover:scale-[101%]"
+              >
                 <UCard>
                   <template #header>
                     <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
                   </template>
-                    <h5 class="text-lg">Leer de verschillende onderwijssectoren kennen</h5>
-                  <template #footer></template>
+                    <h5 class="text-lg">{{card.title}}</h5>
+                  <template #footer>
+                    <div class="flex justify-end">
+                      <UButton square icon="i-heroicons-arrow-top-right-on-square-16-solid" color="gray" variant="ghost" size="lg" />
+                    </div>
+                  </template>
                 </UCard>
               </NuxtLink>
-              <NuxtLink to="https://google.com" target="_blank" class="transition-all hover:scale-[101%]">
-              <UCard>
-                <template #header>
-                  <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
-                </template>
-                  <h5 class="text-lg">Docent worden? Er zijn zó veel meer toffe functies in het onderwijs!</h5>
-                <template #footer></template>
-              </UCard>
-            </NuxtLink>
-              <NuxtLink to="https://google.com" target="_blank" class="transition-all hover:scale-[101%]">
-              <UCard>
-                <template #header>
-                  <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
-                </template>
-                  <h5 class="text-lg">Over salaris, werkdruk, opleidingskosten en andere praktische vragen</h5>
-                <template #footer></template>
-              </UCard>
-            </NuxtLink>
             </div>
-            <div class="mb-24">
-              <h2 class="text-sm sm:text-lg uppercase text-primary-500 dark:text-primary-400">Veelgestelde vragen over het onderwijs</h2>
-            </div>
+            <UButton class="mb-24 md:hidden" block color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
+                Naar kennisbank
+                <template #trailing>
+                  <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+                </template>
+            </UButton>
+            <Faqs />
           </InnerContainer>
         </div>
       </section>
@@ -124,7 +101,7 @@
       </section>
       <section>
         <div class="w-full py-24 md:py-32">
-          <InnerContainer>
+          <InnerContainer from="xl">
             <div class="mb-24">
               <h2 class="text-sm sm:text-lg uppercase text-primary-500 dark:text-primary-400">Contact met Onderwijsloket Rotterdam</h2>
             </div>
@@ -135,31 +112,18 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-definePageMeta({
-  name: 'index',
-  layout: 'site',
-});
-
-useSeoMeta({
-  title: 'Home',
-  description: 'Kom werken in het Rotrterdamse onderwijs',
-});
-
-const { slides } = useContent();
-
-const { atTop } = useSnapScroll()
-
-
-const snapTop = ref(null)
-const targetIsVisible = useElementVisibility(snapTop)
-
-watch(targetIsVisible, newVal => {
-  atTop.value = newVal
-}) 
-</script>
-
 <style lang="postcss">
+#errorContainer {
+  @apply pt-28;
+
+  & > div {
+    border-radius: 0;
+  }
+}
+</style>
+
+
+<style lang="postcss" scoped>
 /* Container to enable snapping */
 html {
   @apply h-screen overflow-y-scroll scroll-smooth;

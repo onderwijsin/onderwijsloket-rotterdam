@@ -4,29 +4,21 @@
     <div 
       class="nav-panel prev z-20" 
       :class="{ 'hover-active': showPrevPreview }"
-    >
-      <div 
-        class="target"
-        tabindex="0"
-        @mouseenter="handleSlideHoverPreview(true, -1)"
-        @mouseleave="handleSlideHoverPreview(false)"
-        @click="navigateToPrev"
-        @keydown.enter="navigateToPrev"
-      />
-    </div>
+      tabindex="0"
+      @mouseenter="handleSlideHoverPreview(true, -1)"
+      @mouseleave="handleSlideHoverPreview(false)"
+      @click="navigateToPrev"
+      @keydown.enter="navigateToPrev"
+    />
     <div 
       class="nav-panel next z-20" 
       :class="{ 'hover-active': showNextPreview }"
-    >
-      <div 
-        class="target"
-        tabindex="0"
+      tabindex="0"
         @mouseenter="handleSlideHoverPreview(true, 1)"
         @mouseleave="handleSlideHoverPreview(false)"
         @click="navigateToNext"
         @keydown.enter="navigateToNext"
-      />
-    </div>
+    />
 
     <!-- Custom Pointer -->
     <div 
@@ -89,11 +81,21 @@
         <div class="transition-colors absolute inset-0 z-10 bg-primary-900/0" :class="index === currentIndex ? 'dark:bg-primary-900/20' : 'dark:bg-primary-900/10'" />
         
         <InnerContainer>
-          <div class="slide-content z-10 text-white py-24 relative max-w-full md:max-w-3xl">
+          <div class="slide-content z-10 text-white py-8 pt-12 md:py-24 relative max-w-full md:max-w-3xl">
             <div class="absolute circle -bottom-[130%] -left-1/2" />
             <div class="relative">
               <component :is="index === 0 ? 'h1' : 'h2'" class="text-5xl lg:text-8xl uppercase font-black"><span v-html="slide.heading"></span></component>
               <div class="text-lg" v-html="slide.description"></div>
+              <UButtonGroup v-if="!!slide.actions?.length" size="lg" class="mt-8 md:mt-12">
+                <UButton 
+                  v-for="btn in slide.actions"
+                  :color="btn.color" 
+                  :variant="btn.variant"  
+                  :icon="btn.icon"
+                  :label="btn.label"
+                  @click="handleLink(btn.to)"
+                />
+              </UButtonGroup>
             </div>
           </div>
         </InnerContainer>
@@ -235,6 +237,19 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
     trackPosition.value = 0
   }
 }
+
+
+const handleLink = (val: string) => {
+  if (val.startsWith('#')) {
+    const id = val.split('#')[1] as string
+    document.getElementById(id)?.scrollIntoView({behavior: 'smooth'})
+    return
+  }
+
+  navigateTo(val, {
+    external: true,
+  })
+}
 </script>
 
 <style lang="postcss">
@@ -338,7 +353,9 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
 
   /* Existing parallelogram and media styles remain the same */
   .parallelogram {
-    clip-path: polygon(var(--skew) 0, 100% 0, calc(100% - var(--skew)) 100%, 0% 100%);
+    @media screen and (min-width: 768px) {
+      clip-path: polygon(var(--skew) 0, 100% 0, calc(100% - var(--skew)) 100%, 0% 100%);
+    }
   }
 
   .media { 
@@ -354,11 +371,10 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
 
 .nav-panel {
   /* Performance and readability improvements */
-  width: 280px;
+  width: 120px;
   height: 100%;
   position: absolute;
   top: 0;
-  cursor: none;
   
   /* Simplified gradient */
   background: linear-gradient(
@@ -370,14 +386,9 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
 
-  .target {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 180px;
-    cursor: none;
-    @apply target:ring-1 ring-offset-1 ring-primary;
-  }
+  width: 120px;
+  cursor: none;
+  @apply target:ring-1 ring-offset-1 ring-primary;
 
   &:hover {
     opacity: 1;
@@ -391,10 +402,6 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
       rgba(0, 0, 0, 0.5) 0%,
       rgba(0, 0, 0, 0) 100%
     );
-    
-    .target {
-      left: 0;
-    }
   }
 
   &.next {
@@ -404,10 +411,6 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
       rgba(0, 0, 0, 0.5) 0%,
       rgba(0, 0, 0, 0) 100%
     );
-    
-    .target {
-      right: 0;
-    }
   }
 }
 

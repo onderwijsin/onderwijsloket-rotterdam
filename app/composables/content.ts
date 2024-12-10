@@ -1,6 +1,6 @@
-import { slides } from "~/assets/content"
+import { slides, cards, activity } from "~/assets/content"
 
 export const useContent = () => {
 
-  return { slides }
+  return { slides, activity, cards }
 }
