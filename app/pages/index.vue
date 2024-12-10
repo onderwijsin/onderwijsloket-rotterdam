@@ -3,7 +3,7 @@
     <span ref="snapTop"></span>
     <UContainer>
       <section>
-        <div class="h-[calc(100dvh-5.5rem)]">
+        <div class="h-[calc(100dvh-5.5rem)] max-h-[900px]">
           <HeroSlider
             :slides="slides"
             :autoplay="12000"
@@ -14,23 +14,23 @@
       <section>
         <div class="w-full bg-gray-100 dark:bg-gray-800">
           <InnerContainer class="py-24 md:py-32 flex gap-12">
-            <div class="flex flex-col gap-8">
-              <div class="flex gap-8 items-center">
+            <div class="flex flex-col gap-8 shrink-0 basis-1/2">
+              <div class="flex gap-8 items-center ">
                 <div class="bg-gray-400 dark:bg-gray-700 w-20 h-20 grid place-items-center shrink-0">
                   <UIcon name="i-heroicons-academic-cap-20-solid" class="w-8 h-8 text-white dark:text-gray-200" />
                 </div>
                 <h2 class="leading-snug mb-0">Ontdek werken in het Rotterdamse onderwijs!</h2>
               </div>
-              <BadgeGroup>
+              <BadgeGroup wrap>
                 <UBadge color="primary" variant="solid" size="lg">
-                  <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 text-white dark:text-gray-950 mr-2" />
+                  <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 text-white dark:text-gray-950 mr-0.5" />
                   <span>29-01 -2025</span>
                 </UBadge>
                 <UBadge color="primary" variant="soft" size="lg">
                   <span>informatiebijeenkomst</span>
                 </UBadge>
                 <UBadge color="primary" variant="soft" size="lg">
-                  <UIcon name="i-heroicons-currency-euro-20-solid" class="w-4 h-4 text-primary-500 mr-2" />
+                  <UIcon name="i-heroicons-currency-euro-20-solid" class="w-4 h-4 text-primary-500 mr-0.5" />
                   <span>gratis</span>
                 </UBadge>
               </BadgeGroup>
@@ -65,14 +65,17 @@
                 </UButton>
               </div>
             </div>
-            <div class="mb-24 grid grid-cols-3 gap-8">
-              <UCard>
-                <template #header>
-                  <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
-                </template>
-                  <h5 class="text-lg">Leer de verschillende onderwijssectoren kennen</h5>
-                <template #footer></template>
-              </UCard>
+            <div class="mb-24 grid lg:grid-cols-3 gap-8">
+              <NuxtLink to="https://google.com" target="_blank" class="transition-all hover:scale-[101%]">
+                <UCard>
+                  <template #header>
+                    <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
+                  </template>
+                    <h5 class="text-lg">Leer de verschillende onderwijssectoren kennen</h5>
+                  <template #footer></template>
+                </UCard>
+              </NuxtLink>
+              <NuxtLink to="https://google.com" target="_blank" class="transition-all hover:scale-[101%]">
               <UCard>
                 <template #header>
                   <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
@@ -80,6 +83,8 @@
                   <h5 class="text-lg">Docent worden? Er zijn zó veel meer toffe functies in het onderwijs!</h5>
                 <template #footer></template>
               </UCard>
+            </NuxtLink>
+              <NuxtLink to="https://google.com" target="_blank" class="transition-all hover:scale-[101%]">
               <UCard>
                 <template #header>
                   <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
@@ -87,6 +92,7 @@
                   <h5 class="text-lg">Over salaris, werkdruk, opleidingskosten en andere praktische vragen</h5>
                 <template #footer></template>
               </UCard>
+            </NuxtLink>
             </div>
             <div class="mb-24">
               <h2 class="text-sm sm:text-lg uppercase text-primary-500 dark:text-primary-400">Veelgestelde vragen over het onderwijs</h2>

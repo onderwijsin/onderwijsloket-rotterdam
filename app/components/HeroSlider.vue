@@ -86,7 +86,7 @@
           :is-active="index === currentIndex"
         />
 
-        <div class="transition-colors absolute inset-0 z-10 bg-primary-900/0 dark:bg-primary-900/25" />
+        <div class="transition-colors absolute inset-0 z-10 bg-primary-900/0" :class="index === currentIndex ? 'dark:bg-primary-900/20' : 'dark:bg-primary-900/10'" />
         
         <InnerContainer>
           <div class="slide-content z-10 text-white py-24 relative max-w-full md:max-w-3xl">
@@ -256,7 +256,7 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
     
     transform: translateX(calc(var(--index) * 100% - (var(--index) * var(--skew))));
     z-index: 1;
-    @apply absolute inset-0 overflow-hidden bg-primary-900/70 dark:bg-primary-900;
+    @apply absolute inset-0 overflow-hidden bg-primary-900/30;
 
     .media {
       /* Use will-change for opacity and filter */
