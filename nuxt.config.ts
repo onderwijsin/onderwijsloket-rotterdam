@@ -90,6 +90,10 @@ export default defineNuxtConfig({
     ]
   },
 
+  ui: {
+    safelistColors: ['primary', 'main']
+  },
+
 
   runtimeConfig: {
     // The private keys which are only available server-side

@@ -2,7 +2,7 @@ import type { HeroSlide } from '~/types';
 
 export const slides: Array<HeroSlide> = [
     {
-        heading: `Kom werken <span class="gradient-text">in het Rotterdamse</span>onderwijs`,
+        heading: `Kom werken <span class="gradient-text">in het Rotterdamse</span> onderwijs`,
         title: 'Hero slide 1',
         description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
         media: 'regios/rotterdam/hero_video_bcgbv5',
@@ -14,7 +14,7 @@ export const slides: Array<HeroSlide> = [
     },
     
     {
-        heading: `Ontdek activiteiten om het onderwijs <span class="gradient-text">beter te leren kennen</span>`,
+        heading: `Ontdek <span class="gradient-text">activiteiten</span> om het onderwijs beter te leren kennen`,
         title: 'Hero slide 2',
         description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
         media: 'regios/rotterdam/skyline_ltg10e',

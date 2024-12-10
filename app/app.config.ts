@@ -76,14 +76,14 @@ export default defineAppConfig({
       },
       cookies: (val) => [
         ...val,
-        {
-          name: 'algolia_anonymous_token', 
-          maxAge: 60 * 60 * 24 * 30,
-          party: 'first',
-          type: 'functioneel',
-          secure: true,
-          description: 'Deze cookie slaat een geanonimiseerde ID op om verzoeken naar onze search engine van gebruikers te kunnen herkennen. Hiermee kunnen we de relevantie van zoekresultaten verbeteren.'
-        },
+        // {
+        //   name: 'algolia_anonymous_token', 
+        //   maxAge: 60 * 60 * 24 * 30,
+        //   party: 'first',
+        //   type: 'functioneel',
+        //   secure: true,
+        //   description: 'Deze cookie slaat een geanonimiseerde ID op om verzoeken naar onze search engine van gebruikers te kunnen herkennen. Hiermee kunnen we de relevantie van zoekresultaten verbeteren.'
+        // },
         {
           name: '_mc_key', 
           maxAge: 'sessie',
@@ -114,8 +114,32 @@ export default defineAppConfig({
 
   ui: {
    button: {
-    rounded: 'rounded-none'
-   }
+    rounded: 'rounded-none',
+    padding: {
+      lg: 'px-3.5 py-2.5',
+      xl: 'px-3.5 py-2.5'
+    }
+   },
+   container: {
+    constrained: 'max-w-[1480px]'
+   },
+   table: {
+    th: {
+      base: 'whitespace-nowrap',
+      padding: 'py-5'
+    }
+    },
+    badge: {
+      font: 'font-bold',
+      variant: {
+        solid: 'bg-{color}-500 dark:bg-{color}-400 text-white dark:text-gray-900',
+      }
+    },
+    card: {
+      header: {
+        padding: 'pt-4'
+      }
+    }
   },
   components: {
     ...components

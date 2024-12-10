@@ -1,8 +1,8 @@
 export const useSnapScroll = () => {
 
-  const y = useState('snap_container_y', () => 0)
+  const atTop = useState('snap_container_at_top', () => true)
 
   return {
-    y
+    atTop
   }
 }

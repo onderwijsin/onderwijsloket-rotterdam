@@ -53,6 +53,7 @@
       <div 
         v-for="(slide, index) in data" 
         :key="index"
+        :aria-hidden="index > slides.length - 1"
         class="slide parallelogram flex items-end"
         :style="`--index: ${getRelativeIndex(index, currentIndex)};`"
         :class="[
@@ -62,6 +63,7 @@
             'hover-next': showNextPreview && getPosClass(index, currentIndex) === 'next'
           }
         ]"
+
         @mouseenter="() => handleSlideHover(index)"
         @mouseleave="handleSlideHoverEnd"
         @click="() => getSlide(index)"
@@ -84,15 +86,18 @@
           :is-active="index === currentIndex"
         />
 
-        <div class="transition-colors absolute inset-0 z-10 bg-black/0 dark:bg-black/25" />
+        <div class="transition-colors absolute inset-0 z-10 bg-primary-900/0 dark:bg-primary-900/25" />
         
-        <div class="slide-content z-10 text-white px-32 py-24 relative max-w-full md:max-w-5xl">
-          <div class="absolute circle -bottom-[130%] -left-1/2" />
-          <div class="relative">
-            <h1 class="text-5xl lg:text-8xl uppercase font-black" v-html="slide.heading"></h1>
-            <div class="text-lg" v-html="slide.description"></div>
+        <InnerContainer>
+          <div class="slide-content z-10 text-white py-24 relative max-w-full md:max-w-3xl">
+            <div class="absolute circle -bottom-[130%] -left-1/2" />
+            <div class="relative">
+              <component :is="index === 0 ? 'h1' : 'h2'" class="text-5xl lg:text-8xl uppercase font-black"><span v-html="slide.heading"></span></component>
+              <div class="text-lg" v-html="slide.description"></div>
+            </div>
           </div>
-        </div>
+        </InnerContainer>
+        
       </div>
     </div>
   </div>
@@ -251,7 +256,7 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
     
     transform: translateX(calc(var(--index) * 100% - (var(--index) * var(--skew))));
     z-index: 1;
-    @apply absolute inset-0 overflow-hidden bg-black/70 dark:bg-black;
+    @apply absolute inset-0 overflow-hidden bg-primary-900/70 dark:bg-primary-900;
 
     .media {
       /* Use will-change for opacity and filter */
