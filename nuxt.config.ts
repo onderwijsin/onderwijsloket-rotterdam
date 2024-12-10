@@ -19,7 +19,6 @@ export default defineNuxtConfig({
   
 
   routeRules: {
-    '/': { ssr: true }, // 10 minutes
     '/not-supported/': { 
       ssr: true, 
       prerender: true, 
@@ -30,6 +29,8 @@ export default defineNuxtConfig({
   $production: {
     routeRules: {
       '/': { ssr: true, prerender: false, swr: 60 * 60 }, 
+      '/privacy': { ssr: true, prerender: true, swr: 60 * 60 }, 
+      '/algemene-voorwaarden': { ssr: true, prerender: true, swr: 60 * 60 },
     }
   },
 
