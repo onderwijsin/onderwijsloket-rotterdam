@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
   $production: {
     routeRules: {
-      '/': { ssr: true, prerender: false, swr: 60 * 60 * 24 }, 
+      '/': { ssr: true, prerender: false, swr: 60 * 60 }, 
     }
   },
 
