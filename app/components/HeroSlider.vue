@@ -106,6 +106,13 @@
 </template>
 
 <script lang="ts" setup>
+
+// TODO cleanup component
+// TODO refactor logic and fns for better readability and maintability
+// TODO split into subcomponents
+// TODO pause slider if window loses focus (and resume once in focus). Same is true for onActivated and onDeactivated hooks (keep-alive is not used, but it might be in the future!)
+
+
 import type { HeroSlide } from '~/types';
 
 interface HeroSliderProps {

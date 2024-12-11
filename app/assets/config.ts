@@ -1,3 +1,5 @@
+
+// TODO update menus and errorSlides
 export const socialMenu = [
     {
       label: 'Facebook',

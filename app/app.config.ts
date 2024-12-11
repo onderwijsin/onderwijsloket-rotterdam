@@ -4,12 +4,12 @@ import * as components from './assets/components'
 export default defineAppConfig({
   settings: {
     meta: {
-      image: 'https://res.cloudinary.com/onderwijsin/image/upload/c_scale,w_400,h_400/v1683039896/brand/onderwijsloket-square-OG_xaes77.png',
+      image: 'https://res.cloudinary.com/onderwijsin/image/upload/c_scale,w_512,h_512/regios/rotterdam/meta_square_qaxwmn.png',
       socials: () => [],
       icon: {
-        favicon: 'v1683720669/brand/favicon_onderwijsloket_isiqbk',
-        appIcon: 'v1683720669/brand/pwa_icon_onderwijsloket_kwjcnx',
-        maskableAppIcon: 'v1683720669/brand/pwa_icon_maskable_onderwijsloket_ygeurn',
+        favicon: 'regios/rotterdam/icon_2x_obif7y.png',
+        appIcon: 'regios/rotterdam/icon_2x_obif7y.png',
+        maskableAppIcon: 'regios/rotterdam/icon_2x_obif7y.png',
       }
     },
     ui: {
@@ -55,7 +55,7 @@ export default defineAppConfig({
     },
     cloudinary: {
       cloudName: 'onderwijsin',
-      projectFolder: 'regioloket-rotterdam',
+      projectFolder: 'regios/rotterdam',
     },
 
     savvycal: {

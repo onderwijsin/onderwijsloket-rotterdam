@@ -7,7 +7,7 @@ definePageMeta({
 
 useSeoMeta({
   title: 'Home',
-  description: 'Kom werken in het Rotrterdamse onderwijs',
+  description: 'Ontdek jouw mogelijkheden in het Rotterdamse onderwijs. Met een actueel overzicht van vacatures, oriëntatie-activiteiten en informatie over het vinden van een werkplek of opleiding.',
 });
 
 const { slides, activity, cards } = useContent();

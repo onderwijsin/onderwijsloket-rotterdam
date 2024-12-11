@@ -71,7 +71,6 @@ const { useDarkMode, useDyslexicFont } = useAppConfig().settings.ui;
 
 const { atTop } = useSnapScroll()
 
-
 onNuxtReady (() => {
   if (window.scrollY > 50 && atTop.value) atTop.value = false
 })
