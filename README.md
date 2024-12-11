@@ -65,6 +65,16 @@ SENTRY_DSN=<string>
 SENTRY_ORG=<string>
 SENTRY_PROJECT=<string>
 SENTRY_AUTH_TOKEN=<string>
+
+
+# Favicons and other icons are automatically generated in different sizes and formats. Cloudinary is used to achieve this.
+# Therefore, you need to add the CLD cloudname where your icons are hosted, and provide the public IDs for three icon variations
+# IF you do NOT want to use Cloudinary, you'll need to completely override app.head.link property in nuxt.config.ts
+ICON_CLD_CLOUD="onderwijsin"
+FAVICON="regios/rotterdam/icon_2x_obif7y"
+APPICON="regios/rotterdam/appicon_2x_jyutea"
+MASKABLE_ICON="regios/rotterdam/maskable_2x_xakodk"
+
 ```
 
 If you are in need of access tokens, or have any questions about auth tokens listed above, please contact us at [hallo@onderwijs.in](mailto:hallo@onderwijs.in)
