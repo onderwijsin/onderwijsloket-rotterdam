@@ -78,3 +78,108 @@ export const cards = [
         title: 'Over salaris, werkdruk, opleidingskosten en andere praktische vragen'
     },
 ]
+
+
+export const advies = {
+    btnLabel: 'plan een gratis adviesgesprek',
+    bannerImage: 'stichting/site/Team_website_02_z4ucym',
+    bannerImageAlt: 'Adviseur van het Onderwijsloket',
+}
+
+export const routes = {
+    btnLabel: 'naar routetool',
+    bannerImage: 'stichting/site/Team_website_02_z4ucym',
+    bannerImageAlt: 'Placeholder',
+}
+
+export const contact = {
+    title: 'Contact met Onderwijsloket Rotterdam',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Quare attende, quaeso.',
+    link: 'mailto:info@onderwijsloketrotterdam.nl',
+    btnLabel: 'Neem contact op',
+    icon: 'i-heroicons-envelope-16-solid'
+}
+
+
+import type { Story } from '~/types';
+export const stories: Story[] = [
+    {
+        sectors: ['mbo'],
+        source: 'onderwijs010',
+        duration: 3,
+        type: 'article',
+        title: 'Leren van én met elkaar; lessen uit de praktijk',
+        url: 'https://google.com',
+        author: {
+            name: 'Tessa Visser',
+            image_id: 'onderwijsloket/avatars/female_8_h8p0v0',
+            subtitle: 'Docent gezondheidszorg & welzijn'
+        }
+    },
+    {
+        sectors: ['basisschool'],
+        source: 'onderwijs010',
+        duration: 4,
+        type: 'article',
+        title: 'Als juf voor de klas staan, dat lijkt mij ook wel wat',
+        url: 'https://google.com',
+        author: {
+            name: 'Christa Vroemans',
+            image_id: 'onderwijsloket/avatars/female_3_uf9idg',
+            subtitle: 'Trainee basisonderwijs'
+        }
+    },
+    {
+        sectors: ['middelbare school'],
+        source: 'onderwijs010',
+        duration: 4,
+        type: 'article',
+        title: 'De combinatie lesgeven en begeleiden is voor mij perfect.',
+        url: 'https://google.com',
+        author: {
+            name: 'Sander Dekker',
+            image_id: 'onderwijsloket/avatars/male_4_ufp9f1',
+            subtitle: 'Maatschappijleer & burgerschap'
+        }
+    },
+    {
+        sectors: ['basisschool'],
+        source: 'onderwijsloket.com',
+        duration: 39,
+        type: 'podcast',
+        title: 'Meester Joris over het geschiktheidsonderzoek, veiligheid in de klas en omgaan met tegengas',
+        url: 'https://open.spotify.com/episode/2LkHECuU3RKYBVad0fnxus?si=oU2sFDvQQZeJfSFxZffrOw',
+        media: {
+            thumb_id: 'onderwijsloket/podcast/grote_pauze/branding/grote_pauze_lg_1-1_cmsqyl',
+        }
+    },
+    {
+        sectors: ['middelbare school'],
+        source: 'onderwijsloket.com',
+        duration: 1,
+        type: 'video',
+        title: 'Je bent volgens Henry nooit te oud voor de overstap',
+        url: 'https://voorbereiden.onderwijsloket.com/content/je-bent-volgens-henry-nooit-te-oud-voor-de-overstap/',
+        media: {
+            thumb_id: 'onderwijsloket/voorbereiden/overstappers/originals/henry_ekimrx',
+        }
+    },
+]
+
+
+export const partners = {
+    vacancies: {
+        icon: 'i-heroicons-building-storefront-20-solid',
+        title: 'Onderwijsvacatures in de regio Rotterdam',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.',
+        btnLabel: 'Naar vacaturebank Onderwijs010',
+        to: 'https://onderwijs010.nl/vacatures/'
+    },
+    orgs: {
+        icon: 'i-heroicons-building-office-2-20-solid',
+        title: 'Leer onze partners kennen',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.',
+        btnLabel: 'Ontdek de Rotterdamse schoolbesturen',
+        to: '/schoolbesturen'
+    }
+}

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <UContainer ref="header" class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-950 transition-all duration-200 ease-in z-50">
+    <UContainer ref="header" class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-950 transition-colors z-50">
       <nav class="relative flex justify-between items-center h-[2.75rem]">
         <div 
           class="relative bg-white dark:bg-gray-950 transition-logo pl-1 -left-1"
@@ -70,10 +70,11 @@ const scrollTo = (id: string) => {
 const { useDarkMode, useDyslexicFont } = useAppConfig().settings.ui;
 
 const { atTop } = useSnapScroll()
+const { y } = useWindowScroll()
 
-onNuxtReady (() => {
-  if (window.scrollY > 50 && atTop.value) atTop.value = false
-})
+watchDebounced(y, (val) => {
+  atTop.value = val < 50
+}, { debounce: 50, maxWait: 500, immediate: true })
 
 </script>
 

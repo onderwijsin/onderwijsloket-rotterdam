@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col lg:flex-row lg:gap-16">
     <div class="basis-1/3 shrink-0 lg:py-8">
-      <h2 class="text-sm sm:text-lg uppercase text-primary-500 dark:text-primary-400 font-black">Veelgestelde vragen over het onderwijs</h2>
+      <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400 font-black">Veelgestelde vragen over het onderwijs</h2>
       <p class="mb-8 lg:mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.</p>
       <UInput v-model.debounce="query" size="lg" icon="i-heroicons-magnifying-glass" placeholder="Zoek naar FAQ's" :loading="loading" />
       <p v-if="!!data" class="text-gray-500 text-xs mt-4 px-1">{{ data.nbHits || 0 }} resultaten gevonden</p>
@@ -20,7 +20,8 @@
           wrapper: 'gap-3',
           item: {
             padding: 'px-2'
-          }
+          },
+          default: { truncate: false, class: 'text-left', }
         }"
       />
       <UButtonGroup size="lg">

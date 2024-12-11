@@ -1,5 +1,5 @@
 <template>
-  <div class="slider relative w-full h-full overflow-hidden">
+  <div ref="swipeTarget" class="slider relative w-full h-full overflow-hidden">
     <!-- Navigation Panels -->
     <div 
       class="nav-panel prev z-20" 
@@ -75,6 +75,7 @@
           class="media"
           :media="slide.media"
           :heading="slide.heading"
+          :preload="index === currentIndex || getPosClass(index, currentIndex) === 'prev' || getPosClass(index, currentIndex) === 'next'"
           :is-active="index === currentIndex"
         />
 
@@ -82,7 +83,7 @@
         
         <InnerContainer>
           <div class="slide-content z-10 text-white py-8 pt-12 md:py-24 relative max-w-full md:max-w-3xl">
-            <div class="absolute circle -bottom-[130%] -left-1/2" />
+            <div class="circle" />
             <div class="relative">
               <component :is="index === 0 ? 'h1' : 'h2'" class="text-5xl lg:text-8xl uppercase font-black"><span v-html="slide.heading"></span></component>
               <div class="text-lg" v-html="slide.description"></div>
@@ -102,6 +103,8 @@
         
       </div>
     </div>
+
+    
   </div>
 </template>
 
@@ -172,6 +175,22 @@ const navigateToNext = () => {
     : currentIndex.value + 1
   goTo(nextIndex)
 }
+
+
+import type { UseSwipeDirection } from '@vueuse/core'
+const swipeTarget = ref()
+
+const { direction, isSwiping, lengthX, lengthY } = useSwipe(
+  swipeTarget,
+  {
+    passive: false,
+    threshold: 50,
+    onSwipeEnd(e: TouchEvent, direction: UseSwipeDirection) {
+      if (lengthX.value < 0) navigateToPrev()
+      else navigateToNext()
+    },
+  },
+)
 
 // Utility functions for slide positioning
 function getRelativeIndex(index: number, currentIndex: number): number {
@@ -292,7 +311,6 @@ const handleLink = (val: string) => {
     .circle {
       /* Optimize circle gradient */
       opacity: 0;
-      width: 150%;
       aspect-ratio: 1;
       background: radial-gradient(
         circle, 
@@ -301,6 +319,9 @@ const handleLink = (val: string) => {
       );
       border-radius: 50%;
       transition: opacity 0.3s ease-in;
+
+
+      @apply absolute -bottom-[600px] w-[1200px] -left-[400px] lg:-bottom-[130%] md:w-[150%] md:-left-1/2;
     }
 
     /* Consolidated current slide styles */
@@ -395,7 +416,7 @@ const handleLink = (val: string) => {
 
   width: 120px;
   cursor: none;
-  @apply target:ring-1 ring-offset-1 ring-primary;
+  @apply hidden sm:block target:ring-1 ring-offset-1 ring-primary;
 
   &:hover {
     opacity: 1;
@@ -423,6 +444,7 @@ const handleLink = (val: string) => {
 
 .custom-pointer {
   transform: translate(-50%, -50%);
+  @apply hidden sm:block;
 }
 
 .gradient-text {

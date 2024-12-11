@@ -31,3 +31,33 @@ export type Activity = {
         color?: BadgeColor
     }[]
 }
+
+
+
+type Sector = 'basisschool' | 'middelbare school' | 'mbo' | 'speciaal onderwijs'
+type BaseStory = {
+    sectors: Sector[]
+    source: string,
+    duration: number
+    title: string
+    url: string
+    // type: 'article' | 'video' | 'podcast'
+}
+
+export type Article = BaseStory & {
+    type: 'article'
+    author: {
+        image_id: string
+        name: string
+        subtitle: string
+    }
+}
+
+export type Media = BaseStory & {
+    type: 'video' | 'podcast'
+    media: {
+        thumb_id: string
+    }
+}
+
+export type Story = Media | Article

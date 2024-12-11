@@ -3,10 +3,11 @@
     <img
       v-if="!videoLoaded"
       :src="getPlaceholderImageUrl(media)"
-      width="1920"
-      height="1080"
+      width="1280"
+      height="768"
+      sizes="480px sm:600px md:768px lg:1024px xl:1280px"
       class="placeholder-image media"
-      :preload="true"
+      :preload="preload"
       :alt="alt"
     />
     <video
@@ -49,6 +50,7 @@ const props = defineProps<{
   media: string
   isActive: boolean
   alt?: string
+  preload?: boolean
 }>()
 
 const videoLoaded = ref(false)
