@@ -84,6 +84,15 @@ export const advies = {
     btnLabel: 'plan een gratis adviesgesprek',
     bannerImage: 'stichting/site/Team_website_02_z4ucym',
     bannerImageAlt: 'Adviseur van het Onderwijsloket',
+    info: `
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Immo videri fortasse. Recte, inquit, intellegis. Inquit, dasne adolescenti veniam? Quare conare, quaeso. Duo Reges: constructio interrete. Utilitatis causa amicitia est quaesita. Et quod est munus, quod opus sapientiae?</p>
+        <p>Quae diligentissime contra Aristonem dicuntur a Chryippo. Non potes, nisi retexueris illa. Gloriosa ostentatio in constituendo summo bono. Ipse Epicurus fortasse redderet, ut Sextus Peducaeus, Sex.</p>
+        <p>Maximus dolor, inquit, brevis est. Summum ením bonum exposuit vacuitatem doloris; Bork Primum divisit ineleganter; Cum praesertim illa perdiscere ludus esset. Nunc haec primum fortasse audientis servire debemus.</p>
+        <br />
+        <h5>Over het Onderwijsloket</h5>
+        <p>Het landelijke Onderwijsloket is een informatie- en adviescentrum over <i>werken in het onderwijs</i>. Zij weten alles over routes, bevoegdheden, subsidies, de verschillende sectoren en functies, en andere algemene en praktische zaken om mee te wegen in je oriëntatie.</p>
+        <p>Onderwijsloket Rotterdam is géén onderdeel van het Onderwijsloket, maar werkt wel met haar samen.</p>
+    `
 }
 
 export const routes = {

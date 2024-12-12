@@ -34,7 +34,7 @@ export type Activity = {
 
 
 
-type Sector = 'basisschool' | 'middelbare school' | 'mbo' | 'speciaal onderwijs'
+export type Sector = 'basisschool' | 'middelbare school' | 'mbo' | 'speciaal onderwijs'
 type BaseStory = {
     sectors: Sector[]
     source: string,
