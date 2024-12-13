@@ -67,6 +67,7 @@
           height="1080"
           sizes="480px md:600px lg:1080px xl:1280px"
           class="media"
+          fit="fill"
           :preload="index === currentIndex"
           :alt="slide.heading"
         />
@@ -180,12 +181,13 @@ const navigateToNext = () => {
 import type { UseSwipeDirection } from '@vueuse/core'
 const swipeTarget = ref()
 
-const { direction, isSwiping, lengthX, lengthY } = useSwipe(
+const { lengthX } = useSwipe(
   swipeTarget,
   {
     passive: false,
     threshold: 50,
     onSwipeEnd(e: TouchEvent, direction: UseSwipeDirection) {
+      if (direction === 'down' || direction === 'up' || direction === 'none') return
       if (lengthX.value < 0) navigateToPrev()
       else navigateToNext()
     },

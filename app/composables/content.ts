@@ -1,4 +1,4 @@
-import { slides, cards, activity, advies, routes, stories, partners, contact } from "~/assets/content"
+import { pages, slides, cards, activity, advies, routes, stories, partners, contact, besturen } from "~/assets/content"
 
 import type { Sector } from '~/types'
 export const useContent = () => {
@@ -18,6 +18,6 @@ export const useContent = () => {
   return { 
     getSectorColor,
     
-    slides, activity, cards, advies, routes, stories, contact, partners 
+    pages, slides, activity, cards, advies, routes, stories, contact, partners, besturen 
   }
 }

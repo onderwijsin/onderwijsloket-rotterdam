@@ -1,5 +1,28 @@
 import type { HeroSlide, Activity } from '~/types';
 
+
+export const pages = {
+    home: {
+        name: 'Home',
+        meta: 'Ontdek jouw mogelijkheden in het Rotterdamse onderwijs. Met een actueel overzicht van vacatures, oriëntatie-activiteiten en informatie over het vinden van een werkplek of opleiding.'
+    },
+    besturen: {
+        name: 'Schoolbesturen',
+        meta: 'De schoolbesturen die zijn aangesloten bij Onderwijsloket Rotterdam',
+        image: 'regios/rotterdam/school_corridor_eagqjt'
+    },
+    privacy: {
+        name: 'Privacybeleid',
+        meta: 'Hoe Onderwijsloket Rotterdam omgaat met jouw privacy en persoonsgegevens.',
+        image: 'regios/rotterdam/school_corridor_2_mjqmta'
+    },
+    voorwaarden: {
+        name: 'Algemene voorwaarden',
+        meta: 'De algemene voorwaarden die gelden voor de dienstverlening van Onderwijsloket Rotterdam.',
+        image: 'regios/rotterdam/school_staircase_me9cmk'
+    },
+}
+
 export const slides: Array<HeroSlide> = [
     {
         heading: `Kom werken <span class="gradient-text">in het Rotterdamse</span> onderwijs`,
@@ -185,6 +208,26 @@ export const stories: Story[] = [
     },
 ]
 
+export const besturen = [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+
+]
+
 
 export const partners = {
     vacancies: {
@@ -196,9 +239,14 @@ export const partners = {
     },
     orgs: {
         icon: 'i-heroicons-building-office-2-20-solid',
-        title: 'Leer onze partners kennen',
+        title: `Leer de ${besturen.length} onderwijsbesturen kennen`,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.',
         btnLabel: 'Ontdek de Rotterdamse schoolbesturen',
         to: '/schoolbesturen'
+    },
+    opleiding: {
+        icon: 'i-heroicons-academic-cap-20-solid',
+        title: 'Opleidingsaanbod in de buurt van Rotterdam',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod.',
     }
 }

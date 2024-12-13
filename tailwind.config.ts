@@ -21,7 +21,10 @@ export const theme = {
       sans: ['Akrobat', 'sans-serif'],
     },
     colors: {
-      main
+      main,
+
+      start: main[300],
+      end: main[600],
     }
   }
 }

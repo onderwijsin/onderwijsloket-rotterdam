@@ -15,44 +15,59 @@
         
         </div>
         
-        <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-3">
           <ul class="hidden md:flex gap-3">
-            <li>
+            <li v-for="item in headerItems">
               <UButton
-                variant="ghost"
-                color="gray"
+                :variant="item.variant"
+                :color="item.color"
                 size="xs"
-                icon="i-heroicons-light-bulb-16-solid"
-                @click="scrollTo('ontdek')"
-              >
-                Ontdek het onderwijs
-              </UButton>
-            </li>
-            <li>
-              <UButton
-                variant="ghost"
-                color="gray"
-                size="xs"
-                icon="i-heroicons-bolt-16-solid"
-                @click="scrollTo('ervaar')"
-              >
-                Ervaar het onderwijs
-              </UButton>
-            </li>
-            <li>
-              <UButton
-                variant="soft"
-                size="xs"
-                icon="i-heroicons-chat-bubble-left-right-16-solid"
-                @click="scrollTo('advies')"
-              >
-                Hulp en advies
-              </UButton>
+                :icon="item.icon"
+                :label="item.label"
+                @click="() => item.click ? item.click() : null"
+              />
             </li>
           </ul>
           <ThemeToggle v-if="useDarkMode" />
           <FontToggle v-if="useDyslexicFont" />
         </div>
+        <UDropdown  
+          v-model:open="open" 
+          :items="mobileItems" 
+          :popper="{ placement: 'bottom-end', offsetDistance: 5 }"
+          class="md:hidden"
+          :ui="{
+            rounded: 'rounded-none',
+            width: 'min-w-48 w-[calc(65%-16px)] sm:w-[calc(50%-24px)]',
+            // @ts-expect-error
+            item: { icon: 'w-4 h-4', label: 'font-bold' }
+          }"
+        >
+          <UButton
+            color="gray"
+            variant="ghost"
+            class="w-[40px] swap -mr-2 "
+            square
+          >
+            <UIcon
+              name="i-heroicons-bars-3-bottom-right-20-solid"
+              class="w-6 h-6"
+              :class="!open ? 'opacity-100 rotate-0' : 'opacity-0 rotate-45'"
+            />
+            <UIcon
+              name="i-heroicons-x-mark-20-solid"
+              class="w-6 h-6"
+              :class="open ? 'opacity-100 rotate-0' : 'opacity-0 rotate-45'"
+            />
+          </UButton>
+
+          <template v-if="useDarkMode" #theme="{ item }">
+            <ThemeToggle label class="w-[calc(100%+2rem)] -mx-4 -my-2.5" />
+          </template>
+          <template v-if="useDyslexicFont" #font="{ item }">
+            <FontToggle label  class="w-[calc(100%+2rem)] -mx-4 -my-2.5" />
+          </template>
+        </UDropdown>
       </nav>
     </UContainer>
   </header>
@@ -61,11 +76,7 @@
 
 <script lang="ts" setup>
 
-const scrollTo = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({
-    behavior: 'smooth',
-  });
-};
+const { scrollTo } = useSnapScroll()
 
 const { useDarkMode, useDyslexicFont } = useAppConfig().settings.ui;
 
@@ -75,6 +86,61 @@ const { y } = useWindowScroll()
 watchDebounced(y, (val) => {
   atTop.value = val < 50
 }, { debounce: 50, maxWait: 500, immediate: true })
+
+import type { ButtonColor, ButtonVariant, DropdownItem } from '#ui/types'
+
+type Item = DropdownItem & {
+  id: string
+  color?: ButtonColor
+  variant?: ButtonVariant
+}
+
+const route = useRoute()
+const isHome = computed(() => route.path === '/')
+
+const headerItems: Ref<Item[]> = computed(() => [
+  {
+    id: 'ontdek',
+    label: 'Ontdek het onderwijs',
+    icon: 'i-heroicons-light-bulb-16-solid',
+    click: () => isHome.value ? scrollTo('ontdek') : navigateTo('/#ontdek'),
+    color: 'gray',
+    variant: 'ghost'
+  },
+  {
+    id: 'ervaar',
+    label: 'Ervaar het onderwijs',
+    icon: 'i-heroicons-bolt-16-solid',
+    click: () => isHome.value ? scrollTo('ervaar') : navigateTo('/#ervaar'),
+    color: 'gray',
+    variant: 'ghost'
+  },
+  {
+    id: 'advies',
+    label: 'Hulp en advies',
+    icon: 'i-heroicons-chat-bubble-left-right-16-solid',
+    click: () => isHome.value ? scrollTo('advies') : navigateTo('/#advies'),
+    color: 'primary',
+    variant: 'soft'
+  },
+])
+
+
+const open = ref(false)
+
+const mobileItems = computed(() => [
+  headerItems.value,
+  [
+    {
+      label: 'Wijzig kleurthema',
+      slot: 'theme'
+    },
+    {
+      label: 'Wijzig lettertype',
+      slot: 'font'
+    }
+  ]
+])
 
 </script>
 
@@ -92,5 +158,10 @@ watchDebounced(y, (val) => {
 }
 .cls-2, .cls-3 {
   @apply fill-gray-950 dark:fill-white
+}
+
+
+[data-font="dyslexic"] {
+  font-size-adjust: 0.38;
 }
 </style>

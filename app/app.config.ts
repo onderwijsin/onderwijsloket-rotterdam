@@ -149,6 +149,11 @@ export default defineAppConfig({
       footer: {
         padding: 'pt-0 px-4 sm:px-4 pb-4'
       }
+    },
+    accordion: {
+      item: {
+        base: 'leading-loose'
+      }
     }
   },
   components: {

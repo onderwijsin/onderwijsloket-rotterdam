@@ -11,7 +11,7 @@
             </template>
         </UButton>
       </div>
-      <div :src="routes.bannerImage" width="600" height="400" fit="fill" class="bg-gray-300 dark:text-gray-700 w-full max-h-[300px] lg:max-h-full lg:absolute lg:top-12 lg:right-12 lg:bottom-12 lg:h-[calc(100%-6rem)] lg:w-[calc(50%-6rem)] xl:w-[calc(50%-12rem)] object-cover" :modifiers="{g:'faces'}" :alt="routes.bannerImageAlt" />
+      <div :src="routes.bannerImage" width="600" height="400" fit="fill" class="hidden lg:block bg-gray-300 dark:bg-gray-700 w-full max-h-[300px] lg:max-h-full lg:absolute lg:top-12 lg:right-12 lg:bottom-12 lg:h-[calc(100%-6rem)] lg:w-[calc(50%-6rem)] xl:w-[calc(50%-12rem)] object-cover" :modifiers="{g:'faces'}" :alt="routes.bannerImageAlt" />
     </InnerContainer>
   </div>
 </template>

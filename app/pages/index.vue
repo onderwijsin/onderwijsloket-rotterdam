@@ -5,9 +5,12 @@ definePageMeta({
   layout: 'site',
 });
 
+
+const { home: page } = useContent().pages
+
 useSeoMeta({
-  title: 'Home',
-  description: 'Ontdek jouw mogelijkheden in het Rotterdamse onderwijs. Met een actueel overzicht van vacatures, oriëntatie-activiteiten en informatie over het vinden van een werkplek of opleiding.',
+  title: page.name,
+  description: page.meta,
 });
 
 const { slides, activity, cards } = useContent();
@@ -65,7 +68,7 @@ const { scrollTo } = useSnapScroll()
               class="mb-8 md:mb-24" 
               :ui="{
                 container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1',
-                item: 'basis-[90%] md:basis-[45%] lg:basis-[30%]' 
+                item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]' 
               }"
             > 
               <NuxtLink 
@@ -107,7 +110,7 @@ const { scrollTo } = useSnapScroll()
           </div>
         </InnerContainer>
         
-        <div class="space-y-20">
+        <div class="space-y-20 lg:space-y-32">
           <Stories />
           <Partners />
         </div>
