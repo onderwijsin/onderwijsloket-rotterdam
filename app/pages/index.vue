@@ -20,7 +20,7 @@ const { scrollTo } = useSnapScroll()
   <div class="fluid relative z-10">
     <UContainer>
       <section>
-        <div class="relative h-[calc(100dvh-2.75rem-16px)] sm:h-[calc(100dvh-5.5rem)] max-h-[900px]">
+        <div class="relative h-[calc(100dvh-2.75rem-16px)] sm:h-[calc(100dvh-5.5rem)] max-h-[900px] min-h-[500px]">
           <HeroSlider
             :slides="slides"
             :autoplay="12000"
@@ -59,18 +59,25 @@ const { scrollTo } = useSnapScroll()
                 </UButton>
               </div>
             </div>
-            <div class="mb-8 md:mb-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <UCarousel 
+              v-slot="{ item }" 
+              :items="cards" 
+              class="mb-8 md:mb-24" 
+              :ui="{
+                container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1',
+                item: 'basis-[90%] md:basis-[45%] lg:basis-[30%]' 
+              }"
+            > 
               <NuxtLink 
-                v-for="card in cards"
-                :to="card.to" 
+                :to="item.to" 
                 target="_blank" 
-                class="grid transition-all hover:scale-[101%]"
+                class="grid w-full transition-all hover:scale-[101%]"
               >
                 <UCard>
                   <template #header>
                     <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
                   </template>
-                    <h5 class="text-lg">{{card.title}}</h5>
+                    <h5 class="text-lg">{{item.title}}</h5>
                   <template #footer>
                     <div class="flex justify-end">
                       <UButton square icon="i-heroicons-arrow-top-right-on-square-16-solid" color="gray" variant="ghost" size="lg" />
@@ -78,7 +85,7 @@ const { scrollTo } = useSnapScroll()
                   </template>
                 </UCard>
               </NuxtLink>
-            </div>
+            </UCarousel>
             <UButton class="mb-24 md:hidden" block color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
                 Naar kennisbank
                 <template #trailing>

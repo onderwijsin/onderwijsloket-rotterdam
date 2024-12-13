@@ -77,6 +77,16 @@ export const cards = [
         image: '',
         title: 'Over salaris, werkdruk, opleidingskosten en andere praktische vragen'
     },
+    {
+        to: "https://onderwijs010.nl/leraarworden/voorranghuurwoning/",
+        image: '',
+        title: 'Rotterdamse leraren krijgen voorrang op huurwoningen'
+    },
+    {
+        to: "https://onderwijs010.nl/leraarworden/talentscouting/",
+        image: '',
+        title: 'Talentscouting: Voorlichting over de beroepen Pedagogisch Medewerker en Onderwijsassistent'
+    }
 ]
 
 
