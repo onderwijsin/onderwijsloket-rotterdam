@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   $production: {
     routeRules: {
       '/': { ssr: true, prerender: false, swr: 60 * 60 }, 
+      '/elementen': { ssr: true, prerender: false, swr: 60 * 60 }, 
       '/privacy': { ssr: true, prerender: true, swr: 60 * 60 }, 
       '/algemene-voorwaarden': { ssr: true, prerender: true, swr: 60 * 60 },
       '/schoolbesturen': { ssr: true, prerender: true, swr: 60 * 60 },
@@ -43,7 +44,7 @@ export default defineNuxtConfig({
   devtools: { enabled: isDev && useDevtools },
 
   extends: [
-    [`github:onderwijsin/onderwijsloket-layer-core#v0.6.0`, { auth: process.env.GIGET_AUTH, install: true }],
+    [`github:onderwijsin/onderwijsloket-layer-core#v0.6.1`, { auth: process.env.GIGET_AUTH, install: true }],
     // [`github:onderwijsin/onderwijsloket-layer-navigator#v${navigatorLayerVersion}`, { auth: process.env.GIGET_AUTH, install: true }],
   ],
 

@@ -17,6 +17,9 @@ const { slides, activity, cards } = useContent();
 
 const { scrollTo } = useSnapScroll()
 
+const cm =  useColorMode();
+console.log(cm)
+
 </script>
 
 <template>
