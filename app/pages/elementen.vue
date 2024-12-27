@@ -1,6 +1,5 @@
 <template>
   <NuxtLayout name="page" title="Huisstijl elementen" :image="page.image">
-    <pre>{{ cm }}</pre>
     <div class="flex flex-col gap-12">
       <Frame size="sm" animated fit-content>
         <div class="h-16 w-16 bg-gray-100 dark:bg-gray-800"></div>
