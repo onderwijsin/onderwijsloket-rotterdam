@@ -31,6 +31,7 @@ export default defineNuxtConfig({
       '/': { ssr: true, prerender: false, swr: 60 * 60 }, 
       '/privacy': { ssr: true, prerender: true, swr: 60 * 60 }, 
       '/algemene-voorwaarden': { ssr: true, prerender: true, swr: 60 * 60 },
+      '/schoolbesturen': { ssr: true, prerender: true, swr: 60 * 60 },
     }
   },
 
