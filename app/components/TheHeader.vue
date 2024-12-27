@@ -153,14 +153,6 @@ const mobileItems = computed(() => [
 }
 
 
-.cls-1, .cls-4 {
-  @apply fill-primary-500;
-}
-.cls-2, .cls-3 {
-  @apply fill-gray-950 dark:fill-white
-}
-
-
 [data-font="dyslexic"] {
   font-size-adjust: 0.38;
 }

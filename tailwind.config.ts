@@ -16,20 +16,6 @@ const main = {
 };
 
 
-const grays = {
-  '25': '#FBFBFB',
-  '50': '#F4F4F4',
-  '100': '#E9E9E9',
-  '200': '#D3D2D2',
-  '300': '#BDBCBD',
-  '400': '#A7A5A6',
-  '500': '#918F90',
-  '600': '#7B7879',
-  '700': '#656263',
-  '800': '#4E4B4D',
-  '900': '#393637',
-  '950': '#231E20'
-};
 
 const secondary = {
   '25': '#F5F4F9',
@@ -86,7 +72,6 @@ export const theme = {
       main,
       secondary,
       tertiary,
-      grays,
       aux1,
 
       start: main[300],

@@ -107,6 +107,7 @@ export default defineNuxtConfig({
     }
   },
 
+
   appConfig: {
     // you don't need to include this: only for testing purposes
     buildDate: new Date().toISOString(),
@@ -195,15 +196,5 @@ export default defineNuxtConfig({
   //     }
   //   ]
   //   }
-  // },
-
-  // fonts: {
-  //   defaults: {
-  //     weights: [400, 700],
-  //   },
-  //   families: [
-  //     { name: 'Noto Serif', provider: 'google' },
-  //     { name: 'F37Ginger', provider: 'local' },
-  //   ]
   // },
 })

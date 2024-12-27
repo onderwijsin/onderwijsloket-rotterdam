@@ -4,12 +4,12 @@ import * as components from './assets/components'
 export default defineAppConfig({
   settings: {
     meta: {
-      image: 'https://res.cloudinary.com/onderwijsin/image/upload/c_scale,w_512,h_512/regios/rotterdam/meta_square_qaxwmn.png',
+      image: 'https://res.cloudinary.com/onderwijsin/image/upload/c_scale,w_1200,q_80/regios/rotterdam/meta_image_2_x6djyp.png',
       socials: () => [],
       icon: {
-        favicon: 'regios/rotterdam/icon_2x_obif7y.png',
-        appIcon: 'regios/rotterdam/icon_2x_obif7y.png',
-        maskableAppIcon: 'regios/rotterdam/icon_2x_obif7y.png',
+        favicon: "regios/rotterdam/favicon_ndwh73",
+        appIcon: "regios/rotterdam/appicon_hlmopaa",
+        maskableAppIcon: "regios/rotterdam/maskable_u9ifyb",
       }
     },
     ui: {
@@ -68,7 +68,7 @@ export default defineAppConfig({
       enabled: false,
     },
     privacy: {
-      policyUrl: 'https://onderwijsloketrotterdam.nl/privacy/',
+      policyUrl: 'https://onderwijsloketrotterdam.nl/', // Not used! should make this prop optional in core layer
       notice: {
         title: '🍪 Deze site gebruikt cookies',
         description: 'We zetten alleen noodzakelijke en funtionele cookies in om deze site te laten werken.',
