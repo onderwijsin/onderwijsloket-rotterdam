@@ -42,5 +42,5 @@ onMounted(() => {
 </script>
 
 <style>
-
+footer { z-index: -1;}
 </style>

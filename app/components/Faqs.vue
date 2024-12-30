@@ -78,7 +78,7 @@ const { data, error, refresh, status } = await useAsyncData(async () => {
   })
 
   if (!res) return null
-  if (!!query.value) return res
+  if (!!query.value || !!facetFilters.value.length) return res
   return {
     ...res,
     hits: defaultItems
