@@ -68,6 +68,7 @@ import type { OwlFaq } from '~/types'
 
 
 const { data, error, refresh, status } = await useAsyncData(async () => {
+
   const res = await searchSingle<OwlFaq>({
     indexName: 'faqs',
     query: query.value,
@@ -76,7 +77,12 @@ const { data, error, refresh, status } = await useAsyncData(async () => {
     facetFilters: facetFilters.value.map((rec) => `faqCategories.name:${rec}`)
   })
 
-  return res
+  if (!res) return null
+  if (!!query.value) return res
+  return {
+    ...res,
+    hits: defaultItems
+  }
 }, {
   watch: [
     facetFilters
@@ -91,9 +97,8 @@ const hasMore = computed(() => !!data.value?.nbHits && data.value?.nbHits > 4)
 const archiveUrl = computed(() => `https://www.onderwijsloket.com/search/results/?limit=30&keywords=${encodeURIComponent(query.value)}&collection=4`)
 
 const items = computed(() => {
-  let value: OwlFaq[] = defaultItems
-  if (!!data.value && (!!query.value || !!facetFilters.value.length)) value = data.value.hits
-  return value.map((rec: OwlFaq) => {
+  if (!data.value) return []
+  return data.value.hits.map((rec: OwlFaq) => {
     return {
       label: rec.name,
       content: rec.answer
@@ -111,7 +116,7 @@ const facets = computed(() => {
     }
   })
   if (!query.value && !facetFilters.value.length) return values.filter((rec) => topCats.includes(rec.label))
-  return values.slice(0, 4)
+  return values.slice(0, 5)
 })
 
 
