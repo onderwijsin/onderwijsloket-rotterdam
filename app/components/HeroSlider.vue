@@ -31,7 +31,8 @@
     >
       <div class="flex gap-4 items-center" :class="showNextPreview ? 'flex-row-reverse' : 'flex-row'">
         <div class="shrink-0 h-8 w-8 rounded-full grid place-items-center border border-1 bg-white/40 shadow-lg">
-          <UIcon :name="showNextPreview ? 'i-heroicons-arrow-right-20-solid' : 'i-heroicons-arrow-left-20-solid'" class="w-5 h-5" />
+          <!-- <UIcon :name="showNextPreview ? 'i-heroicons-arrow-right-20-solid' : 'i-heroicons-arrow-left-20-solid'" class="w-5 h-5" /> -->
+          <Arrow fill="primary" size="sm" :class="showNextPreview ? '' : 'rotate-180'" />
         </div>
         <span class="font-bold text-white whitespace-nowrap">{{ showNextPreview ? nextSlideTitle : prevSlideTitle }}</span>
       </div>

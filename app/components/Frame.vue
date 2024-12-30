@@ -1,6 +1,6 @@
 <template>
   <div class="frame" :class="{animated, fitContent}">
-    <div class="z-10 inner">
+    <div class="z-10 inner w-full h-full">
       <slot />
     </div>
   </div>

@@ -61,3 +61,18 @@ export type Media = BaseStory & {
 }
 
 export type Story = Media | Article
+
+
+export type OwlFaq = {
+    answer: string;
+    createdAt: string; // ISO 8601 date string
+    externalId: string;
+    faqCategories: {
+      name: string;
+    }[];
+    id: number;
+    name: string;
+    status: "published" | "draft" | "archived"; // Assuming other statuses could exist
+    updatedAt: string; // ISO 8601 date string
+    objectID: string
+  }

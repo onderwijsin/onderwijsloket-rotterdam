@@ -37,7 +37,7 @@
       <Skyline size="half" class="max-w-[400px]" />
       <Skyline />
 
-      <!-- <Skyline size="dynamic" /> -->
+      <Skyline size="dynamic" />
 
       <div class="grid grid-cols-3 gap-12">
         <FrameHoverGroup>
@@ -70,7 +70,9 @@ definePageMeta({
 });
 
 
-const { voorwaarden: page } = useContent().pages
+
+
+const page = { meta: 'Huisstijl elementen van Onderwijsloket Rotterdam', image: 'regios/rotterdam/school_staircase_me9cmk' };
 
 useSeoMeta({
   title: "Huisstijl elementen",

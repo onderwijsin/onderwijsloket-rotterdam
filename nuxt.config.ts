@@ -50,7 +50,7 @@ export default defineNuxtConfig({
   ],
 
   nitro: {
-    minify: isDebug,
+    // minify: isDebug,
     experimental: {
       openAPI: true
     },

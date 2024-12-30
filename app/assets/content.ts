@@ -1,4 +1,4 @@
-import type { HeroSlide, Activity } from '~/types';
+import type { HeroSlide, Activity, OwlFaq } from '~/types';
 
 
 export const pages = {
@@ -6,21 +6,21 @@ export const pages = {
         name: 'Home',
         meta: 'Ontdek jouw mogelijkheden in het Rotterdamse onderwijs. Met een actueel overzicht van vacatures, oriëntatie-activiteiten en informatie over het vinden van een werkplek of opleiding.'
     },
-    besturen: {
-        name: 'Schoolbesturen',
-        meta: 'De schoolbesturen die zijn aangesloten bij Onderwijsloket Rotterdam',
-        image: 'regios/rotterdam/school_corridor_eagqjt'
-    },
-    privacy: {
-        name: 'Privacybeleid',
-        meta: 'Hoe Onderwijsloket Rotterdam omgaat met jouw privacy en persoonsgegevens.',
-        image: 'regios/rotterdam/school_corridor_2_mjqmta'
-    },
-    voorwaarden: {
-        name: 'Algemene voorwaarden',
-        meta: 'De algemene voorwaarden die gelden voor de dienstverlening van Onderwijsloket Rotterdam.',
-        image: 'regios/rotterdam/school_staircase_me9cmk'
-    },
+    // besturen: {
+    //     name: 'Schoolbesturen',
+    //     meta: 'De schoolbesturen die zijn aangesloten bij Onderwijsloket Rotterdam',
+    //     image: 'regios/rotterdam/school_corridor_eagqjt'
+    // },
+    // privacy: {
+    //     name: 'Privacybeleid',
+    //     meta: 'Hoe Onderwijsloket Rotterdam omgaat met jouw privacy en persoonsgegevens.',
+    //     image: 'regios/rotterdam/school_corridor_2_mjqmta'
+    // },
+    // voorwaarden: {
+    //     name: 'Algemene voorwaarden',
+    //     meta: 'De algemene voorwaarden die gelden voor de dienstverlening van Onderwijsloket Rotterdam.',
+    //     image: 'regios/rotterdam/school_staircase_me9cmk'
+    // },
 }
 
 export const slides: Array<HeroSlide> = [
@@ -47,7 +47,7 @@ export const slides: Array<HeroSlide> = [
         ]
     },
     {
-        heading: `Ga jij voor het <span class="gradient-text">PO, VO, of MBO</span>?`,
+        heading: `Ga jij voor het <span class="gradient-text">PO, VO, SO of MBO</span>?`,
         title: 'Onderwijssectoren',
         description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
         media: 'regios/rotterdam/classmates_ausdox',
@@ -208,27 +208,6 @@ export const stories: Story[] = [
     },
 ]
 
-export const besturen = [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-
-]
-
-
 export const partners = {
     vacancies: {
         icon: 'i-heroicons-building-storefront-20-solid',
@@ -239,14 +218,134 @@ export const partners = {
     },
     orgs: {
         icon: 'i-heroicons-building-office-2-20-solid',
-        title: `Leer de ${besturen.length} onderwijsbesturen kennen`,
+        title: `Leer de 71 onderwijsbesturen kennen`,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.',
         btnLabel: 'Ontdek de Rotterdamse schoolbesturen',
-        to: '/schoolbesturen'
+        to: 'https://onderwijs010.nl/schoolbesturen/'
     },
     opleiding: {
         icon: 'i-heroicons-academic-cap-20-solid',
         title: 'Opleidingsaanbod in de buurt van Rotterdam',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod.',
     }
+}
+
+export const faqs = {
+    defaultItems: [
+        {
+            "answer": "De voltijdvariant van de pabo duurt vier jaar. Bij flexibele of verkorte deeltijdvarianten kan je traject twee tot vier jaar duren, afhankelijk van eventuele vrijstellingen waar je recht op hebt vanwege je vooropleidingen. Vraag hiernaar bij de hogeschool waar jij de pabo wilt volgen.  ",
+            "createdAt": "2020-04-28T09:24:00.000Z",
+            "externalId": "166",
+            "faqCategories": [
+                {
+                    "name": "Lerarenopleidingen"
+                },
+                {
+                    "name": "Lerarenopleiding primair onderwijs (pabo)"
+                }
+            ],
+            "id": 58,
+            "name": "Hoelang duurt de pabo?",
+            "status": "published",
+            "updatedAt": "2024-09-25T05:55:17.000Z",
+            "objectID": "58",
+            "_highlightResult": {
+                "answer": {
+                    "value": "De voltijdvariant van de pabo duurt vier jaar. Bij flexibele of verkorte deeltijdvarianten kan je traject twee tot vier jaar duren, afhankelijk van eventuele vrijstellingen waar je recht op hebt vanwege je vooropleidingen. Vraag hiernaar bij de hogeschool waar jij de pabo wilt volgen.  ",
+                    "matchLevel": "none",
+                    "matchedWords": []
+                },
+                "name": {
+                    "value": "Hoelang duurt de pabo?",
+                    "matchLevel": "none",
+                    "matchedWords": []
+                }
+            }
+        },
+        {
+            "answer": "De salarissen van leraren in het primair onderwijs zijn vastgelegd in de cao van het primair onderwijs. Volgens de huidige cao verdient een basisschooldocent tussen de € € 3.001,- en € 6.568,- bruto per maand.",
+            "createdAt": "2020-04-22T09:34:00.000Z",
+            "externalId": "160",
+            "faqCategories": [
+                {
+                    "name": "Salaris"
+                }
+            ],
+            "id": 56,
+            "name": "Wat is het salaris van een leraar in het basisonderwijs?",
+            "status": "published",
+            "updatedAt": "2024-09-25T05:55:17.000Z",
+            "objectID": "56",
+            "_highlightResult": {
+                "answer": {
+                    "value": "De salarissen van leraren in het primair onderwijs zijn vastgelegd in de cao van het primair onderwijs. Volgens de huidige cao verdient een basisschooldocent tussen de € € 3.001,- en € 6.568,- bruto per maand.",
+                    "matchLevel": "none",
+                    "matchedWords": []
+                },
+                "name": {
+                    "value": "Wat is het salaris van een leraar in het basisonderwijs?",
+                    "matchLevel": "none",
+                    "matchedWords": []
+                }
+            }
+        },
+        {
+            "answer": "Als je geen mbo4-, havo- of vwo-diploma hebt, dan kun je met behulp van een 21+-toets toch aantonen dat jij het juiste werk/denkniveau hebt om aan een hbo-opleiding te beginnen. Je moet daarvoor wel 21 jaar of ouder zijn.",
+            "createdAt": "2020-04-22T09:01:00.000Z",
+            "externalId": "127",
+            "faqCategories": [
+                {
+                    "name": "Lerarenopleidingen"
+                },
+                {
+                    "name": "Andere routes"
+                },
+                {
+                    "name": "Wetten en regels"
+                }
+            ],
+            "id": 23,
+            "name": "Wanneer moet ik een 21+-toets maken?",
+            "status": "published",
+            "updatedAt": "2024-09-25T05:55:13.000Z",
+            "objectID": "23",
+            "_highlightResult": {
+                "answer": {
+                    "value": "Als je geen mbo4-, havo- of vwo-diploma hebt, dan kun je met behulp van een 21+-toets toch aantonen dat jij het juiste werk/denkniveau hebt om aan een hbo-opleiding te beginnen. Je moet daarvoor wel 21 jaar of ouder zijn.",
+                    "matchLevel": "none",
+                    "matchedWords": []
+                },
+                "name": {
+                    "value": "Wanneer moet ik een 21+-toets maken?",
+                    "matchLevel": "none",
+                    "matchedWords": []
+                }
+            }
+        },
+        {
+            "answer": "Het zij-instroomtraject is een tweejarig traject waarbij je tegelijkertijd werkt en leert. Je staat vanaf dag 1 voor de klas als leraar en je volgt daarnaast vakken op een lerarenopleiding. Om in aanmerking te komen voor een zij-instroomtraject heb je minimaal een hbo- of wo-diploma nodig.",
+            "createdAt": "2020-04-22T08:43:00.000Z",
+            "externalId": "115",
+            "faqCategories": [
+                {
+                    "name": "Zij-instroom"
+                },
+                {
+                    "name": "Stap 1: Oriënteren en solliciteren"
+                },
+                {
+                    "name": "Begrippen en afkortingen"
+                },
+                {
+                    "name": "Overige begrippen"
+                }
+            ],
+            "id": 11,
+            "name": "Wat is een zij-instroomtraject?",
+            "status": "published",
+            "updatedAt": "2024-09-25T05:55:12.000Z",
+            "objectID": "11",
+        }
+    ] as OwlFaq[],
+    topCats: ['Zij-instroom', "Salaris", "Lerarenopleidingen", "De drie bevoegdheden"]
 }

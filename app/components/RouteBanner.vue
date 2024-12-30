@@ -2,7 +2,9 @@
   <div class="relative w-full bg-gray-100 dark:bg-gray-800">
     <InnerContainer class="py-12 pb-6 md:py-20 lg:py-28 grid lg:grid-cols-2 gap-8 sm:gap-16">
       <div>
-        <h2 class="text-3xl lg:text-5xl font-black">Vind <GradientText>de route</GradientText> die bij je past</h2>
+        <ArrowHeading>
+          Vind <GradientText>de route</GradientText> die bij je past
+        </ArrowHeading>
         <p class="mb-8">Er zijn 1001 (of misschien wel meer) mogelijke manieren om je weg naar het onderwijs te vinden, maar er is er maar één die perfect bij je past.</p>
         <UButton color="primary" variant="soft" size="lg" to="https://onderwijsloket.com/routes/start" target="_blank">
             {{ routes.btnLabel }}

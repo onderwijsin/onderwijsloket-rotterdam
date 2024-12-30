@@ -3,8 +3,20 @@
     <div class="basis-1/3 shrink-0 lg:py-8">
       <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400 font-black">Veelgestelde vragen over het onderwijs</h2>
       <p class="mb-8 lg:mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.</p>
-      <UInput v-model.debounce="query" size="lg" icon="i-heroicons-magnifying-glass" placeholder="Zoek naar FAQ's" :loading="loading" />
+      <UInput v-model="query" size="lg" icon="i-heroicons-magnifying-glass" placeholder="Zoek naar FAQ's" :loading="loading" />
       <p v-if="!!data" class="text-gray-500 text-xs mt-4 px-1">{{ data.nbHits || 0 }} resultaten gevonden</p>
+      <div v-if="!!facets.length" class="flex flex-wrap gap-x-1 gap-y-1 mt-6">
+        <UButton 
+          v-for="facet in facets"
+          :key="facet.label"
+          color="secondary"
+          size="2xs"
+          :ui="{size: { '2xs': 'text-2xs leading-4' }}"
+          :variant="facetFilters.includes(facet.label) ? 'solid' : 'soft'"
+          :label="facet.label + ` (${facet.count})`"
+          @click="setFacetFilter(facet.label)"
+        />
+      </div>
     </div>
     <div class="basis-2/3 pt-14 lg:pt-[5.5rem]">
       <Empty v-if="!data?.hits.length">
@@ -46,28 +58,29 @@
 
 <script lang="ts" setup>
 const query = ref('')
+const facetFilters = ref<string[]>([])
 
 const { searchSingle } = useAlgoliaSearch()
-type OwlFaq = {
-  answer: string;
-  createdAt: string; // ISO 8601 date string
-  externalId: string;
-  faqCategories: {
-    name: string;
-  }[];
-  id: number;
-  name: string;
-  status: "published" | "draft" | "archived"; // Assuming other statuses could exist
-  updatedAt: string; // ISO 8601 date string
-}
+
+const { defaultItems, topCats } = useContent().faqs
+
+import type { OwlFaq } from '~/types'
+
+
 const { data, error, refresh, status } = await useAsyncData(async () => {
   const res = await searchSingle<OwlFaq>({
     indexName: 'faqs',
     query: query.value,
-    hitsPerPage: 4
+    hitsPerPage: 4,
+    facets: ['faqCategories.name'],
+    facetFilters: facetFilters.value.map((rec) => `faqCategories.name:${rec}`)
   })
 
   return res
+}, {
+  watch: [
+    facetFilters
+  ]
 })
 
 const loading = computed(() => status.value === 'idle' || status.value === 'pending')
@@ -78,14 +91,37 @@ const hasMore = computed(() => !!data.value?.nbHits && data.value?.nbHits > 4)
 const archiveUrl = computed(() => `https://www.onderwijsloket.com/search/results/?limit=30&keywords=${encodeURIComponent(query.value)}&collection=4`)
 
 const items = computed(() => {
-  if (!data.value) return []
-  return data.value.hits.map(rec => {
+  let value: OwlFaq[] = defaultItems
+  if (!!data.value && (!!query.value || !!facetFilters.value.length)) value = data.value.hits
+  return value.map((rec: OwlFaq) => {
     return {
       label: rec.name,
       content: rec.answer
     }
   })
 })
+
+const facets = computed(() => {
+  if (!data.value || !data.value.facets) return []
+
+  let values = Object.entries(data.value.facets['faqCategories.name'] as Record<string, number>).map(([key, value]) => {
+    return {
+      label: key,
+      count: value
+    }
+  })
+  if (!query.value && !facetFilters.value.length) return values.filter((rec) => topCats.includes(rec.label))
+  return values.slice(0, 4)
+})
+
+
+const setFacetFilter = (val: string) => {
+  if(facetFilters.value.includes(val)) {
+    facetFilters.value = facetFilters.value.filter((rec) => rec !== val)
+  } else {
+    facetFilters.value = [...facetFilters.value, val]
+  }
+}
 
 
 const scrollTo = (val: string) => {

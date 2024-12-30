@@ -31,13 +31,14 @@ const { scrollTo } = useSnapScroll()
           <div class="bg-white dark:bg-gray-950 transition-colors absolute -right-1 -bottom-1 pr-1 pb-1 square grid place-items-end w-12 z-20">
             <UButton 
               square 
-              icon="i-heroicons-chevron-double-down-20-solid" 
               size="xl" 
               variant="ghost" 
               class="animate-bounce focus:animate-none" 
               :ui="{icon: { size: { xl: 'w-5 h-5' }}}" 
               @click="scrollTo('activiteiten')" 
-            />
+            >
+              <Arrow variant="solid" type="triangle" class="rotate-90" :size="8" :amount="2" />
+            </UButton>
           </div>
         </div>
         
@@ -76,9 +77,12 @@ const { scrollTo } = useSnapScroll()
                 target="_blank" 
                 class="grid w-full transition-all hover:scale-[101%]"
               >
+              <FrameHoverGroup class="grid">
                 <UCard>
                   <template #header>
-                    <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
+                    <Frame size="md">
+                      <div class="bg-gray-200 dark:bg-gray-700 w-full h-40" />
+                    </Frame>
                   </template>
                     <h5 class="text-lg">{{item.title}}</h5>
                   <template #footer>
@@ -87,6 +91,7 @@ const { scrollTo } = useSnapScroll()
                     </div>
                   </template>
                 </UCard>
+                </FrameHoverGroup>
               </NuxtLink>
             </UCarousel>
             <UButton class="mb-24 md:hidden" block color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
