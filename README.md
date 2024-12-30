@@ -4,6 +4,8 @@ This is an open source single page application for Onderwijsloket Rotterdam. It 
 
 The app is an extension of ``onderwijsloket-core``; a Nuxt 3 layer containing common config for Onderwijsloket apps, UI components and composables and other reusable logic. Currently ``onderwijsloket-core`` is in private pre-release, and thus this repo cannot be cloned without a Github Access token that has read permissions for the ``onderwijsloket-core`` repo.
 
+Some data is fetched from Notion Databases (see server folder). You'll either need a valid Notion Integration token from **Onderwijs in**, or you'll need to recreate these databases in your own Notion environment, and update the database IDs in ``server/utils/content.ts``. You can also replace the data source entirely for a custom implementation, as long as the existing routes return types remain the same. 
+
 > if you found a 🐛 bug, have some 💬 feedback or discovered a 🤫 vulnerability, please contact us at [hallo@onderwijs.in](hallo@onderwijs.in)
 
 ## Setup
@@ -74,6 +76,8 @@ ICON_CLD_CLOUD="onderwijsin"
 FAVICON="regios/rotterdam/icon_2x_obif7y"
 APPICON="regios/rotterdam/appicon_2x_jyutea"
 MASKABLE_ICON="regios/rotterdam/maskable_2x_xakodk"
+
+NOTION_TOKEN=<string>
 
 ```
 
