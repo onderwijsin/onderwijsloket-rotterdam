@@ -1,71 +1,4 @@
-// import type { Activity, RawActivity, NotionDatabase, Status } from "../types"
-// import { addHours } from 'date-fns';
-
-
-// export function transformActivities(rawActivities: RawActivity[]): Activity[] {
-//   return rawActivities.map((raw): Activity => {
-//     // Extract title from rich text array
-//     const title = raw.properties.title.title[0]?.plain_text || '';
-
-//     // Extract soort (types) from multi-select
-//     const soort = raw.properties.soort.multi_select.map(item => item.name);
-
-//     // Extract type, ensuring it matches the union type
-//     const rawType = raw.properties.type.select?.name;
-//     const type = rawType === 'offline' || rawType === 'online' ? rawType : null;
-
-//     const status = (raw.properties.status.select?.name || 'draft') as Status
-
-//     // Extract dates
-//     const startDateString = raw.properties.event_date.date.start;
-//     const endDateString = raw.properties.event_date.date.end;
-//     const includeTime = !!raw.properties.event_date.date.start && raw.properties.event_date.date.start.split('T').length > 1;
-
-//     // Handle potential null dates
-//     if (!startDateString) {
-//       throw new Error(`Activity ${raw.id} has no start date`);
-//     }
-
-//     // Create TZDate instances for Amsterdam timezone
-//     const startDateTime = includeTime ? addHours(new Date(startDateString), 1).toISOString() : startDateString
-//     const endDateTime = endDateString ? addHours(new Date(endDateString), 1).toISOString() : null;
-
-
-//     // Transform description rich text to HTML
-//     const descriptionHtml = raw.properties.description.rich_text.map(textBlock => {
-//       let content = textBlock.text.content;
-//       const annotations = textBlock.annotations;
-
-//       // Apply annotations
-//       if (annotations.bold) content = `<strong>${content}</strong>`;
-//       if (annotations.italic) content = `<em>${content}</em>`;
-//       if (annotations.strikethrough) content = `<del>${content}</del>`;
-//       if (annotations.underline) content = `<u>${content}</u>`;
-//       if (annotations.code) content = `<code>${content}</code>`;
-
-//       return content;
-//     }).join('');
-
-//     return {
-//       id: raw.id,
-//       createdTime: new Date(raw.created_time),
-//       updatedAt: new Date(raw.last_edited_time),
-//       status,
-//       title,
-//       soort,
-//       type,
-//       uitgelicht: raw.properties.uitgelicht.checkbox,
-//       kosten: raw.properties.kosten.number < 0 ? 0 : raw.properties.kosten.number || 0,
-//       includeTime,
-//       startDateTime,
-//       endDateTime,
-//       description: descriptionHtml,
-//       url: raw.properties.url.url || null
-//     };
-//   });
-// }
-
-import type { Activity, RawActivity, NotionDatabase, Status, Verhaal, RawVerhaal, ContentType, BaseDatabaseOptions } from "../types"
+import type { Activity, RawActivity, NotionDatabase, Status, Verhaal, RawVerhaal, RawLeraar, Leraar } from "../types"
 import { addHours } from 'date-fns'
 
 function transformToHtml(richTextArray: Array<any>): string {
@@ -83,8 +16,8 @@ function transformToHtml(richTextArray: Array<any>): string {
   }).join('')
 }
 
-function transformActivities(rawActivities: RawActivity[]): Activity[] {
-  return rawActivities.map((raw): Activity => {
+function transformActivities(rawData: RawActivity[]): Activity[] {
+  return rawData.map((raw): Activity => {
     const title = raw.properties.title.title[0]?.plain_text || ''
     const soort = raw.properties.soort.multi_select.map(item => item.name)
     const rawType = raw.properties.type.select?.name
@@ -121,8 +54,8 @@ function transformActivities(rawActivities: RawActivity[]): Activity[] {
   })
 }
 
-function transformVerhalen(rawVerhalen: RawVerhaal[]): Verhaal[] {
-  return rawVerhalen.map((raw): Verhaal => {
+function transformVerhalen(rawData: RawVerhaal[]): Verhaal[] {
+  return rawData.map((raw): Verhaal => {
     const title = raw.properties.title.title[0]?.plain_text || ''
     const status = (raw.properties.status.select?.name || 'draft') as Status
     const rawType = raw.properties.type.select?.name
@@ -140,9 +73,32 @@ function transformVerhalen(rawVerhalen: RawVerhaal[]): Verhaal[] {
       type,
       duration: raw.properties.duration.number || 0,
       author: raw.properties.naam_auteur.rich_text.length > 0 ? {
-        name: raw.properties.naam_auteur.rich_text[0].plain_text,
+        name: raw.properties.naam_auteur.rich_text[0]?.plain_text || null,
         description: raw.properties.beschrijving_auteur.rich_text[0]?.plain_text || null
       } : null,
+      imagePublicId: raw.properties.image_public_id.rich_text[0]?.plain_text || null,
+      url: raw.properties.url.url || null
+    }
+  })
+}
+
+
+function transformLeraren(rawData: RawLeraar[]): Leraar[] {
+  return rawData.map((raw): Leraar => {
+    const title = raw.properties.title.title[0]?.plain_text || ''
+    const status = (raw.properties.status.select?.name || 'draft') as Status
+
+    return {
+      id: raw.id,
+      createdTime: new Date(raw.created_time),
+      updatedAt: new Date(raw.last_edited_time),
+      status,
+      naam: title,
+      voornaam: raw.properties.voornaam.rich_text[0]?.plain_text || null,
+      sectoren: raw.properties.sectoren.multi_select.map(item => item.name),
+      sortingPriority: parseInt(raw.properties.sorting_priority.select?.name || '0'),
+      duration: raw.properties.duration.number || 0,
+      quote: raw.properties.quote.rich_text[0]?.plain_text || null,
       imagePublicId: raw.properties.image_public_id.rich_text[0]?.plain_text || null,
       url: raw.properties.url.url || null
     }
@@ -233,4 +189,43 @@ export const getVerhalen = defineCachedFunction(async (amount = 8) => {
   maxAge:         process.env.MODE === 'dev' ? 1 : 60 * 60 * 12,
   staleMaxAge:    process.env.MODE === 'dev' ? 0 : 60 * 60 * 24 * 3,
   name:           'getVerhalen',
+})
+
+
+
+export const getLeraren = defineCachedFunction(async (amount = 5) => {
+  const databaseId = '161b66e1be6980ecaadcefe40bc68001'
+
+  const payload = {
+    "filter": {
+      "and": [
+        {
+          "property": "status",
+          "select": {
+            "equals": 'published'
+          }
+        },
+      ]
+      
+    },
+    "sorts": [
+      {
+          "property": "sorting_priority",
+          "direction": "ascending"
+      }
+    ]
+  }
+
+
+  const data = await useNotion(databaseId, payload) as NotionDatabase<RawLeraar>
+
+  if (data.results) {
+    return transformLeraren(data.results)
+  }
+
+  return null
+}, {
+  maxAge:         process.env.MODE === 'dev' ? 1 : 60 * 60 * 12,
+  staleMaxAge:    process.env.MODE === 'dev' ? 0 : 60 * 60 * 24 * 3,
+  name:           'getLeraren',
 })

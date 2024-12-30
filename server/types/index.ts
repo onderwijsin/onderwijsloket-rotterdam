@@ -3,7 +3,110 @@ export type NotionDatabase<T> = {
     results: T[]
 }
 
+type RichTextField = Array<{
+  type: string;
+  text: {
+    content: string;
+    link: null;
+  };
+  annotations: {
+    bold: boolean;
+    italic: boolean;
+    strikethrough: boolean;
+    underline: boolean;
+    code: boolean;
+    color: string;
+  };
+  plain_text: string;
+  href: null;
+}>
+
+type RichText = {
+  id: string;
+  type: 'rich_text';
+  rich_text: RichTextField
+}
+
+type Title = {
+  id: string;
+  type: 'title';
+  title: RichTextField
+}
+
+
+type SelectOption = {
+  id: string;
+  name: string;
+  color: string;
+}
+
+type MultiSelect = {
+  id: string;
+  type: 'multi_select';
+  multi_select: Array<SelectOption>;
+}
+
+type Select = {
+  id: string;
+  type: 'select';
+  select: SelectOption | null;
+}
+
 export type Status = 'published' | 'draft' | 'archived'
+
+type StatusField = {
+  id: string;
+  type: 'select';
+  select: {
+    id: string;
+    name: Status;
+    color: string;
+  } | null;
+}
+
+type DateField = {
+  id: string;
+  type: 'date';
+  date: {
+    start: string | null;
+    end: string | null;
+    time_zone: null;
+  };
+}
+
+type Checkbox = {
+  id: string;
+  type: 'checkbox';
+  checkbox: boolean;
+}
+
+type UrlField = {
+  id: string;
+  type: 'url';
+  url: string | null;
+}
+
+type NumberField = {
+  id: string;
+  type: 'number';
+  number: number;
+}
+
+type FileField = {
+  id: string
+  type: 'files'
+  files: any[]
+}
+
+type SectorSelect = {
+  id: string
+  type: 'multi_select'
+  multi_select: Array<{
+    id: string
+    name: Sector
+    color: string
+  }>
+}
 
 export type Activity = {
     id: string
@@ -54,120 +157,16 @@ type BaseRawRecord<T> = {
 }
 
 export type RawActivity = BaseRawRecord<{
-  soort: {
-    id: string;
-    type: 'multi_select';
-    multi_select: Array<{
-      id: string;
-      name: string;
-      color: string;
-    }>;
-  };
-  button_label: {
-    id: string;
-    type: 'rich_text';
-    rich_text: Array<{
-      type: string;
-      text: {
-        content: string;
-        link: null;
-      };
-      annotations: {
-        bold: boolean;
-        italic: boolean;
-        strikethrough: boolean;
-        underline: boolean;
-        code: boolean;
-        color: string;
-      };
-      plain_text: string;
-      href: null;
-    }>;
-  };
-  type: {
-    id: string;
-    type: 'select';
-    select: {
-      id: string;
-      name: string;
-      color: string;
-    } | null;
-  };
-  status: {
-    id: string;
-    type: 'select';
-    select: {
-      id: string;
-      name: string;
-      color: string;
-    } | null;
-  };
-  event_date: {
-    id: string;
-    type: 'date';
-    date: {
-      start: string | null;
-      end: string | null;
-      time_zone: null;
-    };
-  };
-  uitgelicht: {
-    id: string;
-    type: 'checkbox';
-    checkbox: boolean;
-  };
-  description: {
-    id: string;
-    type: 'rich_text';
-    rich_text: Array<{
-      type: string;
-      text: {
-        content: string;
-        link: null;
-      };
-      annotations: {
-        bold: boolean;
-        italic: boolean;
-        strikethrough: boolean;
-        underline: boolean;
-        code: boolean;
-        color: string;
-      };
-      plain_text: string;
-      href: null;
-    }>;
-  };
-  url: {
-    id: string;
-    type: 'url';
-    url: string;
-  };
-  kosten: {
-    id: string;
-    type: 'number';
-    number: number;
-  };
-  title: {
-    id: string;
-    type: 'title';
-    title: Array<{
-      type: string;
-      text: {
-        content: string;
-        link: null;
-      };
-      annotations: {
-        bold: boolean;
-        italic: boolean;
-        strikethrough: boolean;
-        underline: boolean;
-        code: boolean;
-        color: string;
-      };
-      plain_text: string;
-      href: null;
-    }>;
-  };
+  soort: MultiSelect;
+  button_label: RichText;
+  type: Select;
+  status: StatusField;
+  event_date: DateField;
+  uitgelicht: Checkbox;
+  description: RichText;
+  url: UrlField;
+  kosten: NumberField;
+  title: Title;
 }>
 
 
@@ -200,132 +199,53 @@ export type Verhaal = {
 }
 
 
-export type ContentType = 'activity' | 'verhaal'
+export type RawVerhaal = BaseRawRecord<{
+  bron: Select
+  image: FileField
+  type: Select
+  status: StatusField
+  sectoren: SectorSelect
+  image_public_id: RichText
+  naam_auteur: RichText
+  beschrijving_auteur: RichText
+  url: UrlField
+  sorting_priority: Select
+  duration: NumberField
+  title: Title
+}>
 
-export type BaseDatabaseOptions = {
-  amount?: number
-  filter?: Record<string, any>
-  sorts?: Array<{
-    property: string
-    direction: 'ascending' | 'descending'
-  }>
+
+
+export type Leraar = {
+  id: string
+  createdTime: Date
+  updatedAt: Date
+  status: Status
+
+  naam: string | null
+  voornaam: string | null
+  sectoren: Sector[]
+  sortingPriority: number
+  duration: number
+
+  quote: string | null // html string
+
+  imagePublicId: string | null
+
+  url: string | null
+  
 }
 
-export type RawVerhaal = BaseRawRecord<{
-  bron: {
-    id: string
-    type: 'select'
-    select: {
-      id: string
-      name: string
-      color: string
-    } | null
-  }
-  image: {
-    id: string
-    type: 'files'
-    files: any[]
-  }
-  type: {
-    id: string
-    type: 'select'
-    select: {
-      id: string
-      name: string
-      color: string
-    } | null
-  }
-  status: {
-    id: string
-    type: 'select'
-    select: {
-      id: string
-      name: string
-      color: string
-    } | null
-  }
-  sectoren: {
-    id: string
-    type: 'multi_select'
-    multi_select: Array<{
-      id: string
-      name: Sector
-      color: string
-    }>
-  }
-  image_public_id: {
-    id: string
-    type: 'rich_text'
-    rich_text: Array<{
-      type: string
-      text: {
-        content: string
-        link: null
-      }
-      annotations: Record<string, boolean>
-      plain_text: string
-      href: null
-    }>
-  }
-  naam_auteur: {
-    id: string
-    type: 'rich_text'
-    rich_text: Array<{
-      type: string
-      text: {
-        content: string
-        link: null
-      }
-      annotations: Record<string, boolean>
-      plain_text: string
-      href: null
-    }>
-  }
-  beschrijving_auteur: {
-    id: string
-    type: 'rich_text'
-    rich_text: Array<{
-      type: string
-      text: {
-        content: string
-        link: null
-      }
-      annotations: Record<string, boolean>
-      plain_text: string
-      href: null
-    }>
-  }
-  url: {
-    id: string
-    type: 'url'
-    url: string
-  }
-  sorting_priority: {
-    id: string
-    type: 'select'
-    select: {
-      id: string
-      name: string
-      color: string
-    }
-  }
-  duration: {
-    id: string
-    type: 'number'
-    number: number
-  }
-  title: {
-    id: string
-    type: 'title'
-    title: Array<{
-      type: string
-      text: {
-        content: string
-        link: null
-      }
-      annotations: Record<string, boolean>
-      plain_text: string
-      href: null
-    }>
-  }
+
+export type RawLeraar = BaseRawRecord<{
+  voornaam: RichText
+  image: FileField
+  status: StatusField
+  sectoren: SectorSelect
+  image_public_id: RichText
+  quote: RichText
+  url: UrlField
+  sorting_priority: Select
+  duration: NumberField
+  title: Title
 }>

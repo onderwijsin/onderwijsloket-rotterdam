@@ -3,10 +3,15 @@
     <pre>{{  activiteiten }}</pre>
     <UDivider />
     <pre>{{ errorActiviteiten }}</pre>
-
+    <UDivider />
     <pre>{{  verhalen }}</pre>
     <UDivider />
     <pre>{{ errorVerhalen }}</pre>
+    <UDivider />
+    <pre>{{ leraren }}</pre>
+    <UDivider />
+    <pre>{{ errorLeraren }}</pre>
+    <UDivider />
     <div class="flex flex-col gap-12">
       <Frame size="sm" animated fit-content>
         <div class="h-16 w-16 bg-gray-100 dark:bg-gray-800"></div>
@@ -96,6 +101,7 @@ if (useRuntimeConfig().public.mode.isProd) {
 
 const { data: activiteiten, error: errorActiviteiten, status: loadingActiviteiten } = await useFetch('/api/activiteiten')
 const { data: verhalen, error: errorVerhalen, status: loadingVerhalen } = await useFetch('/api/verhalen')
+const { data: leraren, error: errorLeraren, status: loadingLeraren } = await useFetch('/api/leraren')
 
 </script>
 
