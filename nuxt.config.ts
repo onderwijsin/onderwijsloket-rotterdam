@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     routeRules: {
       '/': { ssr: true, prerender: false, swr: 60 * 60 }, 
       '/elementen': { ssr: true, prerender: false, swr: 60 * 60 }, 
+      '/api/**': { cache: false }, 
     }
   },
 
@@ -100,6 +101,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // The private keys which are only available server-side
     indexable: isProd,
+    notion: {
+      token: process.env.NOTION_TOKEN,
+    },
     
     // Keys within public are also exposed client-side
     public: {

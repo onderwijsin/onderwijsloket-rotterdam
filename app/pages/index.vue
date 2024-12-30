@@ -17,6 +17,10 @@ const { slides, activity, cards } = useContent();
 
 const { scrollTo } = useSnapScroll()
 
+
+
+
+
 </script>
 
 <template>
