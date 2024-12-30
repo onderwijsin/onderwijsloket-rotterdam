@@ -68,7 +68,8 @@ export default defineAppConfig({
       enabled: false,
     },
     privacy: {
-      policyUrl: 'https://onderwijsloketrotterdam.nl/', // Not used! should make this prop optional in core layer
+      disablePolicyLink: true,
+      policyUrl: null, // Not used! should make this prop optional in core layer
       notice: {
         title: '🍪 Deze site gebruikt cookies',
         description: 'We zetten alleen noodzakelijke en funtionele cookies in om deze site te laten werken.',
