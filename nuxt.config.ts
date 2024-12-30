@@ -4,6 +4,7 @@ import environment from "./utils/environment"
 const {
   mode,
   isDev,
+  isDebug,
   isDemo,
   isStaging,
   isPreview,
@@ -44,11 +45,12 @@ export default defineNuxtConfig({
   devtools: { enabled: isDev && useDevtools },
 
   extends: [
-    [`github:onderwijsin/onderwijsloket-layer-core#v0.6.1`, { auth: process.env.GIGET_AUTH, install: true }],
+    [`github:onderwijsin/onderwijsloket-layer-core#v0.7.1`, { auth: process.env.GIGET_AUTH, install: true }],
     // [`github:onderwijsin/onderwijsloket-layer-navigator#v${navigatorLayerVersion}`, { auth: process.env.GIGET_AUTH, install: true }],
   ],
 
   nitro: {
+    minify: isDebug,
     experimental: {
       openAPI: true
     },

@@ -1,6 +1,7 @@
 export default () => {
     const mode: Mode = process.env.MODE
-    const isDev = process.env.MODE === 'dev'
+    const isDev = process.env.MODE === 'dev' || process.env.MODE === 'debug'
+    const isDebug = process.env.MODE === 'debug'
     const isDemo = process.env.MODE === 'demo'
     const isStaging = process.env.MODE === 'staging' || process.env.MODE === 'preview'
     const isPreview = process.env.MODE === 'preview'
@@ -10,6 +11,7 @@ export default () => {
     return {
         mode,
         isDev,
+        isDebug,
         isDemo,
         isStaging,
         isPreview,

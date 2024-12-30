@@ -8,7 +8,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "hub:preview": "cross-env MODE=preview npx nuxt build && npx nuxthub preview",
+    "hub:debug": "cross-env MODE=debug npx nuxt build && npx nuxthub preview"
   },
   "dependencies": {
     "nuxt": "3.13.2",
@@ -16,18 +18,22 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@algolia/cache-in-memory": "^4.24.0",
+    "@algolia/requester-fetch": "^5.13.0",
     "@iconify-json/bxl": "^1.2.0",
     "@iconify-json/heroicons": "^1.2.0",
     "@iconify-json/material-symbols": "^1.2.4",
     "@iconify-json/mdi": "^1.2.0",
     "@nuxt/scripts": "^0.9.5",
-    "@nuxthub/core": "^0.8.7",
-    "@nuxt/ui": "^2.18.4",
-    "@nuxt/icon": "^1.9.0",
-    "toucan-js": "^4.0.0",
-    "wrangler": "^3.78.2",
-    "@algolia/cache-in-memory": "^4.24.0",
-    "@algolia/requester-fetch": "^5.13.0",
-    "algoliasearch": "^5.13.0"
+    "@nuxt/ui": "^2.20.0",
+    "@nuxthub/core": "^0.8.10",
+    "algoliasearch": "^5.13.0",
+    "wrangler": "^3.78.2"
+  },
+  "overrides": {
+    "vue": "latest"
+  },
+  "engines": {
+    "node": "^18.19.0 || ^20.9.0"
   }
 }
