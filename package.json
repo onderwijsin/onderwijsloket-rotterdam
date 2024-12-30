@@ -27,7 +27,10 @@
     "@nuxt/scripts": "^0.9.5",
     "@nuxt/ui": "^2.20.0",
     "@nuxthub/core": "^0.8.10",
+    "@nuxtjs/seo": "^2.0.2",
     "algoliasearch": "^5.13.0",
+    "cross-env": "^7.0.3",
+    "pinia": "^2.3.0",
     "wrangler": "^3.78.2"
   },
   "overrides": {
