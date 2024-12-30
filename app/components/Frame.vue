@@ -36,8 +36,8 @@ const borderPx = computed(() => {
 const hoverDistancePx = computed(() => {
   if (props.size === 'sm') return '-6px'
   if (props.size === 'md') return '-8px'
-  if (props.size === 'lg') return '-15px'
-  if (props.size === 'xl') return '-20px'
+  if (props.size === 'lg') return '-12px'
+  if (props.size === 'xl') return '-14px'
   return '-10px'
 })
 </script>
@@ -72,7 +72,15 @@ const hoverDistancePx = computed(() => {
     border-right: v-bind(borderPx) solid;
   }
 
-  &.animated:hover {
+  
+
+  &.fitContent {
+    width: fit-content;
+  }
+}
+
+.animated:hover, 
+.frame-hover-group:hover .frame {
     &::before {
       top: v-bind(hoverDistancePx);
       left: v-bind(hoverDistancePx);
@@ -83,9 +91,4 @@ const hoverDistancePx = computed(() => {
       right: v-bind(hoverDistancePx);
     }
   }
-
-  &.fitContent {
-    width: fit-content;
-  }
-}
 </style>

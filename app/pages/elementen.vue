@@ -37,7 +37,27 @@
       <Skyline size="half" class="max-w-[400px]" />
       <Skyline />
 
-      <Skyline size="dynamic" />
+      <!-- <Skyline size="dynamic" /> -->
+
+      <div class="grid grid-cols-3 gap-12">
+        <FrameHoverGroup>
+          <UCard>
+            <template #header>
+              <Frame size="md">
+                <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-40" />
+              </Frame>
+              
+            </template>
+              <h5 class="text-lg">Lorem ipsum dolor sit amet</h5>
+            <template #footer>
+              <div class="flex justify-end">
+                <UButton square icon="i-heroicons-arrow-top-right-on-square-16-solid" color="gray" variant="ghost" size="lg" />
+              </div>
+            </template>
+          </UCard>
+        </FrameHoverGroup>
+        
+      </div>
     </div>
     
     
