@@ -84,43 +84,14 @@ export const activity: Activity = {
     viewMoreUrl: 'https://onderwijs010.nl/agenda/'
 }
 
-export const cards = [
-    {
-        to: "https://google.com",
-        image: '',
-        title: 'Leer de verschillende onderwijssectoren kennen'
-    },
-    {
-        to: "https://google.com",
-        image: '',
-        title: 'Docent worden? Er zijn zó veel meer toffe functies in het onderwijs!'
-    },
-    {
-        to: "https://google.com",
-        image: '',
-        title: 'Over salaris, werkdruk, opleidingskosten en andere praktische vragen'
-    },
-    {
-        to: "https://onderwijs010.nl/leraarworden/voorranghuurwoning/",
-        image: '',
-        title: 'Rotterdamse leraren krijgen voorrang op huurwoningen'
-    },
-    {
-        to: "https://onderwijs010.nl/leraarworden/talentscouting/",
-        image: '',
-        title: 'Talentscouting: Voorlichting over de beroepen Pedagogisch Medewerker en Onderwijsassistent'
-    }
-]
-
 
 export const advies = {
     btnLabel: 'plan een gratis adviesgesprek',
     bannerImage: 'stichting/site/Team_website_02_z4ucym',
     bannerImageAlt: 'Adviseur van het Onderwijsloket',
     info: `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Immo videri fortasse. Recte, inquit, intellegis. Inquit, dasne adolescenti veniam? Quare conare, quaeso. Duo Reges: constructio interrete. Utilitatis causa amicitia est quaesita. Et quod est munus, quod opus sapientiae?</p>
-        <p>Quae diligentissime contra Aristonem dicuntur a Chryippo. Non potes, nisi retexueris illa. Gloriosa ostentatio in constituendo summo bono. Ipse Epicurus fortasse redderet, ut Sextus Peducaeus, Sex.</p>
-        <p>Maximus dolor, inquit, brevis est. Summum ením bonum exposuit vacuitatem doloris; Bork Primum divisit ineleganter; Cum praesertim illa perdiscere ludus esset. Nunc haec primum fortasse audientis servire debemus.</p>
+        <p>Tijdens een adviesgesprek met het Onderwijsloket denkt een adviseur met je mee over je mogelijke routes naar het onderwijs. Onze adviseurs geven jou graag een advies op maat. Of je nou wilt weten welke opleiding het best bij jou situatie en beoogde functie past, of voor welk type functies je in aanmerking komt; onze adviseurs helpen je graag verder. De adviseur belt je op een door jou gekozen moment om je ingestuurde vragen met je door te nemen.</p>
+        <p>Een adviesgesprek met het Onderwijsloket duurt ongeveer 20 minuten. We vragen je bij het inplannen van het gesprek om wat informatie over jezelf met ons te delen, zoals het telefoonnummer waarop we je kunnen bereiken, informatie over je eerder afgeronde opleiding(en) en waar je het over zou willen hebben tijdens het gesprek. Ook sturen we je na het inplannen van het adviesgesprek alvast wat handige informatie toe, die je ter voorbereiding kunt doornemen.</p>
         <br />
         <h5>Over het Onderwijsloket</h5>
         <p>Het landelijke Onderwijsloket is een informatie- en adviescentrum over <i>werken in het onderwijs</i>. Zij weten alles over routes, bevoegdheden, subsidies, de verschillende sectoren en functies, en andere algemene en praktische zaken om mee te wegen in je oriëntatie.</p>
@@ -143,70 +114,6 @@ export const contact = {
 }
 
 
-import type { Story } from '~/types';
-export const stories: Story[] = [
-    {
-        sectors: ['mbo'],
-        source: 'onderwijs010',
-        duration: 3,
-        type: 'article',
-        title: 'Leren van én met elkaar; lessen uit de praktijk',
-        url: 'https://google.com',
-        author: {
-            name: 'Tessa Visser',
-            image_id: 'onderwijsloket/avatars/female_8_h8p0v0',
-            subtitle: 'Docent gezondheidszorg & welzijn'
-        }
-    },
-    {
-        sectors: ['basisschool'],
-        source: 'onderwijs010',
-        duration: 4,
-        type: 'article',
-        title: 'Als juf voor de klas staan, dat lijkt mij ook wel wat',
-        url: 'https://google.com',
-        author: {
-            name: 'Christa Vroemans',
-            image_id: 'onderwijsloket/avatars/female_3_uf9idg',
-            subtitle: 'Trainee basisonderwijs'
-        }
-    },
-    {
-        sectors: ['middelbare school'],
-        source: 'onderwijs010',
-        duration: 4,
-        type: 'article',
-        title: 'De combinatie lesgeven en begeleiden is voor mij perfect.',
-        url: 'https://google.com',
-        author: {
-            name: 'Sander Dekker',
-            image_id: 'onderwijsloket/avatars/male_4_ufp9f1',
-            subtitle: 'Maatschappijleer & burgerschap'
-        }
-    },
-    {
-        sectors: ['basisschool'],
-        source: 'onderwijsloket.com',
-        duration: 39,
-        type: 'podcast',
-        title: 'Meester Joris over het geschiktheidsonderzoek, veiligheid in de klas en omgaan met tegengas',
-        url: 'https://open.spotify.com/episode/2LkHECuU3RKYBVad0fnxus?si=oU2sFDvQQZeJfSFxZffrOw',
-        media: {
-            thumb_id: 'onderwijsloket/podcast/grote_pauze/branding/grote_pauze_lg_1-1_cmsqyl',
-        }
-    },
-    {
-        sectors: ['middelbare school'],
-        source: 'onderwijsloket.com',
-        duration: 1,
-        type: 'video',
-        title: 'Je bent volgens Henry nooit te oud voor de overstap',
-        url: 'https://voorbereiden.onderwijsloket.com/content/je-bent-volgens-henry-nooit-te-oud-voor-de-overstap/',
-        media: {
-            thumb_id: 'onderwijsloket/voorbereiden/overstappers/originals/henry_ekimrx',
-        }
-    },
-]
 
 export const partners = {
     vacancies: {

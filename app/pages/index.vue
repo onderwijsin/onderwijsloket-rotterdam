@@ -21,9 +21,10 @@ const { scrollTo } = useSnapScroll()
 </script>
 
 <template>
+  <InfoBanner />
   <div class="fluid relative z-10">
     <UContainer>
-      <section>
+      <section style="padding-top: 0px">
         <div class="relative h-[calc(100vh-2.75rem-16px)] sm:h-[calc(100dvh-5.5rem)] max-h-[900px] min-h-[500px]">
           <HeroSlider
             :slides="slides"

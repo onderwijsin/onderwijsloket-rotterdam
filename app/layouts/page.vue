@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout name="site">
-    <div>
+      <InfoBanner />
       <div class="relative h-[280px] md:h-[400px]">
         <NuxtImg
           :src="image"
@@ -21,7 +21,6 @@
         <h1 class="font-black text-primary-500 dark:text-primary-400 text-2xl md:text-4xl lg:text-5xl">{{ title }}</h1>
         <slot />
       </InnerContainer>
-    </div>
     
   </NuxtLayout>
 </template>

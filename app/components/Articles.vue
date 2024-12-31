@@ -39,7 +39,6 @@
             </template>
               <h5 class="text-lg">{{item.title}}</h5>
             <template #footer>
-              <div class="flex justify-end">
                 <BadgeGroup wrap>
                   <UBadge v-for="sector in item.sectoren" size="xs" variant="soft" :label="sector" class="whitespace-nowrap" :color="getSectorColor(sector)" />
                   <UBadge v-if="item.bron" size="xs" color="gray" :ui="{color: { white: { solid: 'ring-0'}}}" class="whitespace-nowrap">
@@ -47,7 +46,6 @@
                     <span>{{ item.bron }}</span>
                   </UBadge>
                 </BadgeGroup>
-              </div>
             </template>
           </UCard>
           </FrameHoverGroup>

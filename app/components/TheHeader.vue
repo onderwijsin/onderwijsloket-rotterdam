@@ -1,10 +1,10 @@
 <template>
-  <header>
-    <UContainer ref="header" class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-950 transition-colors z-50">
+  <header class="sticky top-0 left-0 right-0 z-50">
+    <UContainer ref="header" class="bg-white dark:bg-gray-950 transition-colors">
       <nav class="relative flex justify-between items-center h-[2.75rem]">
         <div 
           class="relative bg-white dark:bg-gray-950 transition-logo pl-1 -left-1"
-          :class="!atTop ? 'py-2 top-0' : 'py-4 pr-4 sm:py-6 sm:pr-6 md:py-8 md:pr-8 top-4 sm:top-6 md:top-8'"
+          :class="!atTop ? 'py-2 top-0' : 'py-4 pr-4 sm:py-6 sm:pr-6 md:py-6 md:pr-8 top-4 sm:top-6 md:top-8'"
         >
           <div 
             class="transition-width" 

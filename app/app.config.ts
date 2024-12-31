@@ -77,14 +77,14 @@ export default defineAppConfig({
       },
       cookies: (val) => [
         ...val,
-        // {
-        //   name: 'algolia_anonymous_token', 
-        //   maxAge: 60 * 60 * 24 * 30,
-        //   party: 'first',
-        //   type: 'functioneel',
-        //   secure: true,
-        //   description: 'Deze cookie slaat een geanonimiseerde ID op om verzoeken naar onze search engine van gebruikers te kunnen herkennen. Hiermee kunnen we de relevantie van zoekresultaten verbeteren.'
-        // },
+        {
+          name: 'infobanner', 
+          maxAge: 60 * 60 * 24 * 365,
+          party: 'first',
+          type: 'functioneel',
+          secure: true,
+          description: 'Een cookie waarmee we registreren of je de infobanner hebt weggeklikt, zodat je deze bij een volgend bezoek niet opnieuw te zien krijgt.'
+        },
         {
           name: '_mc_key', 
           maxAge: 'sessie',
@@ -140,7 +140,8 @@ export default defineAppConfig({
       font: 'font-bold',
       variant: {
         solid: 'bg-{color}-500 dark:bg-{color}-400 text-white dark:text-gray-900',
-      }
+      },
+      rounded: 'rounded-none'
     },
     card: {
       rounded: 'rounded-none',
