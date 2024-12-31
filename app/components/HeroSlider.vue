@@ -101,6 +101,11 @@
             </div>
           </div>
         </InnerContainer>
+
+        <div 
+          v-if="currentIndex === index" 
+          class="absolute bottom-0 bg-gradient-to-r from-secondary-300 to-secondary-400 h-1 progress" 
+        />
         
       </div>
     </div>
@@ -127,6 +132,8 @@ interface HeroSliderProps {
 const props = withDefaults(defineProps<HeroSliderProps>(), {
   autoplay: 0
 })
+
+const animationDuration = computed(() => !!props.autoplay ? (props.autoplay / 1000) + 's' : '0s')
 
 const data = computed(() => {
   // Duplicate slides if less than 4 to ensure smooth navigation
@@ -300,6 +307,24 @@ const handleLink = (val: string) => {
     transform: translateX(calc(var(--index) * 100% - (var(--index) * var(--skew))));
     z-index: 1;
     @apply absolute inset-0 overflow-hidden bg-primary-900/30;
+
+
+    .progress {
+      animation: normal;
+      animation-duration: v-bind(animationDuration);
+      animation-timing-function: cubic-bezier(0.5, 0.0, 0.5, 1.0);
+      animation-name: animate-width;
+    }
+
+    @keyframes animate-width {
+      from { width: 0% }
+      to {
+        width: calc(100% - 44px) ;
+        @media screen and (min-width: 768px) {
+          width: calc(100% - var(--skew))
+        }
+      }
+    }
 
     .media {
       /* Use will-change for opacity and filter */

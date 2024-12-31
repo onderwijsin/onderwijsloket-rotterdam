@@ -180,7 +180,7 @@ export type Verhaal = {
   status: Status
 
   title: string
-  soort: Sector[]
+  sectoren: Sector[]
   sortingPriority: number
   bron: string | null
   type: 'artikel' | 'podcast' | 'video' | null

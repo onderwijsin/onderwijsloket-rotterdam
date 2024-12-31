@@ -1,82 +1,100 @@
-function delay(t: number) {
-  return new Promise(resolve => {
-    setTimeout(resolve, t);
-  });
+interface NotionResponse {
+  // Add specific response type based on your needs
+  [key: string]: any
 }
 
-
-async function retryFetchNotion(
-  id: string,
-  max_retries = 5,
-  current_try = 0,
-  payload?: Record<string, any>
-) {
-  
-  let result = await fetchNotion(id, payload)
-
-  if (!result || Object.values(result).length === 0) {
-    if (current_try < max_retries) {
-      console.log("No result. Retrying");
-      await delay(current_try * 500).then(async() => {
-        result = await retryFetchNotion(id, max_retries, current_try + 1);
-        console.log("Found result with retry");
-      })
-    } else {
-      console.log("No result... Giving up after 5 tries.");
-    }
-  }
-  return result;
+interface NotionRequestConfig {
+  token: string
 }
 
+const delay = (ms: number): Promise<void> => 
+  new Promise(resolve => setTimeout(resolve, ms))
 
-const fetchNotion = async (id: string, data?: Record<string, any>) => {
-  const { token } = useRuntimeConfig().notion
-  const path = `databases/${id}/query`
-  let result: any = await $fetch(`https://api.notion.com/v1/${path}`, {
+const createNotionRequest = async (
+  path: string,
+  token: string,
+  data?: Record<string, any>
+): Promise<NotionResponse> => {
+  const response = await $fetch<NotionResponse>(`https://api.notion.com/v1/${path}`, {
     headers: {
-        "Authorization": `Bearer ${token}`,
-        'Notion-Version': '2022-02-22'
+      Authorization: `Bearer ${token}`,
+      'Notion-Version': '2022-02-22'
     },
-    method: 'post',
+    method: 'POST',
     body: data
   })
 
-  return result || null
+  return response
 }
 
-export const useNotion = async (id: string, data?: Record<string, any>) => {
-    try {
-      return await retryFetchNotion(id, 5, 0, data)
+const fetchNotion = async (
+  id: string,
+  config: NotionRequestConfig,
+  data?: Record<string, any>
+): Promise<NotionResponse | null> => {
+  try {
+    const path = `databases/${id}/query`
+    return await createNotionRequest(path, config.token, data)
   } catch (error) {
-      console.log('error while fetching database')
-      console.log(error)
-      return null
+    console.error('Failed to fetch from Notion:', error)
+    return null
   }
-  
 }
 
+async function retryFetchNotion(
+  id: string,
+  config: NotionRequestConfig,
+  options: {
+    maxRetries?: number,
+    currentTry?: number,
+    payload?: Record<string, any>
+  } = {}
+): Promise<NotionResponse | null> {
+  const {
+    maxRetries = 5,
+    currentTry = 0,
+    payload
+  } = options
 
-export function transformNotionDateToISO(input: string | {start: string, end: string}) {
-  let date;
+  const result = await fetchNotion(id, config, payload)
 
-  if (typeof input === 'string') {
-    date = new Date(input);
-  } else if (input && input.start) {
-    date = new Date(input.start);
-  } else {
-    throw new Error('Invalid input format. Provide a valid ISO string or an object with "start" property.');
+  if (!result || Object.keys(result).length === 0) {
+    if (currentTry < maxRetries) {
+      console.log(`Retry attempt ${currentTry + 1} of ${maxRetries}`)
+      await delay(currentTry * 500)
+      
+      return retryFetchNotion(id, config, {
+        maxRetries,
+        currentTry: currentTry + 1,
+        payload
+      })
+    }
+    
+    console.log(`No result after ${maxRetries} attempts`)
+    return null
   }
 
-  return date.toISOString();
+  return result
 }
 
+export const useNotion = async (
+  id: string,
+  data?: Record<string, any>
+): Promise<NotionResponse | null> => {
+  try {
+    const config = useRuntimeConfig()
+    
+    if (!config.notion?.token) {
+      throw new Error('Notion token not configured')
+    }
 
-export function sortByISODateDesc(arr: { created_at: string }[]) {
-  if (!arr || !arr.length) return []
-  return arr.sort((a, b) => {
-    const dateA = new Date(transformNotionDateToISO(a.created_at));
-    const dateB = new Date(transformNotionDateToISO(b.created_at));
-
-    return dateB.getTime() - dateA.getTime();  // Sort in descending order (newest first)
-  });
+    return await retryFetchNotion(id, {
+      token: config.notion.token
+    }, {
+      payload: data
+    })
+  } catch (error) {
+    console.error('Error in useNotion:', error)
+    return null
+  }
 }

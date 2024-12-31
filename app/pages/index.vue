@@ -27,7 +27,7 @@ const { scrollTo } = useSnapScroll()
   <div class="fluid relative z-10">
     <UContainer>
       <section>
-        <div class="relative h-[calc(100dvh-2.75rem-16px)] sm:h-[calc(100dvh-5.5rem)] max-h-[900px] min-h-[500px]">
+        <div class="relative h-[calc(100vh-2.75rem-16px)] sm:h-[calc(100dvh-5.5rem)] max-h-[900px] min-h-[500px]">
           <HeroSlider
             :slides="slides"
             :autoplay="12000"
@@ -55,7 +55,8 @@ const { scrollTo } = useSnapScroll()
           <InnerContainer from="xl">
             <div class="mb-8 md:mb-16 lg:mb-24 grid md:grid-cols-4">
               <div class="md:col-span-3">
-                <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400">Ontdek het onderwijs</h2>
+                <Arrow variant="outline" type="chevron" animated size="md" :amount="3" class="mb-6" />
+                <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400">Ontdek het onderwijs</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Quare attende, quaeso.</p>
               </div>
               <div class="hidden md:flex col-span-1 flex-col items-end justify-end">
@@ -112,10 +113,18 @@ const { scrollTo } = useSnapScroll()
         <RouteBanner />
       </section>
       <section id="ervaar">
-        <InnerContainer class="mb-12 md:mb-24 md:pt-20">
-          <div class="text-center">
+        <InnerContainer class="mb-20 md:mb-32 md:pt-20">
+          <div class="relative text-center">
+            <span class="absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2 animate-bounce">
+              <Arrow variant="outline" type="triangle" class="rotate-90 " animated :size="8" :amount="2" />
+            </span>
+            
             <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400">Ervaar het onderwijs</h2>
             <h3 class="text-3xl md:text-5xl ">Lees, luister en bekijk de verhalen van docenten die je voor gingen</h3>
+
+            <span class="absolute -bottom-8 md:-bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+              <Arrow variant="outline" type="triangle" class="rotate-90 " animated :size="8" :amount="2" />
+            </span>
           </div>
         </InnerContainer>
         

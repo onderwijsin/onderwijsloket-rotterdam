@@ -3,7 +3,8 @@
     <InnerContainer from="xl">
       <div class="grid gap-8 md:grid-cols-4">
         <div class="md:col-span-3">
-          <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400 font-black">{{ contact.title }}</h2>
+          <Arrow variant="outline" type="chevron" animated size="md" :amount="3" class="mb-6" />
+          <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400 font-black">{{ contact.title }}</h2>
           <p>{{ contact.description }}</p>
         </div>
         <div class="flex col-span-1 flex-col items-start md:items-end md:justify-end">
