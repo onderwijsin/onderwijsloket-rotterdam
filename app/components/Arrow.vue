@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row" :class="{animated}" :style="{ gap: `${gap}px` }">
+  <div ref="target" class="flex flex-row" :class="{ animated, inView: inView && animated && targetIsVisible }" :style="{ gap: `${gap}px` }">
     <component 
       v-for="i in amount" 
       :is="component"
@@ -17,6 +17,7 @@ const props = withDefaults(
   defineProps<{ 
     amount?: number, 
     animated?: boolean 
+    inView?: boolean 
     fill?: 'primary' | 'secondary' | 'tertiary' | 'gray'
     size?: 'sm' | 'md' | 'base' | 'lg' | 'xl' | number
     gap?: number
@@ -45,6 +46,29 @@ const sizePx = computed(() => {
   if (typeof props.size === 'number') return `${props.size}px`
   return '32px'
 })
+
+
+const target = ref(null)
+const targetIsVisible = ref(false)
+
+const { resume, pause, stop } = useIntersectionObserver(
+  target,
+  ([entry], observerElement) => {
+    targetIsVisible.value = entry?.isIntersecting || false
+  },
+  {
+    rootMargin: '-160px 0px -200px 0px', // Adjust viewport edges
+    threshold: 0, // Trigger as soon as it intersects
+    immediate: false
+  }
+);
+
+onNuxtReady(() => resume())
+
+onDeactivated(() => pause())
+onActivated(() => resume())
+onBeforeUnmount(() => stop())
+
 </script>
 
 <style lang="postcss" scoped>
@@ -52,7 +76,7 @@ const sizePx = computed(() => {
   .item:last-child {
     transition: transform 0.2s cubic-bezier(.22,.68,0,1.71);
   }
-  &:hover {
+  &:hover, &.inView {
     .item:last-child {
       transform: translateX(10px);
     }

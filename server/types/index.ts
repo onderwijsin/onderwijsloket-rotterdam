@@ -249,3 +249,28 @@ export type RawLeraar = BaseRawRecord<{
   duration: NumberField
   title: Title
 }>
+
+
+export type RawArtikel = BaseRawRecord<{
+  bron: Select
+  image: FileField
+  status: StatusField
+  sectoren: SectorSelect
+  image_public_id: RichText
+  url: UrlField
+  sorting_priority: Select
+  title: Title
+}>
+
+export type Artikel = {
+  id: string
+  createdTime: Date
+  updatedAt: Date
+  status: Status
+  title: string
+  sectoren: Sector[]
+  sortingPriority: number
+  bron: string | null
+  imagePublicId: string | null
+  url: string | null
+}

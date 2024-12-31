@@ -7,7 +7,9 @@ import type {
   RawVerhaal, 
   RawLeraar, 
   Leraar,
-  Sector
+  Sector,
+  RawArtikel,
+  Artikel
 } from "../types"
 import { addHours } from 'date-fns'
 
@@ -134,6 +136,19 @@ function transformLeraren(rawData: RawLeraar[]): Leraar[] {
   }))
 }
 
+function transformArtikelen(rawData: RawArtikel[]): Artikel[] {
+  return rawData.map((raw): Artikel => ({
+      ...transformBaseProperties(raw),
+      title: getPlainText(raw.properties.title.title),
+      sectoren: getMultiSelect(raw.properties.sectoren) as Sector[],
+      sortingPriority: parseInt(raw.properties.sorting_priority.select?.name || '0'),
+      bron: raw.properties.bron.select?.name || null,
+      imagePublicId: getPlainText(raw.properties.image_public_id.rich_text),
+      url: raw.properties.url.url || null
+    })
+  )
+}
+
 // Database Queries
 const createNotionFilters = (additionalFilters: any[] = []) => ({
   filter: {
@@ -201,4 +216,18 @@ export const getLeraren = defineCachedFunction(async (amount = 5) => {
 }, {
   ...cacheConfig,
   name: 'getLeraren'
+})
+
+
+export const getArtikelen = defineCachedFunction(async (amount = 8) => {
+  const payload = {
+    ...createNotionFilters(),
+    sorts: [{ property: "sorting_priority", direction: "ascending" }]
+  }
+
+  const data = await useNotion('16db66e1be6980fa94c6f295a9ae16a9', payload) as NotionDatabase<RawArtikel>
+  return data?.results ? transformArtikelen(data.results) : null
+}, {
+  ...cacheConfig,
+  name: 'getArtikelen'
 })

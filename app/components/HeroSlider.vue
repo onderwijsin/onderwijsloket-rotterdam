@@ -104,7 +104,7 @@
 
         <div 
           v-if="currentIndex === index" 
-          class="absolute bottom-0 bg-gradient-to-r from-secondary-300 to-secondary-400 h-1 progress" 
+          class="absolute bottom-0 bg-gradient-to-r from-secondary-300 to-secondary-400 h-1 progress z-20" 
         />
         
       </div>
@@ -310,16 +310,19 @@ const handleLink = (val: string) => {
 
 
     .progress {
-      animation: normal;
+      width: calc(100% - 44px);
+      @media screen and (min-width: 768px) {
+          width: calc(100% - var(--skew))
+      }
       animation-duration: v-bind(animationDuration);
-      animation-timing-function: cubic-bezier(0.5, 0.0, 0.5, 1.0);
+      animation-timing-function: linear;
       animation-name: animate-width;
     }
 
     @keyframes animate-width {
       from { width: 0% }
       to {
-        width: calc(100% - 44px) ;
+        width: calc(100% - 44px);
         @media screen and (min-width: 768px) {
           width: calc(100% - var(--skew))
         }

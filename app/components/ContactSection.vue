@@ -3,7 +3,7 @@
     <InnerContainer from="xl">
       <div class="grid gap-8 md:grid-cols-4">
         <div class="md:col-span-3">
-          <Arrow variant="outline" type="chevron" animated size="md" :amount="3" class="mb-6" />
+          <Arrow variant="outline" type="chevron" animated in-view size="md" :amount="3" class="mb-6" />
           <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400 font-black">{{ contact.title }}</h2>
           <p>{{ contact.description }}</p>
         </div>

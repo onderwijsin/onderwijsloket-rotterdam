@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!errorVerhalen" class="grid-container">
+  <div v-if="!error" class="grid-container">
       <NuxtLink 
         v-for="story in verhalen" 
         class="relative group bg-gray-50 dark:bg-gray-800 py-6 px-4 flex flex-col gap-6 transition-all hover:scale-[101%] hover:bg-gray-100 hover:dark:bg-gray-700/50"
@@ -11,7 +11,7 @@
         <div class="story-background" :class="getSectorBackgroundColor(story.sectoren[0])" />
         <div class="relative flex justify-between flex-wrap gap-x-4 gap-y-2">
           <BadgeGroup>
-            <UBadge v-for="sector in story.sectoren" size="xs" variant="soft" :label="sector" class="whitespace-nowrap" :color="getSectorColor(sector)" />
+            <UBadge v-for="sector in story.sectoren" size="xs" variant="soft" :label="sector" class="whitespace-nowrap last:mr-auto" :color="getSectorColor(sector)" />
           </BadgeGroup>
           <BadgeGroup>
             <UBadge v-if="story.type !== 'artikel'" size="xs" color="white" :ui="{color: { white: { solid: 'ring-0'}}}" class="whitespace-nowrap">
@@ -55,7 +55,9 @@
 const { getSectorColor, getSectorBackgroundColor } = useContent()
 
 
-const { data: verhalen, error: errorVerhalen, status: loadingVerhalen } = await useFetch('/api/verhalen')
+const { data: verhalen, error, status } = await useFetch('/api/verhalen')
+const loading = computed(() => status.value === 'pending' || status.value === 'idle')
+
 </script>
 
 <style lang="postcss" scoped>
@@ -66,7 +68,7 @@ const { data: verhalen, error: errorVerhalen, status: loadingVerhalen } = await 
 
 .story-background {
   clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
-  @apply absolute top-0 right-0 bottom-0 w-44;
+  @apply absolute top-0 right-0 bottom-0 w-24 sm:w-44;
 }
 
 /* Mobile layout (single column) */

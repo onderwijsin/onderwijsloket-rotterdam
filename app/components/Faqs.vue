@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col lg:flex-row lg:gap-16">
     <div class="basis-1/3 shrink-0 lg:py-8">
-      <Arrow variant="outline" type="chevron" animated size="md" :amount="3" class="mb-6" />
+      <Arrow variant="outline" type="chevron" animated in-view size="md" :amount="3" class="mb-6" />
       <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400 font-black">Veelgestelde vragen over het onderwijs</h2>
       <p class="mb-8 lg:mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.</p>
       <UInput v-model="query" size="lg" icon="i-heroicons-magnifying-glass" placeholder="Zoek naar FAQ's" :loading="loading" />
