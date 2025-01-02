@@ -101,16 +101,17 @@ export const advies = {
 
 export const routes = {
     btnLabel: 'naar routetool',
-    bannerImage: 'stichting/site/Team_website_02_z4ucym',
-    bannerImageAlt: 'Placeholder',
+    bannerImage: 'regios/rotterdam/routes_uxrtg6',
+    bannerImageAlt: 'Routes naar het onderwijs',
+    article: {
+        title: 'routes naar het leraarschap',
+        url: 'https://www.onderwijsloket.com/kennisbank/routes-naar-het-leraarschap/'
+    }
 }
 
 export const contact = {
-    title: 'Contact met Onderwijsloket Rotterdam',
+    title: 'Contact, hulp en advies',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Quare attende, quaeso.',
-    link: 'mailto:info@onderwijsloketrotterdam.nl',
-    btnLabel: 'Neem contact op',
-    icon: 'i-heroicons-envelope-16-solid'
 }
 
 

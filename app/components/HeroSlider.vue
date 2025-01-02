@@ -55,10 +55,6 @@
             'hover-next': showNextPreview && getPosClass(index, currentIndex) === 'next'
           }
         ]"
-
-        @mouseenter="() => handleSlideHover(index)"
-        @mouseleave="handleSlideHoverEnd"
-        @click="() => getSlide(index)"
       >
         <NuxtImg
           v-if="slide.type === 'image'"
@@ -148,9 +144,14 @@ const showPrevPreview = ref(false)
 const showNextPreview = ref(false)
 
 // Autoplay functionality
-const { pause } = useIntervalFn(() => {
+const { pause, resume } = useIntervalFn(() => {
   goTo(data.value.length - 1 === currentIndex.value ? 0 : currentIndex.value + 1)
 }, props.autoplay || undefined)
+
+const resetInterval = () => {
+  pause()
+  resume()
+}
 
 // Pause autoplay if no autoplay prop is set
 if (!props.autoplay) {
@@ -162,26 +163,20 @@ const goTo = (index: number) => {
   currentIndex.value = index
 }
 
-const getSlide = (index: number) => {
-  pause()
-  trackPosition.value = 0
-  goTo(index)
-}
-
 const navigateToPrev = () => {
-  pause()
   const prevIndex = currentIndex.value === 0 
     ? data.value.length - 1 
     : currentIndex.value - 1
   goTo(prevIndex)
+  resetInterval()
 }
 
 const navigateToNext = () => {
-  pause()
   const nextIndex = currentIndex.value === data.value.length - 1 
     ? 0 
     : currentIndex.value + 1
   goTo(nextIndex)
+  resetInterval()
 }
 
 

@@ -51,6 +51,9 @@ const { scrollTo } = useSnapScroll()
       <section id="ontdek">
         <Articles />
       </section>
+      <section id="leraren"  style="padding-top: 0px">
+        <LerarenBanner />
+      </section>
       <section id="routes">
         <RouteBanner />
       </section>
@@ -74,9 +77,6 @@ const { scrollTo } = useSnapScroll()
           <Stories />
           <Partners />
         </div>
-      </section>
-      <section id="advies">
-        <AdviesBanner />
       </section>
       <section id="contact">
         <ContactSection />

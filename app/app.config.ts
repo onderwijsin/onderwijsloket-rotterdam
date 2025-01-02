@@ -4,7 +4,7 @@ import * as components from './assets/components'
 export default defineAppConfig({
   settings: {
     meta: {
-      image: 'https://res.cloudinary.com/onderwijsin/image/upload/c_scale,w_1200,q_80/regios/rotterdam/meta_image_2_x6djyp.png',
+      image: 'https://res.cloudinary.com/onderwijsin/image/upload/c_scale,w_1200,q_80/regios/rotterdam/meta_image_onderwijsloketrotterdam_jchsfs.png',
       socials: () => [],
       icon: {
         favicon: "regios/rotterdam/favicon_ndwh73",
@@ -147,6 +147,9 @@ export default defineAppConfig({
       rounded: 'rounded-none',
       header: {
         padding: 'pt-4 px-4 sm:px-4 pb-0'
+      },
+      body: {
+        padding: 'px-4 sm:px-4'
       },
       footer: {
         padding: 'pt-0 px-4 sm:px-4 pb-4'

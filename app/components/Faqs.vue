@@ -37,20 +37,20 @@
           default: { truncate: false, class: 'text-left', }
         }"
       />
-      <UButtonGroup size="lg">
-        <UButton v-if="hasMore" color="primary" class="mt-8" variant="soft" :to="archiveUrl" target="_blank">
+      <div class="flex flex-wrap gap-y-2 mt-8" >
+        <UButton v-if="hasMore" color="primary" size="lg"  variant="soft" :to="archiveUrl" target="_blank">
           Alle veelgestelde vragen
           <template #trailing>
             <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
           </template>
         </UButton>
-        <UButton color="gray" class="mt-8" variant="soft" @click="scrollTo('advies')">
+        <UButton color="gray"  size="lg" variant="soft" @click="scrollTo('advies')">
           Neem contact op
           <template #trailing>
             <UIcon name="i-heroicons-chat-bubble-left-right-20-solid" class="w-4 h-4 ml-2" />
           </template>
         </UButton>
-      </UButtonGroup>
+      </div>
       
     </div>
     

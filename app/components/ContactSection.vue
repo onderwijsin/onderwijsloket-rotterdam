@@ -1,5 +1,6 @@
 <template>
-  <div class="w-full pb-12 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28">
+  
+  <div class="w-full pb-12 md:pt-16">
     <InnerContainer from="xl">
       <div class="grid gap-8 md:grid-cols-4">
         <div class="md:col-span-3">
@@ -8,20 +9,64 @@
           <p>{{ contact.description }}</p>
         </div>
         <div class="flex col-span-1 flex-col items-start md:items-end md:justify-end">
-          <UButton color="gray" variant="solid" size="lg" :to="contact.link" target="_blank">
-            {{contact.btnLabel}}
-            <template #trailing>
-              <UIcon v-if="contact.icon" :name="contact.icon" class="w-4 h-4 ml-2" />
-            </template>
-          </UButton>
+         
         </div>
       </div>
     </InnerContainer>
+  </div>
+
+  <InnerContainer from="xl" class="grid md:grid-cols-2 gap-8 md:gap-12 pb-12 md:pb-16">
+    <UCard :ui="{ ring: 'ring-secondary-200 dark:ring-secondary-200', background: 'bg-gray-100 dark:bg-gray-800' }">
+      <template #header>
+        <h3 class="font-black mb-0">
+          <ClientOnly>
+            <Arrow :animated="grid.md" fill="secondary" class="inline-flex mr-2" :size="18" />
+          </ClientOnly>
+          Zoek contact met <GradientText from="secondary" to="secondary">een lerarenopleiding</GradientText>
+        </h3>
+      </template>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas.</p>
+      <template #footer>
+        <UButton color="secondary" variant="solid" size="lg" to="https://navigator.onderwijsloket.com/opleidingen/?lat=51.9244201&lng=4.4777325&address=Rotterdam&radius=30" target="_blank">
+            Bekijk de lerarenopleidingen
+            <template #trailing>
+              <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+            </template>
+        </UButton>
+      </template>
+    </UCard>
+    <UCard :ui="{ ring: 'ring-secondary-200 dark:ring-secondary-200', background: 'bg-gray-100 dark:bg-gray-800' }">
+      <template #header>
+        <h3 class="font-black mb-0">
+          <ClientOnly>
+            <Arrow :animated="grid.md" fill="secondary" class="inline-flex mr-2" :size="18" />
+          </ClientOnly>
+          Zoek contact met <GradientText from="secondary" to="secondary">een schoolbestuur</GradientText>
+        </h3>
+      </template>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas.</p>
+      <template #footer>
+        <UButton color="secondary" variant="solid" size="lg" :to="orgs.to">
+            {{ orgs.btnLabel }}
+            <template #trailing>
+              <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+            </template>
+        </UButton>
+      </template>
+    </UCard>
+  </InnerContainer>
+
+  <div id="advies" class="mb-12 md:mb-20">
+    <AdviesBanner />
   </div>
 </template>
 
 <script lang="ts" setup>
 const { contact } = useContent()
+
+const  { grid } = useResponsive()
+
+const { orgs } = useContent().partners
 </script>
 
 <style>

@@ -14,8 +14,8 @@
           </p>
         </div>
         <div class="flex items-center gap-3">
-          <!-- <UButton to="/privacy" variant="ghost" color="gray" size="xs">Over jouw privacy</UButton>
-          <UButton to="/algemene-voorwaarden" variant="ghost" color="gray" size="xs">Algemene voorwaarden</UButton> -->
+          <UButton to="/colofon" variant="ghost" color="gray" size="xs">Colofon</UButton>
+          <!-- <UButton to="/algemene-voorwaarden" variant="ghost" color="gray" size="xs">Algemene voorwaarden</UButton> -->
         </div>
       </UContainer>
     </div>
