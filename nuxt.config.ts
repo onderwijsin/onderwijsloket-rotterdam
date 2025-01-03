@@ -30,6 +30,7 @@ export default defineNuxtConfig({
   $production: {
     routeRules: {
       '/': { ssr: true, prerender: false, swr: 60 * 60 }, 
+      '/**': { ssr: true, prerender: false, cache: false, swr: false }, 
       '/elementen': { ssr: true, prerender: false, swr: 60 * 60 }, 
       '/colofon': { ssr: true, prerender: true }, 
       '/api/**': { cache: false }, 
