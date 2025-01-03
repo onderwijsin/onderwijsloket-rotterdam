@@ -63,10 +63,13 @@
         item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]' 
       }"
     > 
-    <UCard
-          class=""
+      <NuxtLink 
+        :to="item.url" 
+        target="_blank" 
+        class="grid w-full transition-all hover:scale-[101%]"
+      >
+        <UCard
           :ui="{
-            base: 'transition-all hover:scale-[101%] cursor-pointer w-full',
             background: 'bg-gray-100 dark:bg-gray-800',
             shadow: 'shadow-none',
             ring: 'ring-gray-200 dark:ring-gray-700',
@@ -74,7 +77,6 @@
             body: { padding: 'py-6 md:px-8 md:py-8'},
             footer: { padding: 'pb-6 md:px-8 md:pb-8'},
           }"
-          @click="navigateTo(item.url, { external: true })"
         >
             <h5 class="text-lg">{{item.title}}</h5>
             <BadgeGroup wrap>
@@ -114,6 +116,7 @@
               </UButton>
             </template>
         </UCard>
+      </NuxtLink>
     </UCarousel>
   </div>
 </template>
@@ -122,6 +125,7 @@
 import type { Activity } from '~~/server/types'
 import { format } from 'date-fns'
 import { nl } from 'date-fns/locale'
+import { toZonedTime } from 'date-fns-tz'
 
 
 const { data, error, status } = await useFetch('/api/activiteiten')
@@ -131,7 +135,10 @@ const primary = computed(() => data.value?.[0])
 const activities = computed(() => data.value?.slice(1))
 
 const getDateTime = (value: string, { includeTime, timeOnly }: { includeTime?: boolean, timeOnly?: boolean }) => {
-  const date = new Date(value)
+  // Convert to Amsterdam timezone
+  const timeZone = 'Europe/Amsterdam'
+  const date = toZonedTime(new Date(value), timeZone)
+  
   if (timeOnly) {
     return format(date, 'HH:mm', { locale: nl })
   }
