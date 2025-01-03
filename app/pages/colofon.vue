@@ -7,11 +7,10 @@
     </div>
 
     <p class="mb-3 mt-8">De inhoud van deze website is tot stand gekomen in samenwerking met:</p>
-    <div class="flex gap-2 gap-y-2 flex-wrap items-center">
+    <div class="flex gap-5 gap-y-2 flex-wrap items-center">
       
       <NuxtLink to="https://onderwijsloket.com" target="_blank">
-        <LogoOnderwijsloket class="w-36" />
-        <!-- <NuxtImg src="brand/logo_onderwijsloket_by0ejs" width="160" height="auto" fit="fit" class="w-28" alt="Het Onderwijsloket" /> -->
+        <NuxtImg src="brand/logo_onderwijsloket_by0ejs" width="160" height="auto" fit="fit" class="w-28" alt="Het Onderwijsloket" />
       </NuxtLink>
       <NuxtLink to="https://onderwijs010.nl" target="_blank">
         <NuxtImg src="regios/rotterdam/Onderwijs010_Logo_sxeg6x" width="160" height="auto" class="w-28" fit="fit" alt="onderwijs010" />
