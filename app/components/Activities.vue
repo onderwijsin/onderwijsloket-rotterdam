@@ -54,71 +54,67 @@
         
       </InnerContainer>
     </div>
-      <UCarousel
+    <UCarousel
       v-if="activities?.length" 
-        v-slot="{ item }" 
-        :items="activities" 
-        :ui="{
-          container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1',
-          item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]' 
-        }"
-      > 
-        <NuxtLink 
-          :to="item.url" 
-          target="_blank" 
-          class="grid w-full transition-all hover:scale-[101%]"
+      v-slot="{ item }" 
+      :items="activities" 
+      :ui="{
+        container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1',
+        item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]' 
+      }"
+    > 
+    <UCard
+          class=""
+          :ui="{
+            base: 'transition-all hover:scale-[101%] cursor-pointer w-full',
+            background: 'bg-gray-100 dark:bg-gray-800',
+            shadow: 'shadow-none',
+            ring: 'ring-gray-200 dark:ring-gray-700',
+            header: { padding: 'pt-6 md:px-8 md:pt-8'},
+            body: { padding: 'py-6 md:px-8 md:py-8'},
+            footer: { padding: 'pb-6 md:px-8 md:pb-8'},
+          }"
+          @click="navigateTo(item.url, { external: true })"
         >
-          <UCard
-            :ui="{
-              background: 'bg-gray-100 dark:bg-gray-800',
-              shadow: 'shadow-none',
-              ring: 'ring-gray-200 dark:ring-gray-700',
-              header: { padding: 'pt-6 md:px-8 md:pt-8'},
-              body: { padding: 'py-6 md:px-8 md:py-8'},
-              footer: { padding: 'pb-6 md:px-8 md:pb-8'},
-            }"
-          >
-              <h5 class="text-lg">{{item.title}}</h5>
-              <BadgeGroup wrap>
-                <UBadge 
-                  variant="solid"
-                  size="xs"
-                  color="secondary"
-                >
-                  <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 mr-0.5"/>
-                  <time :datetime="item.startDateTime">{{ getFullDateTimeRange(item) }}</time>
-                </UBadge>
-                <UBadge 
-                  variant="soft"
-                  size="xs"
-                  color="secondary"
-                >
-                  <UIcon name="i-heroicons-currency-euro-20-solid" class="w-4 h-4 mr-0.5"/>
-                  <span>{{ item.kosten === 0 ? 'gratis' : item.kosten }}</span>
-                </UBadge>
-                <UBadge 
-                  v-for="badge in item.soort" 
-                  variant="soft"
-                  size="xs"
-                  color="secondary"
-                >
-                  <span>{{ badge }}</span>
-                </UBadge>
+            <h5 class="text-lg">{{item.title}}</h5>
+            <BadgeGroup wrap>
+              <UBadge 
+                variant="solid"
+                size="xs"
+                color="secondary"
+              >
+                <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 mr-0.5"/>
+                <time :datetime="item.startDateTime">{{ getFullDateTimeRange(item) }}</time>
+              </UBadge>
+              <UBadge 
+                variant="soft"
+                size="xs"
+                color="secondary"
+              >
+                <UIcon name="i-heroicons-currency-euro-20-solid" class="w-4 h-4 mr-0.5"/>
+                <span>{{ item.kosten === 0 ? 'gratis' : item.kosten }}</span>
+              </UBadge>
+              <UBadge 
+                v-for="badge in item.soort" 
+                variant="soft"
+                size="xs"
+                color="secondary"
+              >
+                <span>{{ badge }}</span>
+              </UBadge>
 
-                
-              </BadgeGroup>
-              <template #footer>
-                <UButton size="lg" color="white" variant="solid">
-                  {{ item.button_label || 'Meer informatie' }}
-                  <template #trailing>
-                    <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
-                  </template>
-                </UButton>
-              </template>
-          </UCard>
-        </NuxtLink>
-      </UCarousel>
-    
+              
+            </BadgeGroup>
+            <template #footer>
+              <UButton size="lg" color="white" variant="solid">
+                {{ item.button_label || 'Meer informatie' }}
+                <template #trailing>
+                  <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+                </template>
+              </UButton>
+            </template>
+        </UCard>
+    </UCarousel>
   </div>
 </template>
 
