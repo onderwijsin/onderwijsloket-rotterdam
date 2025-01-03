@@ -1,5 +1,5 @@
 <template>
-  <ImageBanner :image-id="routes.bannerImage" :image-alt="routes.bannerImageAlt">
+  <ImageBanner :image-id="routes.bannerImage" :image-alt="routes.bannerImageAlt" class="bg-main-25 dark:bg-primary-950/20">
     <ArrowHeading>
       Vind <GradientText>de route</GradientText> die bij je past
     </ArrowHeading>
@@ -11,7 +11,7 @@
           <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
         </template>
       </UButton>
-      <UButton color="secondary" variant="soft"  size="lg" :to="routes.article.url" target="_blank">
+      <UButton color="primary" variant="soft"  size="lg" :to="routes.article.url" target="_blank">
         {{ routes.article.title }}
         <template #trailing>
           <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />

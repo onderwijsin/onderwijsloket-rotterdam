@@ -23,10 +23,10 @@
     <!-- Custom Pointer -->
     <div 
       v-if="showPrevPreview || showNextPreview" 
-      class="custom-pointer fixed z-50 pointer-events-none"
+      class="custom-pointer absolute z-50 pointer-events-none"
       :style="{ 
         left: `${x + (showNextPreview ? -45 : 45)}px`, 
-        top: `${y}px` 
+        top: `${y - 40}px` 
       }"
     >
       <div class="flex gap-4 items-center" :class="showNextPreview ? 'flex-row-reverse' : 'flex-row'">
@@ -221,18 +221,6 @@ function getPosClass(index: number, currentIndex: number) {
     ''
 }
 
-// Hover and preview handling
-function handleSlideHover(index: number) {
-  const rel = getRelativeIndex(index, currentIndex.value)
-  
-  trackPosition.value = rel === 1 ? -50 : 
-    rel === -1 ? 50 : 
-    0
-}
-
-function handleSlideHoverEnd() {
-  trackPosition.value = 0
-}
 
 // Mouse tracking for custom pointer
 const { x, y } = useMouse()

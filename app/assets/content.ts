@@ -31,7 +31,7 @@ export const slides: Array<HeroSlide> = [
         media: 'regios/rotterdam/hero_video_bcgbv5',
         type: 'video',
         actions: [
-            { label: 'Verhalen van leraren', to: '#ervaar' },
+            { label: 'Verhalen van leraren', to: '#leraren' },
             { label: 'Onderwijs010', to: 'https://onderwijs010.nl', color: 'primary', variant: 'soft' },
         ]
     },
@@ -58,31 +58,12 @@ export const slides: Array<HeroSlide> = [
     },
 ]
 
-export const activity: Activity = {
-    title: 'Ontdek werken in het Rotterdamse onderwijs!',
-    icon: 'i-heroicons-academic-cap-20-solid',
-    badges: [
-        {
-            icon: 'i-heroicons-calendar-days-20-solid',
-            label: '29-01-2025'
-        },
-        {
-            color: 'primary',
-            variant: "soft",
-            label: 'informatiebijeenkomst'
-        },
-        {
-            icon: 'i-heroicons-currency-euro-20-solid',
-            label: 'gratis',
-            color: 'primary',
-            variant: "soft",
-        }
-    ],
-    description: 'Benieuwd naar een carrière in het onderwijs of de kinderopvang? Kom naar de informatiebijeenkomst op 29 januari en ontdek de mogelijkheden!',
-    url: 'https://onderwijs010.nl/agenda/informatiebijeenkomst/',
-    btnLabel: 'Meer informatie en aanmelden',
-    viewMoreUrl: 'https://onderwijs010.nl/agenda/'
-}
+export const bevoegdheden = [
+    { id: 'po', label: 'Primair onderwijs', altNames: ['po', 'Primair onderwijs', 'Basisonderwijs'], description: 'Met deze bevoegdheid mag lesgeven als groepsleerkracht in het primair onderwijs.' },
+    { id: 'vo-1', label: 'Eerstegraads', altNames: ['Eerstegraads', 'Eerstegraads bevoegdheid', 'vo-1'], description: 'Met een eerstegraads lesbevoegdheid mag je lesgeven in het voortgezet onderwijs (vmbo, havo en vwo), het mbo en als vakleerkracht in het primair onderwijs.' },
+    { id: 'vo-2', label: 'Tweedegraads', altNames: ['Tweedegraads', 'Tweedegraads bevoegdheid', 'vo-2'], description: 'Met een tweedegraads lesbevoegdheid mag je lesgeven in het voortgezet onderwijs (het hele vmbo en de onderbouw van havo en vwo), het mbo en als vakleerkracht in het primair onderwijs.' },
+    { id: 'vo-2-alt', label: 'Beperkt tweedegraads', altNames: ['Beperkt tweedegraads', 'Beperkt tweedegraads bevoegdheid', 'vo-2-alt'], description: 'Met een beperkt tweedegraads lesbevoegdheid mag je lesgeven in het voortgezet onderwijs (vmbo en de onderbouw van havo en vwo) en als vakleerkracht in het primair onderwijs.' },
+] as const
 
 
 export const advies = {

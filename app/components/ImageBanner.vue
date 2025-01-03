@@ -7,7 +7,7 @@
       <div class="relative md:w-[calc(100%+2rem)] lg:w-full h-full"  :class="reverse ? 'order-1 md:-left-4 md:-right-4 lg:right-auto lg:-left-8 xl:-left-20' : 'order-2 md:-left-4 md:-right-4 lg:left-auto lg:-right-8 xl:-right-20'">
         <slot name="media" />
         <Frame v-if="!$slots.media" size="lg" animated class="h-full">
-          <NuxtImg :src="imageId" width="600" height="400" fit="fill" class="w-full h-full object-cover" :modifiers="{g:'faces'}" :alt="imageAlt" />
+          <NuxtImg :src="imageId" width="600" height="400" fit="fill" class="w-full h-full object-cover dark:opacity-80" :modifiers="{g:'faces'}" :alt="imageAlt" />
         </Frame>
       </div>
       

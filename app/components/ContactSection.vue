@@ -16,7 +16,15 @@
   </div>
 
   <InnerContainer from="xl" class="grid md:grid-cols-2 gap-8 md:gap-12 pb-12 md:pb-16">
-    <UCard :ui="{ ring: 'ring-secondary-200 dark:ring-secondary-200', background: 'bg-gray-100 dark:bg-gray-800' }">
+    <UCard 
+      :ui="{ 
+        ring: 'ring-secondary-200 dark:ring-secondary-200', 
+        background: 'bg-gray-100 dark:bg-gray-800',
+        header: { padding: 'pt-6 md:px-8 md:pt-8'},
+        body: { padding: 'py-6 md:px-8 md:py-8'},
+        footer: { padding: 'pb-6 md:px-8 md:pb-8'},
+      }"
+    >
       <template #header>
         <h3 class="font-black mb-0">
           <ClientOnly>
@@ -27,15 +35,20 @@
       </template>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas.</p>
       <template #footer>
-        <UButton color="secondary" variant="solid" size="lg" to="https://navigator.onderwijsloket.com/opleidingen/?lat=51.9244201&lng=4.4777325&address=Rotterdam&radius=30" target="_blank">
+        <UButton color="secondary" variant="solid" size="lg" @click="scrollTo('opleidingen', 80)">
             Bekijk de lerarenopleidingen
-            <template #trailing>
-              <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
-            </template>
         </UButton>
       </template>
     </UCard>
-    <UCard :ui="{ ring: 'ring-secondary-200 dark:ring-secondary-200', background: 'bg-gray-100 dark:bg-gray-800' }">
+    <UCard 
+      :ui="{ 
+        ring: 'ring-secondary-200 dark:ring-secondary-200', 
+        background: 'bg-gray-100 dark:bg-gray-800',
+        header: { padding: 'pt-6 md:px-8 md:pt-8'},
+        body: { padding: 'py-6 md:px-8 md:py-8'},
+        footer: { padding: 'pb-6 md:px-8 md:pb-8'},
+      }"
+    >
       <template #header>
         <h3 class="font-black mb-0">
           <ClientOnly>
@@ -67,6 +80,8 @@ const { contact } = useContent()
 const  { grid } = useResponsive()
 
 const { orgs } = useContent().partners
+
+const { scrollTo } = useSnapScroll()
 </script>
 
 <style>

@@ -13,7 +13,7 @@ useSeoMeta({
   description: page.meta,
 });
 
-const { slides, activity } = useContent();
+const { slides } = useContent();
 
 const { scrollTo } = useSnapScroll()
 
@@ -46,16 +46,20 @@ const { scrollTo } = useSnapScroll()
         
       </section>
       <section id="activiteiten">
-        <ActivityBanner :data="activity" />
+        <Activities />
       </section>
       <section id="ontdek">
         <Articles />
       </section>
-      <section id="leraren"  style="padding-top: 0px">
+      
+      <section id="leraren"  style="padding-bottom: 0px" >
         <LerarenBanner />
       </section>
       <section id="routes">
         <RouteBanner />
+      </section>
+      <section>
+        <Faqs />
       </section>
       <section id="ervaar">
         <InnerContainer class="mb-20 md:mb-32 md:pt-20">

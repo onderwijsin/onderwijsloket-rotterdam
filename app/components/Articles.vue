@@ -1,7 +1,6 @@
 <template>
-  <div v-if="!error" class="w-full pb-4 md:py-20">
-    <InnerContainer from="xl">
-      <div class="mb-8 md:mb-16 lg:mb-24 grid md:grid-cols-4">
+    <InnerContainer v-if="!error" from="xl">
+      <div class="mb-8 md:mb-16  grid md:grid-cols-4">
         <div class="md:col-span-3">
           <Arrow variant="outline" type="chevron" animated  in-view size="md" :amount="3" class="mb-6" />
           <h2 class="font-black sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400">Ontdek het onderwijs</h2>
@@ -19,14 +18,14 @@
       <UCarousel 
         v-slot="{ item }" 
         :items="articles" 
-        class="mb-8 md:mb-24" 
+        class="mb-8 md:mb-12" 
         :ui="{
           container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1',
           item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]' 
         }"
       > 
         <NuxtLink 
-          :to="item.to" 
+          :to="item.url" 
           target="_blank" 
           class="grid w-full transition-all hover:scale-[101%]"
         >
@@ -51,15 +50,13 @@
           </FrameHoverGroup>
         </NuxtLink>
       </UCarousel>
-      <UButton class="mb-24 md:hidden" block color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
+      <UButton class="md:hidden" block color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
           Naar kennisbank
           <template #trailing>
             <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
           </template>
       </UButton>
-      <Faqs />
     </InnerContainer>
-  </div>
 </template>
 
 <script lang="ts" setup>

@@ -123,7 +123,7 @@ export default defineAppConfig({
       }
     },
     buttonGroup: {
-      wrapper: { horizontal: 'flex-wrap' },
+      wrapper: { horizontal: 'flex-wrap gap-y-2' },
       rounded: 'rounded-none',
       shadow: 'shadow-none'
     },

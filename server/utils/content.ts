@@ -11,7 +11,7 @@ import type {
   RawArtikel,
   Artikel
 } from "../types"
-import { addHours } from 'date-fns'
+
 
 // Common Types
 
@@ -75,10 +75,10 @@ function transformActivities(rawData: RawActivity[]): Activity[] {
     }
 
     const startDateTime = includeTime 
-      ? addHours(new Date(startDateString), 1).toISOString() 
+      ? new Date(startDateString).toISOString() 
       : startDateString
     const endDateTime = endDateString 
-      ? addHours(new Date(endDateString), 1).toISOString() 
+      ? new Date(endDateString).toISOString() 
       : null
 
     return {
@@ -94,7 +94,8 @@ function transformActivities(rawData: RawActivity[]): Activity[] {
       startDateTime,
       endDateTime,
       description: transformToHtml(raw.properties.description.rich_text),
-      url: raw.properties.url.url || null
+      url: raw.properties.url.url || null,
+      button_label: getPlainText(raw.properties.button_label.rich_text)
     }
   })
 }

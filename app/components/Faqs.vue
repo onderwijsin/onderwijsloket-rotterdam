@@ -1,4 +1,5 @@
 <template>
+  <InnerContainer from="xl">
   <div class="flex flex-col lg:flex-row lg:gap-16">
     <div class="basis-1/3 shrink-0 lg:py-8">
       <Arrow variant="outline" type="chevron" animated in-view size="md" :amount="3" class="mb-6" />
@@ -44,7 +45,7 @@
             <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
           </template>
         </UButton>
-        <UButton color="gray"  size="lg" variant="soft" @click="scrollTo('advies')">
+        <UButton color="gray"  size="lg" variant="soft" @click="scrollTo('contact')">
           Neem contact op
           <template #trailing>
             <UIcon name="i-heroicons-chat-bubble-left-right-20-solid" class="w-4 h-4 ml-2" />
@@ -55,6 +56,7 @@
     </div>
     
   </div>
+</InnerContainer>
 </template>
 
 <script lang="ts" setup>

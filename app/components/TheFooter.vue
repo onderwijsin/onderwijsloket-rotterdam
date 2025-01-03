@@ -10,7 +10,7 @@
           <p class="text-sm mb-2"><strong class="text-primary-500 dark:text-primary-400 font-black">Onderwijsloket Rotterdam {{ year }}</strong> © Alle rechten voorbehouden </p>
           <p class="text-2xs text-gray-700 dark:text-gray-300">
             In samenwerking met
-            <LogoOnderwijsIn class="w-20 inline-block relative top-[0.175rem] ml-1" />
+            <LogoOnderwijsIn class="w-20 inline-block relative top-1 ml-1" />
           </p>
         </div>
         <div class="flex items-center gap-3">

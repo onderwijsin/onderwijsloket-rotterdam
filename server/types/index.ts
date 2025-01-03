@@ -110,8 +110,8 @@ type SectorSelect = {
 
 export type Activity = {
     id: string
-    createdTime: Date
-    updatedAt: Date
+    createdTime: Date | string
+    updatedAt: Date | string
 
     title: string
     soort: string[]
@@ -126,6 +126,7 @@ export type Activity = {
 
     description: string // as html string
     url: string | null
+    button_label: string
 
     status: Status
 }
