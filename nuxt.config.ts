@@ -48,7 +48,7 @@ export default defineNuxtConfig({
   devtools: { enabled: isDev && useDevtools },
 
   extends: [
-    [`github:onderwijsin/onderwijsloket-layer-core#v0.8.5`, { auth: process.env.GIGET_AUTH, install: true }],
+    [`github:onderwijsin/onderwijsloket-layer-core#v0.8.6`, { auth: process.env.GIGET_AUTH, install: true }],
     // [`github:onderwijsin/onderwijsloket-layer-navigator#v${navigatorLayerVersion}`, { auth: process.env.GIGET_AUTH, install: true }],
   ],
 
