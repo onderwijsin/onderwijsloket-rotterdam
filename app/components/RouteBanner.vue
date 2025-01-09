@@ -3,7 +3,7 @@
     <ArrowHeading>
       Vind <GradientText>de route</GradientText> die bij je past
     </ArrowHeading>
-    <p class="mb-8">Er zijn 1001 (of misschien wel meer) mogelijke manieren om je weg naar het onderwijs te vinden, maar er is er maar één die perfect bij je past.</p>
+    <p class="mb-8">Er zijn talloze manieren om een carrière in het onderwijs te starten, maar welke past het beste bij jou? De routetool helpt je stap voor stap de perfecte route te vinden die aansluit bij jouw ambities en achtergrond.</p>
     <div class="flex flex-wrap gap-y-2">
       <UButton color="primary" variant="solid"  size="lg" to="https://onderwijsloket.com/routes/start" target="_blank">
         {{ routes.btnLabel }}

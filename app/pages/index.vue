@@ -69,7 +69,8 @@ const { scrollTo } = useSnapScroll()
             </span>
             
             <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400">Ervaar het onderwijs</h2>
-            <h3 class="text-3xl md:text-5xl ">Lees, luister en bekijk de verhalen van docenten die je voor gingen</h3>
+            <h3 class="text-3xl md:text-5xl ">Inspiratie uit de klas</h3>
+            <p>Vind alle informatie die je nodig hebt om jouw weg naar het onderwijs te ontdekken. Verken onze kennisbank voor handige artikelen, gebruik de routetool om jouw persoonlijke opleidingsroute te vinden, en krijg antwoorden op veelgestelde vragen over werken in het onderwijs. Jouw nieuwe carrière begint hier!</p>
 
             <span class="absolute -bottom-8 md:-bottom-16 left-[calc(50%-16px)] animate-bounce">
               <Arrow variant="outline" type="triangle" class="rotate-90 " animated size="sm" :amount="2" />
@@ -77,10 +78,26 @@ const { scrollTo } = useSnapScroll()
           </div>
         </InnerContainer>
         
-        <div class="space-y-20 lg:space-y-32">
+        <div class="mb-20 lg:mb-32">
           <Stories />
-          <Partners />
         </div>
+        <InnerContainer id="rotterdam" class="mb-20 md:mb-32 pt-12">
+          <div class="relative text-center py-6 md:py-0">
+            <span class="absolute -top-8 md:-top-16 left-[calc(50%-16px)] animate-bounce">
+              <Arrow variant="outline" type="triangle" class="rotate-90 " animated size="sm" :amount="2" />
+            </span>
+            
+            <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400">Werken in Rotterdam</h2>
+            <h3 class="text-3xl md:text-5xl ">Onderwijs met karakter</h3>
+            <p>Rotterdam biedt een dynamische omgeving vol diversiteit, innovatie en ambitie. Vind jouw plek bij een van de schoolbesturen, ontdek het brede opleidingsaanbod en ervaar waarom werken in Rotterdam zoveel meer is dan alleen lesgeven!</p>
+
+            <span class="absolute -bottom-8 md:-bottom-16 left-[calc(50%-16px)] animate-bounce">
+              <Arrow variant="outline" type="triangle" class="rotate-90 " animated size="sm" :amount="2" />
+            </span>
+          </div>
+          
+        </InnerContainer>
+        <Partners />
       </section>
       <section id="contact">
         <ContactSection />

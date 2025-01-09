@@ -26,7 +26,7 @@
       class="custom-pointer absolute z-50 pointer-events-none"
       :style="{ 
         left: `${x + (showNextPreview ? -45 : 45)}px`, 
-        top: `${y - 40}px` 
+        top: `${y}px` 
       }"
     >
       <div class="flex gap-4 items-center" :class="showNextPreview ? 'flex-row-reverse' : 'flex-row'">
@@ -91,7 +91,7 @@
                   :variant="btn.variant"  
                   :icon="btn.icon"
                   :label="btn.label"
-                  @click="handleLink(btn.to)"
+                  @click="handleLink(btn.to, btn.scrollOffset)"
                 />
               </UButtonGroup>
             </div>
@@ -223,7 +223,7 @@ function getPosClass(index: number, currentIndex: number) {
 
 
 // Mouse tracking for custom pointer
-const { x, y } = useMouse()
+const { elementX: x, elementY: y } = useMouseInElement(swipeTarget)
 
 // Slide title computations
 const prevSlideTitle = computed(() => {
@@ -256,11 +256,12 @@ function handleSlideHoverPreview(isHovering: boolean, direction?: number) {
   }
 }
 
+const { scrollTo } = useSnapScroll()
 
-const handleLink = (val: string) => {
+const handleLink = (val: string, scrollOffset?: number) => {
   if (val.startsWith('#')) {
     const id = val.split('#')[1] as string
-    document.getElementById(id)?.scrollIntoView({behavior: 'smooth'})
+    scrollTo(id, scrollOffset)
     return
   }
 
@@ -327,14 +328,14 @@ const handleLink = (val: string) => {
       aspect-ratio: 1;
       background: radial-gradient(
         circle, 
-        rgba(0, 0, 0, 0.6) 10%, 
+        rgba(0, 0, 0, 0.7) 10%, 
         rgba(0, 0, 0, 0) 70%
       );
       border-radius: 50%;
       transition: opacity 0.3s ease-in;
 
 
-      @apply absolute -bottom-[600px] w-[1200px] -left-[400px] lg:-bottom-[130%] md:w-[150%] md:-left-1/2;
+      @apply absolute -bottom-[600px] w-[1200px] -left-[400px] lg:-bottom-[150%] md:w-[200%] md:-left-3/4;
     }
 
     /* Consolidated current slide styles */

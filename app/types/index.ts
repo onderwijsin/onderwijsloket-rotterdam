@@ -6,6 +6,7 @@ export type Action = {
     color?: ButtonColor
     variant?: ButtonVariant
     icon?: string
+    scrollOffset?: number
 }
   
 export type HeroSlide = {

@@ -14,8 +14,9 @@
           </p>
         </div>
         <div class="flex items-center gap-3">
+          <UButton to="/disclaimer" variant="ghost" color="gray" size="xs">Disclaimer</UButton>
+          <UButton variant="ghost" color="gray" size="xs" @click="showCookieList">Cookies</UButton>
           <UButton to="/colofon" variant="ghost" color="gray" size="xs">Colofon</UButton>
-          <!-- <UButton to="/algemene-voorwaarden" variant="ghost" color="gray" size="xs">Algemene voorwaarden</UButton> -->
         </div>
       </UContainer>
     </div>
@@ -38,6 +39,8 @@ const year = ref(getCurrentYear())
 onMounted(() => {
   year.value = getCurrentYear()
 })
+
+const { showCookieList } = useTracking()
 
 </script>
 

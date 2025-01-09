@@ -27,19 +27,18 @@ export const slides: Array<HeroSlide> = [
     {
         heading: `Kom werken <span class="gradient-text">in het Rotterdamse</span> onderwijs`,
         title: 'Rotterdams onderwijs',
-        description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
+        description: "<p>Maak impact in de klas en bouw mee aan de toekomst van Rotterdam. Het Rotterdamse onderwijs biedt een dynamische werkomgeving vol kansen en mogelijkheden. Ontdek vacatures en routes om leraar te worden en vind de baan die bij jou past.</p>",
         media: 'regios/rotterdam/hero_video_bcgbv5',
         type: 'video',
         actions: [
-            { label: 'Verhalen van leraren', to: '#leraren' },
-            { label: 'Onderwijs010', to: 'https://onderwijs010.nl', color: 'primary', variant: 'soft' },
+            { label: 'Bekijk vacatures', to: '#vacatures', scrollOffset: 60 },
         ]
     },
     
     {
         heading: `<span class="gradient-text">Activiteiten</span> om te ontdekken of het onderwijs bij je past`,
         title: 'Oriënteren',
-        description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
+        description: "<p>Wil jij weten of een loopbaan in het onderwijs iets voor jou is? Bezoek een open dag of meld je aan voor onze informatiebijeenkomst voor zij-instromers. Ontdek alle activiteiten in de regio en zet jouw eerste stap richting het onderwijs.</p>",
         media: 'regios/rotterdam/skyline_ltg10e',
         type: 'video',
         actions: [
@@ -48,12 +47,12 @@ export const slides: Array<HeroSlide> = [
     },
     {
         heading: `Ga jij voor het <span class="gradient-text">PO, VO, SO of MBO</span>?`,
-        title: 'Onderwijssectoren',
-        description: "<p>Atque his tribus generibus honestorum notatis quartum sequitur et in eadem pulchritudine et aptum ex illis tribus, in quo inest ordo et moderatio.</p>",
+        title: 'Vind jouw route',
+        description: "<p>Welke weg past het beste bij jou? De routetool helpt je om jouw persoonlijke opleidingsroute te ontdekken, afgestemd op jouw achtergrond en ambities. Zet de eerste stap naar een toekomst in het onderwijs.</p>",
         media: 'regios/rotterdam/classmates_ausdox',
         type: 'video',
         actions: [
-            { label: 'Lees verder', to: '#ontdek' }
+            { label: 'Vind jouw route', to: '#routes' }
         ]
     },
 ]
@@ -90,32 +89,27 @@ export const routes = {
     }
 }
 
-export const contact = {
-    title: 'Contact, hulp en advies',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Quare attende, quaeso.',
-}
-
-
-
 export const partners = {
     vacancies: {
         icon: 'i-heroicons-building-storefront-20-solid',
-        title: 'Onderwijsvacatures in de regio Rotterdam',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.',
-        btnLabel: 'Naar vacaturebank Onderwijs010',
-        to: 'https://onderwijs010.nl/vacatures/'
+        title: 'Vind jouw plek in het Rotterdamse onderwijs',
+        description: 'Op zoek naar een baan in het onderwijs? Bekijk de nieuwste vacatures voor het basisonderwijs, voortgezet onderwijs en mbo. Met één klik ontdek je alle mogelijkheden en vind je de baan die bij jou past.',
+        actions: [
+            { label: 'Naar vacaturebank Onderwijs010', to: 'https://onderwijs010.nl/vacatures/' }
+        ]
     },
     orgs: {
         icon: 'i-heroicons-building-office-2-20-solid',
-        title: `Leer de 71 onderwijsbesturen kennen`,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.',
-        btnLabel: 'Ontdek de Rotterdamse schoolbesturen',
-        to: 'https://onderwijs010.nl/schoolbesturen/'
+        title: `Ontdek de Rotterdamse schoolbesturen`,
+        description: 'Rotterdam heeft een breed scala aan schoolbesturen met elk een eigen visie en aanpak. Leer meer over de organisaties achter de scholen en ontdek waar jouw toekomst in het onderwijs kan beginnen.',
+        actions: [
+            { label: 'Ontdek de Rotterdamse schoolbesturen', to: 'https://onderwijs010.nl/schoolbesturen/' },
+            { label: 'Bekijk scholenopdekaart.nl', to: 'https://scholenopdekaart.nl/zoeken/basisscholen?zoektermen=rotterdam&weergave=Kaart' },
+        ]
     },
     opleiding: {
         icon: 'i-heroicons-academic-cap-20-solid',
-        title: 'Opleidingsaanbod in de buurt van Rotterdam',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod.',
+        title: 'Vind jouw opleiding in de regio',
     }
 }
 

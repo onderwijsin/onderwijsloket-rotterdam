@@ -116,6 +116,14 @@ const headerItems: Ref<Item[]> = computed(() => [
     variant: 'ghost'
   },
   {
+    id: 'rotterdam',
+    label: 'Werken in Rotterdam',
+    icon: 'i-heroicons-briefcase-16-solid',
+    click: () => isHome.value ? scrollTo('rotterdam') : navigateTo('/#rotterdam'),
+    color: 'gray',
+    variant: 'ghost'
+  },
+  {
     id: 'advies',
     label: 'Hulp en advies',
     icon: 'i-heroicons-chat-bubble-left-right-16-solid',

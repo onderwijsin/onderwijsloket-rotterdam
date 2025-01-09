@@ -4,7 +4,7 @@
     <div class="basis-1/3 shrink-0 lg:py-8">
       <Arrow variant="outline" type="chevron" animated in-view size="md" :amount="3" class="mb-6" />
       <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400 font-black">Veelgestelde vragen over het onderwijs</h2>
-      <p class="mb-8 lg:mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim.</p>
+      <p class="mb-8 lg:mb-12">Heb je een specifieke vraag over werken in het onderwijs? Gebruik de zoekfunctie of kies een onderwerp uit onderstaande lijst om direct de informatie te vinden die je zoekt.</p>
       <UInput v-model="query" size="lg" icon="i-heroicons-magnifying-glass" placeholder="Zoek naar FAQ's" :loading="loading" />
       <p v-if="!!data" class="text-gray-500 text-xs mt-4 px-1">{{ data.nbHits || 0 }} resultaten gevonden</p>
       <div v-if="!!facets.length" class="flex flex-wrap gap-x-1 gap-y-1 mt-6">

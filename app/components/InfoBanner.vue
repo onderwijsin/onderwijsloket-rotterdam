@@ -2,7 +2,7 @@
   <TopBanner
     id="infobanner"
     ref="infobanner"
-    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid enim me prohiberet Epicureum esse."
+    title="Welkom bij het Onderwijsloket Rotterdam! Ontdek de mogelijkheden om te werken in het onderwijs in Rotterdam. Deze website is in ontwikkeling en groeit mee met ons aanbod."
     label="meer info"
     color="secondary"
     :callback="handle"
@@ -30,9 +30,8 @@
         </template>
         
         <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Immo videri fortasse. Recte, inquit, intellegis. Inquit, dasne adolescenti veniam? Quare conare, quaeso. Duo Reges: constructio interrete. Utilitatis causa amicitia est quaesita. Et quod est munus, quod opus sapientiae?</p>
-          <p>Quae diligentissime contra Aristonem dicuntur a Chryippo. Non potes, nisi retexueris illa. Gloriosa ostentatio in constituendo summo bono. Ipse Epicurus fortasse redderet, ut Sextus Peducaeus, Sex.</p>
-          <p>Maximus dolor, inquit, brevis est. Summum ením bonum exposuit vacuitatem doloris; Bork Primum divisit ineleganter; Cum praesertim illa perdiscere ludus esset. Nunc haec primum fortasse audientis servire debemus.</p>
+          <p>Het Onderwijsloket Rotterdam is jouw startpunt voor een carrière in het onderwijs in Rotterdam. Of je nu aan het begin van je loopbaan staat of een overstap naar het onderwijs overweegt, wij helpen je de weg te vinden. Deze website is in ontwikkeling en groeit mee met het aanbod van het Onderwijsloket.</p>
+          <p>Het Onderwijsloket Rotterdam is een initiatief van de Onderwijsregio Rotterdam PO en de Onderwijsregio Rotterdam vo-mbo. In samenwerking met de Gemeente Rotterdam ondersteunen we jou bij jouw stap naar een carrière in het onderwijs.</p>
         </div>
 
         <template #footer>

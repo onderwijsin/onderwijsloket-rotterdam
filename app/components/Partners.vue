@@ -1,6 +1,7 @@
 <template>
   <div class="grid gap-8 md:grid-cols-2">
     <IconCard 
+      id="vacatures"
       :icon="vacancies.icon" 
       color="primary" 
       size="lg"
@@ -18,12 +19,15 @@
       <p>{{ vacancies.description }}</p>
 
       <template #footer>
-        <UButton color="gray" variant="solid" size="lg" :to="vacancies.to" target="_blank">
-            {{ vacancies.btnLabel }}
-            <template #trailing>
-              <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
-            </template>
-        </UButton>
+        <UButtonGroup size="lg">
+          <UButton v-for="btn in vacancies.actions" color="gray" variant="solid" size="lg" :to="btn.to" target="_blank">
+              {{ btn.label }}
+              <template #trailing>
+                <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+              </template>
+          </UButton>
+        </UButtonGroup>
+        
       </template>
     </IconCard>
 
@@ -46,19 +50,12 @@
 
       <template #footer>
         <UButtonGroup size="lg">
-          <UButton color="gray" variant="solid" size="lg" :to="orgs.to">
-            {{ orgs.btnLabel }}
-            <template #trailing>
-              <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
-            </template>
-        </UButton>
-        <UButton color="gray" variant="solid" size="lg" to="https://scholenopdekaart.nl/zoeken/basisscholen?zoektermen=rotterdam&weergave=Kaart" target="_blank">
-            scholenopdekaart.nl
-            <template #trailing>
-              <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
-            </template>
-        </UButton>
-          
+          <UButton v-for="btn in orgs.actions" color="gray" variant="solid" size="lg" :to="btn.to" target="_blank">
+              {{ btn.label }}
+              <template #trailing>
+                <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+              </template>
+          </UButton>
         </UButtonGroup>
         
       </template>
@@ -84,11 +81,11 @@
           <h3 class="mb-0 text-primary-500 dark:text-primary-400">De voordelen van werken in het Rotterdams onderwijs</h3>
 
       </template>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis:</p>
+        <p>Werken in het onderwijs in Rotterdam betekent meer dan een baan; het betekent extra's die jouw werk nóg aantrekkelijker maken. Ontdek wat Rotterdam te bieden heeft:</p>
         <ul class="list-none mb-0 font-bold mt-4">
-          <li><UIcon name="i-heroicons-check-badge-20-solid" class="text-primary-500 dark:text-primary-400 mr-2.5 w-5 h-5 relative top-1" />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-          <li><UIcon name="i-heroicons-check-badge-20-solid" class="text-primary-500 dark:text-primary-400 mr-2.5 w-5 h-5 relative top-1" />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-          <li><UIcon name="i-heroicons-check-badge-20-solid" class="text-primary-500 dark:text-primary-400 mr-2.5 w-5 h-5 relative top-1" />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+          <li><UIcon name="i-heroicons-check-badge-20-solid" class="text-primary-500 dark:text-primary-400 mr-2.5 w-5 h-5 relative top-1" /><strong>Voorrang op huurwoningen</strong>: Rotterdam maakt wonen aantrekkelijker voor professionals en studenten in het onderwijs.</li>
+          <li><UIcon name="i-heroicons-check-badge-20-solid" class="text-primary-500 dark:text-primary-400 mr-2.5 w-5 h-5 relative top-1" /><strong>Rotterdamse Lerarenbeurs</strong>: Ontvang tot €1.500 voor opleidingen en cursussen die jouw groei in het onderwijs ondersteunen.</li>
+          <li><UIcon name="i-heroicons-check-badge-20-solid" class="text-primary-500 dark:text-primary-400 mr-2.5 w-5 h-5 relative top-1" /><strong>Gratis Rotterdampas</strong>: Geniet van gratis toegang of kortingen op talloze activiteiten in en om de stad – als waardering voor jouw bijdrage aan het onderwijs in Rotterdam.</li>
         </ul>
       
       <template #footer>
@@ -118,7 +115,7 @@
       </template>
 
         <div class="mb-8">
-          <span>Er zijn binnen </span>
+          <span>Binnen een straal van </span>
           <USelectMenu
             class="inline-block mx-1"
             v-model="distance"
@@ -132,7 +129,7 @@
             <span>{{  distance + ' km' }}</span>
           </template>
           </USelectMenu>
-        <span> van Rotterdam <strong>{{ data?.hits.length }} opleidingen</strong> waarmee je je {{ type }} kunt behalen.</span>
+        <span> rondom Rotterdam vind je <strong>{{ data?.hits.length }} {{ data?.hits.length === 1 ? 'opleiding' : 'opleidingen' }}</strong> waarmee je je {{ type }} kunt behalen. Filter op het type bevoegdheid dat bij jouw ambities past en ontdek de mogelijkheden dicht bij huis.</span>
         </div>
 
         <div class="flex flex-wrap gap-x-4 gap-y-2 mt-6 items-center">
@@ -175,6 +172,7 @@
             >
             <NuxtLink 
               :to="instelling.url" 
+              target="_blank"
               tabindex="-1"
             >
               <UAvatar 
@@ -201,7 +199,7 @@
         </div>
 
         
-        <p class="mt-6"><strong>Ben je op zoek naar een MBO opleiding</strong> waarmee je op school kunt werken? Kijk dan eens op <NuxtLink to="https://www.kiesmbo.nl/zoekresultaten?tag=pedagogiek" target="_blank" class="font-bold">kiesmbo.nl</NuxtLink></p>
+        <p class="mt-6"><strong>Ben je op zoek naar een mbo-opleiding</strong> waarmee je aan de slag kunt in het onderwijs? Neem dan een kijkje op <NuxtLink to="https://www.kiesmbo.nl/zoekresultaten?tag=pedagogiek" target="_blank" class="font-bold">kiesmbo.nl</NuxtLink></p>
 
     </IconCard>
   </div>

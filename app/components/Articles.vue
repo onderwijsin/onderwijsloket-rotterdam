@@ -4,7 +4,7 @@
         <div class="md:col-span-3">
           <Arrow variant="outline" type="chevron" animated  in-view size="md" :amount="3" class="mb-6" />
           <h2 class="font-black sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400">Ontdek het onderwijs</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas. Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Quare attende, quaeso.</p>
+          <p>Vind alle informatie die je nodig hebt om jouw weg naar het onderwijs te ontdekken. Verken onze kennisbank voor handige artikelen, gebruik de routetool om jouw persoonlijke opleidingsroute te vinden, en krijg antwoorden op veelgestelde vragen over werken in het onderwijs. Jouw nieuwe carrière begint hier!</p>
         </div>
         <div class="hidden md:flex col-span-1 flex-col items-end justify-end">
           <UButton color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">

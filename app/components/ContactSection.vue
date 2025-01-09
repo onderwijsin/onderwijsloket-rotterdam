@@ -5,8 +5,9 @@
       <div class="grid gap-8 md:grid-cols-4">
         <div class="md:col-span-3">
           <Arrow variant="outline" type="chevron" animated in-view size="md" :amount="3" class="mb-6" />
-          <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400 font-black">{{ contact.title }}</h2>
-          <p>{{ contact.description }}</p>
+          <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400 font-black">Contact en advies</h2>
+          <h3 class="text-3xl md:text-5xl font-black">Aan de slag met <GradientText from="secondary" to="secondary">jouw onderwijsdroom</GradientText></h3>
+          <p>Ben je geïnspireerd en klaar om de volgende stap te zetten? Of heb je nog vragen over jouw route naar het onderwijs? Wij helpen je graag verder. Neem rechtstreeks contact op met een schoolbestuur, lerarenopleiding of plan een adviesgesprek in het landelijke Onderwijsloket voor onafhankelijk advies.</p>
         </div>
         <div class="flex col-span-1 flex-col items-start md:items-end md:justify-end">
          
@@ -30,13 +31,16 @@
           <ClientOnly>
             <Arrow :animated="grid.md" fill="secondary" class="inline-flex mr-2" :size="18" />
           </ClientOnly>
-          Zoek contact met <GradientText from="secondary" to="secondary">een lerarenopleiding</GradientText>
+          Neem contact op met <GradientText from="secondary" to="secondary">een schoolbestuur</GradientText>
         </h3>
       </template>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas.</p>
+      <p>Benieuwd naar jouw kansen in het Rotterdamse onderwijs? De schoolbesturen in Rotterdam vertellen je graag meer over werkgelegenheid, hun visie en hoe jij onderdeel kunt worden van hun team.</p>
       <template #footer>
-        <UButton color="secondary" variant="solid" size="lg" @click="scrollTo('opleidingen', 80)">
-            Bekijk de lerarenopleidingen
+        <UButton color="secondary" variant="solid" size="lg" to="https://onderwijs010.nl/schoolbesturen" target="_blank">
+            Naar schoolbesturen
+            <template #trailing>
+              <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+            </template>
         </UButton>
       </template>
     </UCard>
@@ -54,19 +58,20 @@
           <ClientOnly>
             <Arrow :animated="grid.md" fill="secondary" class="inline-flex mr-2" :size="18" />
           </ClientOnly>
-          Zoek contact met <GradientText from="secondary" to="secondary">een schoolbestuur</GradientText>
+          Neem contact op met <GradientText from="secondary" to="secondary">een lerarenopleiding</GradientText>
         </h3>
       </template>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bork Nullum inveniri verbum potest quod magis idem declaret Latine, quod Graece, quam declarat voluptas.</p>
+      <p>Heb je vragen over de opleiding die bij jou past of wil je advies op maat? De lerarenopleidingen in Rotterdam staan voor je klaar om je verder te helpen met praktische informatie en persoonlijke begeleiding.</p>
       <template #footer>
-        <UButton color="secondary" variant="solid" size="lg" :to="orgs.to">
-            {{ orgs.btnLabel }}
+        <UButton color="secondary" variant="solid" size="lg" to="https://www.onderwijsloket.com/navigator/?collection=10&sort=asc&orderby=title&limit=10" target="_blank">
+            Naar lerarenopleidingen
             <template #trailing>
               <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
             </template>
         </UButton>
       </template>
     </UCard>
+    
   </InnerContainer>
 
   <div id="advies" class="mb-12 md:mb-20">
@@ -75,7 +80,7 @@
 </template>
 
 <script lang="ts" setup>
-const { contact } = useContent()
+
 
 const  { grid } = useResponsive()
 
