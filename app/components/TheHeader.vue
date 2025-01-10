@@ -125,7 +125,7 @@ const headerItems: Ref<Item[]> = computed(() => [
   },
   {
     id: 'advies',
-    label: 'Hulp en advies',
+    label: 'Contact en advies',
     icon: 'i-heroicons-chat-bubble-left-right-16-solid',
     click: () => isHome.value ? scrollTo('contact') : navigateTo('/#contact'),
     color: 'primary',

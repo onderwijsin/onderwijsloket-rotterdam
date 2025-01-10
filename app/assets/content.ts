@@ -81,11 +81,11 @@ export const advies = {
 }
 
 export const routes = {
-    btnLabel: 'naar routetool',
+    btnLabel: 'Naar routetool',
     bannerImage: 'regios/rotterdam/routes_uxrtg6',
     bannerImageAlt: 'Routes naar het onderwijs',
     article: {
-        title: 'routes naar het leraarschap',
+        title: 'Routes naar het leraarschap',
         url: 'https://www.onderwijsloket.com/kennisbank/routes-naar-het-leraarschap/'
     }
 }
