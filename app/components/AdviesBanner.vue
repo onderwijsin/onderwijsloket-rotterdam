@@ -3,7 +3,11 @@
     <ArrowHeading>
         Een <GradientText>onafhankelijk advies</GradientText> over jouw stap naar het onderwijs
       </ArrowHeading>
-      <p class="mb-8">De adviseurs van het landelijke <LogoOnderwijsloket class="w-36 ml-2 mr-1 relative top-[3px] inline-block" to="https://onderwijsloket.com" /> denken graag mee over jouw mogelijkheden in het onderwijs en de route daar naartoe.</p>
+      <p class="mb-8">
+        <span class="mr-2">De adviseurs van het landelijke</span> 
+        <LogoOnderwijsloket class="w-36 mr-1 relative top-1 inline-block" to="https://onderwijsloket.com" /> 
+        <span>denken graag mee over jouw mogelijkheden in het onderwijs en de route daar naartoe.</span>
+      </p>
       <div class="flex flex-wrap gap-y-2">
         <SavvyCalEmbed :label="advies.btnLabel" />
         <UButton color="white" :label="isDyslexic ? 'Wat is een advies?' : 'Wat kan je van een advies verwachten?'" icon="i-heroicons-question-mark-circle-20-solid" size="md" @click="showModal = true" />

@@ -66,7 +66,7 @@
         container: 'gap-3 sm:gap-6 py-5 -my-5',
         item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]',
         arrows: {
-          wrapper: 'mt-4'
+          wrapper: 'hidden sm:flex mt-4'
         }
       }"
     > 

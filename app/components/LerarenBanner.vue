@@ -27,7 +27,6 @@
             </template>
           </UButton>
         </UButtonGroup>
-        {{ page }}
       </figure>
     </div>
     

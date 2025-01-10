@@ -307,6 +307,7 @@ const handleLink = (val: string, scrollOffset?: number) => {
       from { width: 0% }
       to {
         width: calc(100% - 44px);
+        
         @media screen and (min-width: 768px) {
           width: calc(100% - var(--skew))
         }

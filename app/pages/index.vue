@@ -70,7 +70,7 @@ const { scrollTo } = useSnapScroll()
             
             <h2 class="sm:text-lg uppercase text-primary-500 dark:text-primary-400">Ervaar het onderwijs</h2>
             <h3 class="text-3xl md:text-5xl ">Inspiratie uit de klas</h3>
-            <p>Vind alle informatie die je nodig hebt om jouw weg naar het onderwijs te ontdekken. Verken onze kennisbank voor handige artikelen, gebruik de routetool om jouw persoonlijke opleidingsroute te vinden, en krijg antwoorden op veelgestelde vragen over werken in het onderwijs. Jouw nieuwe carrière begint hier!</p>
+            <p>Laat je inspireren door de verhalen van mensen die al eerder voor het onderwijs kozen. Ontdek hun ervaringen, uitdagingen en hoogtepunten en krijg een uniek kijkje in het leven van een leraar. Misschien wordt dit ook wel jouw volgende stap!</p>
 
             <span class="absolute -bottom-8 md:-bottom-16 left-[calc(50%-16px)] animate-bounce">
               <Arrow variant="outline" type="triangle" class="rotate-90 " animated size="sm" :amount="2" />

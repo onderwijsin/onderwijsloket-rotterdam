@@ -115,7 +115,7 @@
       }"
     >
       <template #header>
-        <h3 class="mb-0 mt-3 md:mt-0">{{ opleiding.title }}</h3>
+        <h3 class="mb-0">{{ opleiding.title }}</h3>
       </template>
 
         <div class="mb-8">

@@ -23,7 +23,7 @@
           container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1 w-[calc(100%+0.25rem)]',
           item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]',
           arrows: {
-            wrapper: 'mt-4'
+            wrapper: 'hidden sm:flex mt-4'
           }
         }"
       > 
