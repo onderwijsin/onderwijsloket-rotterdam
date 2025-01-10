@@ -11,6 +11,7 @@
         body: { padding: 'py-6 md:px-8 md:py-8'},
         footer: { padding: 'pb-6 md:px-8 md:pb-8'},
       }"
+      heading-mode="wrap"
     >
       <template #header>
         <h3 class="mb-0">{{ vacancies.title }}</h3>
@@ -36,6 +37,7 @@
       color="primary" 
       size="lg"
       use-ring
+      heading-mode="wrap"
       :ui="{
         header: { padding: 'pt-6 md:px-8 md:pt-8'},
         body: { padding: 'py-6 md:px-8 md:py-8'},
@@ -43,7 +45,7 @@
       }"
     >
       <template #header>
-        <h3 class="mb-0 mt-3 md:mt-0">{{ orgs.title }}</h3>
+        <h3 class="mb-0">{{ orgs.title }}</h3>
       </template>
 
       <p>{{ orgs.description }}</p>
@@ -63,6 +65,7 @@
 
     <UCard 
         class="bg-primary-50 dark:bg-primary-950/20"
+        heading-mode="wrap"
         :ui="{
           header: {
             padding: 'py-5 px-4 sm:px-4 pb-0 pt-6 md:px-8 md:pt-8'
@@ -104,6 +107,7 @@
       color="primary" 
       size="lg"
       use-ring
+      heading-mode="wrap"
       :ui="{
         header: { padding: 'pt-6 md:px-8 md:pt-8'},
         body: { padding: 'py-6 md:px-8 md:py-8'},

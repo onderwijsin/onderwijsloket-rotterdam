@@ -2,7 +2,7 @@
   <TopBanner
     id="infobanner"
     ref="infobanner"
-    title="Welkom bij het Onderwijsloket Rotterdam! Ontdek de mogelijkheden om te werken in het onderwijs in Rotterdam. Deze website is in ontwikkeling en groeit mee met ons aanbod."
+    :title="title"
     label="meer info"
     color="secondary"
     :callback="handle"
@@ -62,6 +62,12 @@ const handleDismiss = () => {
 }
 
 const { grid } = useResponsive()
+
+
+const title = computed(() => {
+  if (grid.sm) return 'Welkom bij het Onderwijsloket Rotterdam! Ontdek de mogelijkheden om te werken in het onderwijs in Rotterdam. Deze website is in ontwikkeling en groeit mee met ons aanbod.'
+  return 'Deze website is in ontwikkeling en groeit mee met ons aanbod.'
+})
 </script>
 
 <style>

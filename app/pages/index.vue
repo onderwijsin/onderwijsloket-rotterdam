@@ -2,7 +2,7 @@
 
 definePageMeta({
   name: 'index',
-  layout: 'site',
+  layout: 'base',
 });
 
 
@@ -21,7 +21,6 @@ const { scrollTo } = useSnapScroll()
 </script>
 
 <template>
-  <InfoBanner />
   <div class="fluid relative z-10">
     <UContainer>
       <section style="padding-top: 0px">
@@ -48,13 +47,14 @@ const { scrollTo } = useSnapScroll()
       <section id="activiteiten">
         <Activities />
       </section>
+      <section id="leraren"  >
+        <LerarenBanner />
+      </section>
       <section id="ontdek">
         <Articles />
       </section>
       
-      <section id="leraren"  style="padding-bottom: 0px" >
-        <LerarenBanner />
-      </section>
+      
       <section id="routes">
         <RouteBanner />
       </section>

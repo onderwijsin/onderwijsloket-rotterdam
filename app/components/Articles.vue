@@ -16,14 +16,18 @@
         </div>
       </div>
       <UCarousel 
-        v-slot="{ item }" 
         :items="articles" 
+        arrows
         class="mb-8 md:mb-12" 
         :ui="{
-          container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1',
-          item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]' 
+          container: 'gap-3 sm:gap-6 py-5 -my-5 px-1 -mx-1 w-[calc(100%+0.25rem)]',
+          item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]',
+          arrows: {
+            wrapper: 'mt-4'
+          }
         }"
       > 
+      <template #default="{ item, index }">
         <NuxtLink 
           :to="item.url" 
           target="_blank" 
@@ -49,6 +53,20 @@
           </UCard>
           </FrameHoverGroup>
         </NuxtLink>
+      </template>
+        
+
+        <template #prev="{ onClick, disabled }">
+          <UButton :class="disabled ? 'opacity-0 cursor-default' : 'opacity-100'" class="transition-opacity" size="lg" square @click="onClick">
+            <Arrow size="sm" fill="white" class="rotate-180" />
+          </UButton>
+        </template>
+
+        <template #next="{ onClick, disabled }">
+          <UButton :class="disabled ? 'opacity-0 cursor-default' : 'opacity-100'" class="transition-opacity" size="lg" square @click="onClick">
+            <Arrow size="sm" fill="white" />
+          </UButton>
+        </template>
       </UCarousel>
       <UButton class="md:hidden" block color="gray" variant="solid" size="lg" to="https://onderwijsloket.com/kennisbank/" target="_blank">
           Naar kennisbank

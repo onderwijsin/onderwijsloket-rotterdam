@@ -26,17 +26,17 @@ export default defineNuxtConfig({
     '/not-supported/': { 
       ssr: true, 
       prerender: true, 
-      // index: false,
+      robots: false,
+      sitemap: false
     },
   },
 
   $production: {
     routeRules: {
-      '/': { ssr: true, prerender: false, swr: process.env.NUXT_HUB_ENV === 'preview' ? 0 : 60 * 60 }, 
-      '/**': { ssr: true, prerender: false, cache: false, swr: false }, 
-      '/elementen': { ssr: true, prerender: false, swr: process.env.NUXT_HUB_ENV === 'preview' ? 0 : 60 * 60 }, 
-      '/colofon': { ssr: true, prerender: false, swr: process.env.NUXT_HUB_ENV === 'preview' ? 0 : 60 * 60 }, 
-      '/api/**': { cache: false }, 
+      '/': { ssr: true, prerender: false, swr: process.env.NUXT_HUB_ENV === 'preview' ? 0 : 60 * 60, sitemap: { changefreq: 'monthly', priority: 1.0 } }, 
+      '/elementen': { ssr: true, prerender: false, swr: process.env.NUXT_HUB_ENV === 'preview' ? 0 : 60 * 60, robots: false, sitemap: false }, 
+      '/colofon': { ssr: true, prerender: false, swr: process.env.NUXT_HUB_ENV === 'preview' ? 0 : 60 * 60, sitemap: { changefreq: 'yearly', priority: 0.3 }  }, 
+      '/disclaimer': { ssr: true, prerender: false, swr: process.env.NUXT_HUB_ENV === 'preview' ? 0 : 60 * 60, sitemap: { changefreq: 'yearly', priority: 0.3 }  }, 
     }
   },
 
@@ -48,8 +48,7 @@ export default defineNuxtConfig({
   devtools: { enabled: isDev && useDevtools },
 
   extends: [
-    [`github:onderwijsin/onderwijsloket-layer-core#v0.8.6`, { auth: process.env.GIGET_AUTH, install: true }],
-    // [`github:onderwijsin/onderwijsloket-layer-navigator#v${navigatorLayerVersion}`, { auth: process.env.GIGET_AUTH, install: true }],
+    [`github:onderwijsin/onderwijsloket-layer-core#v0.8.8`, { auth: process.env.GIGET_AUTH, install: true }],
   ],
 
   nitro: {
@@ -152,58 +151,35 @@ export default defineNuxtConfig({
   seo: { // seo utils
     enabled: true
   },
-  schemaOrg: {
-    enabled: true
-  },
   linkChecker: {
     enabled: true
   },
 
 
-  // schemaOrg: {
-  //   identity: {
-  //     type: 'Organization',
-  //     name: 'Stichting Onderwijs in',
-  //     url: 'https://onderwijs.in',
-  //     logo: "https://res.cloudinary.com/onderwijsin/image/upload/w_600,c_scale/brand/OnderwijsIn_VolledigeLogo_Oranje_ljapwt.png",
-  //     sameAs: [
-  //       "https://www.linkedin.com/company/onderwijs-in",
-  //   ],
-  //   email: 'hallo@onderwijs.in',
-  //   contactPoints: [
-  //       {
-  //         "telephone" : "(031) 824 01 04",
-  //         "contactType" : "Algemene vragen"
-  //       },
-  //       {
-  //         "email" : "hallo@onderwijs.in",
-  //         "contactType" : "Algemene vragen"
-  //       }
-  //   ],
-  //   keywords: ["Onderwijs", "Traineeship", "Voortgezet onderwijs", "Basisonderwijs", "Onderwijsloket", "Klatreis", "Werving", "Lerarentekort", "Geschiktheidsonderszoek", "Adviescentrum", "Informatiecentrum"],
-  //   address: {
-  //       addressLocality: "Ede",
-  //       addressRegion: "Gelderland",
-  //       postalCode: "6717HK",
-  //       streetAddress: "Johannes Bosboomlaan 50",
-  //       addressCountry: 'NL',
-  //   },
-  //   numberOfEmployees: 16,
-  //   nonprofitStatus: 'NonprofitSBBI',
-  //   subOrganization: [
-  //     {
-  //       type: 'Organization',
-  //       name: 'Trainees in onderwijs',
-  //       url: 'https://traineesinonderwijs.nl',
-  //       logo: "https://res.cloudinary.com/onderwijsin/image/upload/w_600,c_scale/brand/logo_traineesindonderwijs_f2kwvx_t2wg0f.png",
-  //     },
-  //     {
-  //       type: 'Organization',
-  //       name: 'Onderwijsloket',
-  //       url: 'https://onderwijsloket.com',
-  //       logo: "https://res.cloudinary.com/onderwijsin/image/upload/w_600,c_scale/brand/logo_onderwijsloket_by0ejs.png",
-  //     }
-  //   ]
-  //   }
-  // },
+  schemaOrg: {
+    enabled: true,
+    identity: {
+      type: 'Organization',
+      name: 'Onderwijsloket Rotterdam',
+      url: 'https://onderwijsloketrotterdam.nl',
+      logo: "https://res.cloudinary.com/onderwijsin/image/upload/w_600,c_scale/regios/rotterdam/logo_onderwijsloketrotterdam_fill_aikiip.png",
+      sameAs: [
+        "https://www.linkedin.com/company/onderwijs-in",
+      ],
+    email: 'info@onderwijsloketrotterdam.nl',
+    contactPoints: [
+        
+        {
+          "email" : "info@onderwijsloketrotterdam.nl",
+          "contactType" : "Algemene vragen"
+        }
+    ],
+    keywords: ["Onderwijs", "Rotterdam", "Voortgezet onderwijs", "Basisonderwijs", "Onderwijsloket", "Speciaal onderwijs", "MBO", "Lerarentekort", "Middelbaar beroepsonderwijs"],
+    address: {
+        addressLocality: "Rotterdam",
+        addressRegion: "Zuid-Holland",
+        addressCountry: 'NL',
+    },
+    }
+  }
 })

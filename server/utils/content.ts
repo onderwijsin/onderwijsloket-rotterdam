@@ -95,7 +95,9 @@ function transformActivities(rawData: RawActivity[]): Activity[] {
       endDateTime,
       description: transformToHtml(raw.properties.description.rich_text),
       url: raw.properties.url.url || null,
-      button_label: getPlainText(raw.properties.button_label.rich_text)
+      button_label: getPlainText(raw.properties.button_label.rich_text),
+      sectoren: getMultiSelect(raw.properties.sectoren) as Sector[],
+      organizer: getPlainText(raw.properties.organizer.rich_text)
     }
   })
 }

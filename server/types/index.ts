@@ -98,6 +98,8 @@ type FileField = {
   files: any[]
 }
 
+export type Sector = 'basisschool' | 'middelbare school' | 'speciaal onderwijs' | 'mbo'
+
 type SectorSelect = {
   id: string
   type: 'multi_select'
@@ -108,28 +110,6 @@ type SectorSelect = {
   }>
 }
 
-export type Activity = {
-    id: string
-    createdTime: Date | string
-    updatedAt: Date | string
-
-    title: string
-    soort: string[]
-    type: 'offline' | 'online' | null
-    uitgelicht: boolean
-
-    kosten: number
-
-    includeTime: boolean
-    startDateTime: string
-    endDateTime: string | null
-
-    description: string // as html string
-    url: string | null
-    button_label: string
-
-    status: Status
-}
 
 type BaseRawRecord<T> = {
     object: string;
@@ -168,11 +148,36 @@ export type RawActivity = BaseRawRecord<{
   url: UrlField;
   kosten: NumberField;
   title: Title;
+  sectoren: SectorSelect
+  organizer: RichText
 }>
 
 
+export type Activity = {
+  id: string
+  createdTime: Date | string
+  updatedAt: Date | string
 
-export type Sector = 'basisschool' | 'middelbare school' | 'speciaal onderwijs' | 'mbo'
+  title: string
+  soort: string[]
+  type: 'offline' | 'online' | null
+  uitgelicht: boolean
+
+  kosten: number
+  sectoren: Sector[]
+
+  includeTime: boolean
+  startDateTime: string
+  endDateTime: string | null
+
+  description: string // as html string
+  url: string | null
+  button_label: string
+
+  status: Status
+  organizer: string | null
+}
+
 
 export type Verhaal = {
   id: string

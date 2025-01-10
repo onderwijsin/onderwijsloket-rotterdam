@@ -27,7 +27,7 @@
             </template>
           </UButton>
         </UButtonGroup>
-        
+        {{ page }}
       </figure>
     </div>
     
@@ -36,14 +36,18 @@
     <template #media>
       <UCarousel 
         ref="carousel"
-        v-slot="{ item }" 
+        v-slot="{ item, index }" 
         :items="leraren" 
-        :ui="{ item: 'basis-full' }" 
+        :ui="{ item: 'basis-full relative' }" 
         class="overflow-hidden h-full grid md:min-h-[387px]" 
         indicators
       >
       
         <NuxtImg :src="item.imagePublicId" width="360" height="240" fit="fill" :modifiers="{g: 'faces'}"  loading="lazy" class="w-full h-full object-cover dark:opacity-80" draggable="false" />
+        <div 
+          v-if="page === index" 
+          class="absolute bottom-0 bg-gradient-to-r from-primary-200 to-primary-400 h-1 progress z-20" 
+        />
       </UCarousel>
     </template>
   </ImageBanner>
@@ -64,8 +68,42 @@ const currentItem = computed(() => leraren.value?.[currentSlideDebounced.value -
 
 const { getSectorColor } = useContent()
 
+const page = computed(() => carousel.value?.page - 1 || 0)
+
+const { init, exit } = useSlider(carousel)
+const slideInterval = 10000
+
+
+onMounted(() => {
+  init(slideInterval)
+});
+onBeforeUnmount(() => {
+  exit()
+})
+
+// This is needed to keep progress slider in sync with the carousel
+watch(page, () => {
+  exit()
+  init(slideInterval)
+})
+
+
+const animationDuration = slideInterval / 1000 + 's'
+
 </script>
 
-<style>
+<style lang="postcss" scoped>
+.progress {
+  width:100%;
+  animation-duration: v-bind(animationDuration);
+  animation-timing-function: linear;
+  animation-name: animate-width;
+}
 
+@keyframes animate-width {
+      from { width: 0% }
+      to {
+        width: 100%;
+      }
+    }
 </style>

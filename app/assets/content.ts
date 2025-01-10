@@ -45,8 +45,9 @@ export const slides: Array<HeroSlide> = [
             { label: 'Bekijk agenda', to: '#activiteiten' }
         ]
     },
+    
     {
-        heading: `Ga jij voor het <span class="gradient-text">PO, VO, SO of MBO</span>?`,
+        heading: `Vind jouw <span class="gradient-text">ideale route</span> naar het onderwijs`,
         title: 'Vind jouw route',
         description: "<p>Welke weg past het beste bij jou? De routetool helpt je om jouw persoonlijke opleidingsroute te ontdekken, afgestemd op jouw achtergrond en ambities. Zet de eerste stap naar een toekomst in het onderwijs.</p>",
         media: 'regios/rotterdam/classmates_ausdox',

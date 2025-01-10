@@ -1,6 +1,6 @@
 <template>
-  <NuxtLayout name="site">
-      <InfoBanner />
+  <NuxtLayout name="base">
+      
       <div class="fluid relative z-10">
         <UContainer>
           <div class="relative h-[280px] md:h-[400px]">

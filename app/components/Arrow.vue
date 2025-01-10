@@ -18,7 +18,7 @@ const props = withDefaults(
     amount?: number, 
     animated?: boolean 
     inView?: boolean 
-    fill?: 'primary' | 'secondary' | 'tertiary' | 'gray'
+    fill?: 'primary' | 'secondary' | 'tertiary' | 'gray' | 'white'
     size?: 'sm' | 'md' | 'base' | 'lg' | 'xl' | number
     gap?: number
     type?: 'arrow' | 'chevron' | 'triangle'
