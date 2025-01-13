@@ -168,6 +168,8 @@ const createNotionFilters = (additionalFilters: any[] = []) => ({
   }
 })
 
+const createPageSize = (amount: number) => ({ page_size: amount })
+
 const cacheConfig = {
   maxAge: process.env.MODE === 'dev' ? 1 : 60 * 60 * 12,
   staleMaxAge: process.env.MODE === 'dev' ? 0 : 60 * 60 * 24 * 3
@@ -183,6 +185,7 @@ export const getActivities = defineCachedFunction(async (amount = 8) => {
         on_or_after: today
       }
     }]),
+    ...createPageSize(amount),
     sorts: [
       { property: "uitgelicht", direction: "descending" },
       { property: "event_date", direction: "ascending" }
@@ -199,6 +202,7 @@ export const getActivities = defineCachedFunction(async (amount = 8) => {
 export const getVerhalen = defineCachedFunction(async (amount = 8) => {
   const payload = {
     ...createNotionFilters(),
+    ...createPageSize(amount),
     sorts: [{ property: "sorting_priority", direction: "ascending" }]
   }
 
@@ -212,6 +216,7 @@ export const getVerhalen = defineCachedFunction(async (amount = 8) => {
 export const getLeraren = defineCachedFunction(async (amount = 5) => {
   const payload = {
     ...createNotionFilters(),
+    ...createPageSize(amount),
     sorts: [{ property: "sorting_priority", direction: "ascending" }]
   }
 
@@ -226,6 +231,7 @@ export const getLeraren = defineCachedFunction(async (amount = 5) => {
 export const getArtikelen = defineCachedFunction(async (amount = 8) => {
   const payload = {
     ...createNotionFilters(),
+    ...createPageSize(amount),
     sorts: [{ property: "sorting_priority", direction: "ascending" }]
   }
 

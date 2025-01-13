@@ -100,7 +100,7 @@
                     >
                       <span>{{ badge }}</span>
                     </UBadge>
-                    <UBadge v-for="bevoegdheid in item.bevoegdheden" size="lg" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" />
+                    <UBadge v-for="bevoegdheid in item.bevoegdheden" size="xs" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" />
                     <UBadge v-if="!!item.organizer" size="xs" variant="soft" color="gray">
                       <UIcon name="i-heroicons-users-20-solid" class="w-4 h-4 mr-0.5"/>
                       <span>{{ item.organizer }}</span>
