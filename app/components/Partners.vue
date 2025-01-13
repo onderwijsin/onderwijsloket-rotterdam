@@ -298,7 +298,10 @@ const instellingenForOpleidingen = computed(() => {
 const handleInstellingNav = (url?: string) => {
   if (!url) return
   navigateTo(url, {
-    external: true
+    external: true,
+    open: {
+      target: "_blank"
+    }
   })
 }
 
