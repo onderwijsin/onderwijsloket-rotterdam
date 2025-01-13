@@ -172,7 +172,7 @@ export type Activity = {
   startDateTime: string
   endDateTime: string | null
 
-  description: string // as html string
+  description?: string | null // as html string
   url: string | null
   button_label: string
 

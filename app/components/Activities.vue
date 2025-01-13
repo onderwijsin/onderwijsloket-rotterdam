@@ -37,7 +37,7 @@
           </BadgeGroup>
         </div>
         <div class="flex flex-col items-start gap-8">
-            <p v-html="primary.description"></p>
+            <p v-if="!!primary.description" v-html="primary.description"></p>
             <div class="flex flex-row flex-wrap gap-y-2">
               <UButton size="lg" color="primary" variant="solid"  :to="primary.url || undefined" target="_blank">
               {{ primary.button_label || 'Meer informatie' }}
