@@ -29,7 +29,6 @@ export default defineNuxtConfig({
       robots: false,
       sitemap: false
     },
-    '/': { ssr: true, prerender: false, swr: 60 }, 
   },
 
   $production: {
@@ -108,6 +107,10 @@ export default defineNuxtConfig({
     indexable: isProd,
     notion: {
       token: process.env.NOTION_TOKEN,
+    },
+
+    cache: {
+      invalidationToken: process.env.CACHE_INVALIDATION_TOKEN
     },
     
     // Keys within public are also exposed client-side

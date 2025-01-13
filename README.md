@@ -79,6 +79,9 @@ MASKABLE_ICON="regios/rotterdam/maskable_2x_xakodk"
 
 NOTION_TOKEN=<string>
 
+# Token to authorize requests that invalidate existing cache
+CACHE_INVALIDATION_TOKEN=<string>
+
 ```
 
 If you are in need of access tokens, or have any questions about auth tokens listed above, please contact us at [hallo@onderwijs.in](mailto:hallo@onderwijs.in)

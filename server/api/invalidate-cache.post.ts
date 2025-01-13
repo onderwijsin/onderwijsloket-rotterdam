@@ -11,6 +11,19 @@ const keys = [
 ]
 
 export default defineEventHandler(async (event) => {
+
+  const bearer = getHeader(event, 'authorization')
+  const bearerToken = bearer && bearer.split(' ')[1]
+  
+
+  if (!bearerToken || bearerToken !== useRuntimeConfig().cache.invalidationToken) { 
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Unauthorized',
+      message: 'Invalid token'
+    })
+  }
+  
   const cache = await useStorage('cache').getKeys()
 
   const keysToDelete = cache.filter(key => {
