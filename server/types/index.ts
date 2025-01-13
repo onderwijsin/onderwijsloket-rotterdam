@@ -146,9 +146,10 @@ export type RawActivity = BaseRawRecord<{
   uitgelicht: Checkbox;
   description: RichText;
   url: UrlField;
-  kosten: NumberField;
+  // kosten: NumberField;
   title: Title;
   sectoren: SectorSelect
+  bevoegdheden: MultiSelect
   organizer: RichText
 }>
 
@@ -163,8 +164,9 @@ export type Activity = {
   type: 'offline' | 'online' | null
   uitgelicht: boolean
 
-  kosten: number
+  // kosten: number
   sectoren: Sector[]
+  bevoegdheden: string[]
 
   includeTime: boolean
   startDateTime: string

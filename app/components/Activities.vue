@@ -22,20 +22,13 @@
               <time :datetime="primary.startDateTime">{{ getFullDateTimeRange(primary) }}</time>
             </UBadge>
             <UBadge 
-              variant="soft"
-              size="lg"
-            >
-              <UIcon name="i-heroicons-currency-euro-20-solid" class="w-4 h-4 mr-0.5"/>
-              <span>{{ primary.kosten === 0 ? 'gratis' : primary.kosten }}</span>
-            </UBadge>
-            <UBadge 
               v-for="badge in primary.soort" 
               variant="soft"
               size="lg"
             >
               <span>{{ badge }}</span>
             </UBadge>
-            <UBadge v-for="sector in primary.sectoren" size="lg" variant="soft" :label="sector" class="whitespace-nowrap" :color="getSectorColor(sector)" />
+            <UBadge v-for="bevoegdheid in primary.bevoegdheden" size="lg" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" />
             <UBadge v-if="!!primary.organizer" size="lg" variant="soft" color="gray">
               <UIcon name="i-heroicons-users-20-solid" class="w-4 h-4 mr-0.5"/>
               <span>{{ primary.organizer }}</span>
@@ -63,7 +56,7 @@
       :items="activities" 
       arrows
       :ui="{
-        container: 'gap-3 sm:gap-6 py-5 -my-5',
+        container: 'gap-3 sm:gap-6 py-5 -my-5 px-px -mx-px',
         item: 'basis-[90%] sm:basis-[45%] lg:basis-[30%]',
         arrows: {
           wrapper: 'hidden sm:flex mt-4'
@@ -74,7 +67,7 @@
         <NuxtLink 
           :to="item.url" 
           target="_blank" 
-          class="grid w-full transition-all hover:scale-[101%]"
+          class="grid group w-full transition-all hover:scale-[101%]"
         >
           <UCard
             :ui="{
@@ -82,51 +75,48 @@
               shadow: 'shadow-none',
               ring: 'ring-gray-200 dark:ring-gray-700',
               header: { padding: 'pt-6 md:px-8 md:pt-8'},
-              body: { padding: 'py-6 md:px-8 md:py-8'},
+              body: { base: 'relative', padding: 'py-6 md:px-8 md:py-8'},
               footer: { padding: 'pb-6 md:px-8 md:pb-8'},
             }"
           >
-              <h5 class="text-lg">{{item.title}}</h5>
-              <BadgeGroup wrap>
-                <UBadge 
-                  variant="solid"
-                  size="xs"
-                  color="secondary"
-                >
-                  <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 mr-0.5"/>
-                  <time :datetime="item.startDateTime">{{ getFullDateTimeRange(item) }}</time>
-                </UBadge>
-                <UBadge 
-                  variant="soft"
-                  size="xs"
-                  color="secondary"
-                >
-                  <UIcon name="i-heroicons-currency-euro-20-solid" class="w-4 h-4 mr-0.5"/>
-                  <span>{{ item.kosten === 0 ? 'gratis' : item.kosten }}</span>
-                </UBadge>
-                <UBadge 
-                  v-for="badge in item.soort" 
-                  variant="soft"
-                  size="xs"
-                  color="secondary"
-                >
-                  <span>{{ badge }}</span>
-                </UBadge>
-                <UBadge v-for="sector in item.sectoren" size="xs" variant="soft" :label="sector" class="whitespace-nowrap" :color="getSectorColor(sector)" />
-                <UBadge v-if="!!primary.organizer" size="xs" variant="soft" color="gray">
-                  <UIcon name="i-heroicons-users-20-solid" class="w-4 h-4 mr-0.5"/>
-                  <span>{{ primary.organizer }}</span>
-                </UBadge>
+              <div class="skew-background transition-colors bg-tertiary-100 group-hover:bg-tertiary-200 dark:bg-tertiary-950 dark:group-hover:bg-tertiary-800" />
+              <div class="relative flex flex-col w-full items-start justify-between gap-8 h-full">
+                <div>
+                  <h5 class="text-lg">{{item.title}}</h5>
+                  <BadgeGroup wrap>
+                    <UBadge 
+                      variant="solid"
+                      size="xs"
+                      color="tertiary"
+                    >
+                      <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 mr-0.5"/>
+                      <time :datetime="item.startDateTime">{{ getFullDateTimeRange(item) }}</time>
+                    </UBadge>
+                    <UBadge 
+                      v-for="badge in item.soort" 
+                      variant="soft"
+                      size="xs"
+                      color="tertiary"
+                    >
+                      <span>{{ badge }}</span>
+                    </UBadge>
+                    <UBadge v-for="bevoegdheid in item.bevoegdheden" size="lg" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" />
+                    <UBadge v-if="!!item.organizer" size="xs" variant="soft" color="gray">
+                      <UIcon name="i-heroicons-users-20-solid" class="w-4 h-4 mr-0.5"/>
+                      <span>{{ item.organizer }}</span>
+                    </UBadge>
+                    
+                  </BadgeGroup>
+                </div>
                 
-              </BadgeGroup>
-              <template #footer>
                 <UButton size="lg" color="white" variant="solid">
-                  {{ item.button_label || 'Meer informatie' }}
-                  <template #trailing>
-                    <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
-                  </template>
-                </UButton>
-              </template>
+                    {{ item.button_label || 'Meer informatie' }}
+                    <template #trailing>
+                      <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+                    </template>
+                  </UButton>
+              </div>
+              
           </UCard>
         </NuxtLink>
       </template>
@@ -182,8 +172,8 @@ const getFullDateTimeRange = (item: Activity) => {
   const end = getDateTime(item.endDateTime, { timeOnly: true })
   return `${start} - ${end}`
 }
+const { getSectorBackgroundColor } = useContent()
 
-const { getSectorColor } = useContent()
 </script>
 
 <style>

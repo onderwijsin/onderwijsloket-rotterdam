@@ -35,18 +35,32 @@
     <template #media>
       <UCarousel 
         ref="carousel"
-        v-slot="{ item, index }" 
         :items="leraren" 
-        :ui="{ item: 'basis-full relative' }" 
+        :ui="{ item: 'basis-full relative', indicators: { wrapper: 'bottom-6'} }" 
         class="overflow-hidden h-full grid md:min-h-[387px]" 
         indicators
+        arrows
       >
-      
-        <NuxtImg :src="item.imagePublicId" width="360" height="240" fit="fill" :modifiers="{g: 'faces'}"  loading="lazy" class="w-full h-full object-cover dark:opacity-80" draggable="false" />
-        <div 
-          v-if="page === index" 
-          class="absolute bottom-0 bg-gradient-to-r from-primary-200 to-primary-400 h-1 progress z-20" 
-        />
+        <template #default="{ item, index }">
+          <NuxtImg :src="item.imagePublicId" width="360" height="240" fit="fill" :modifiers="{g: 'faces'}"  loading="lazy" class="w-full h-full object-cover dark:opacity-80" draggable="false" />
+          <div 
+            v-if="page === index" 
+            class="absolute bottom-0 bg-gradient-to-r from-primary-200 to-primary-400 h-1 progress z-20" 
+          />
+        </template>
+        
+
+        <template #prev="{ onClick, disabled }">
+          <UButton :disabled="disabled" class="absolute start-4 top-1/2 -translate-y-1/2 focus:hidden" size="sm" square @click="onClick">
+            <Arrow size="sm" fill="white" class="rotate-180" />
+          </UButton>
+        </template>
+
+        <template #next="{ onClick, disabled }">
+          <UButton :disabled="disabled" class="absolute end-4 top-1/2 -translate-y-1/2 focus:hidden" size="sm" square @click="onClick">
+            <Arrow size="sm" fill="white" />
+          </UButton>
+        </template>
       </UCarousel>
     </template>
   </ImageBanner>

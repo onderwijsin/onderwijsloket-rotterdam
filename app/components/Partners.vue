@@ -133,7 +133,7 @@
             <span>{{  distance + ' km' }}</span>
           </template>
           </USelectMenu>
-        <span> rondom Rotterdam vind je <strong>{{ data?.hits.length }} {{ data?.hits.length === 1 ? 'opleiding' : 'opleidingen' }}</strong> waarmee je je {{ type }} kunt behalen. Filter op het type bevoegdheid dat bij jouw ambities past en ontdek de mogelijkheden dicht bij huis.</span>
+        <span> rondom Rotterdam vind je <strong>{{ data?.hits.length }} hbo en universitaire {{ data?.hits.length === 1 ? 'opleiding' : 'opleidingen' }}</strong> waarmee je je {{ type }} kunt behalen. Filter op het type bevoegdheid dat bij jouw ambities past en ontdek de mogelijkheden dicht bij huis.</span>
         </div>
 
         <div class="flex flex-wrap gap-x-4 gap-y-2 mt-6 items-center">

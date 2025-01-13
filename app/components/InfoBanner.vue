@@ -30,7 +30,7 @@
         </template>
         
         <div class="content">
-          <p>Het Onderwijsloket Rotterdam is jouw startpunt voor een carrière in het onderwijs in Rotterdam. Of je nu aan het begin van je loopbaan staat of een overstap naar het onderwijs overweegt, wij helpen je de weg te vinden. Deze website is in ontwikkeling en groeit mee met het aanbod van het Onderwijsloket.</p>
+          <p>Het Onderwijsloket Rotterdam is jouw startpunt voor een carrière in het onderwijs in Rotterdam. Of je nu aan het begin van je loopbaan staat of een overstap naar het onderwijs overweegt, wij helpen je de weg te vinden. Deze website is in ontwikkeling.</p>
           <p>Het Onderwijsloket Rotterdam is een initiatief van de Onderwijsregio Rotterdam PO en de Onderwijsregio Rotterdam vo-mbo. In samenwerking met de Gemeente Rotterdam ondersteunen we jou bij jouw stap naar een carrière in het onderwijs.</p>
         </div>
 

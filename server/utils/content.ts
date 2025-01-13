@@ -89,7 +89,8 @@ function transformActivities(rawData: RawActivity[]): Activity[] {
         ? raw.properties.type.select?.name as 'offline' | 'online' 
         : null,
       uitgelicht: raw.properties.uitgelicht.checkbox,
-      kosten: Math.max(0, raw.properties.kosten.number || 0),
+      // kosten: Math.max(0, raw.properties.kosten.number || 0),
+      bevoegdheden: getMultiSelect(raw.properties.bevoegdheden),
       includeTime,
       startDateTime,
       endDateTime,

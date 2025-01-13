@@ -8,7 +8,7 @@
         :title="story.title"
         target="_blank"
       >
-        <div class="story-background" :class="getSectorBackgroundColor(story.sectoren[0])" />
+        <div class="skew-background" :class="getSectorBackgroundColor(story.sectoren[0])" />
         <div class="relative flex justify-between flex-wrap gap-x-4 gap-y-2">
           <BadgeGroup>
             <UBadge v-for="sector in story.sectoren" size="xs" variant="soft" :label="sector" class="whitespace-nowrap last:mr-auto" :color="getSectorColor(sector)" />
@@ -60,16 +60,20 @@ const loading = computed(() => status.value === 'pending' || status.value === 'i
 
 </script>
 
+<style lang="postcss">
+.skew-background {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
+  @apply absolute top-0 right-0 bottom-0 w-24 sm:w-44;
+}
+</style>
+
 <style lang="postcss" scoped>
 .grid-container {
   display: grid;
   gap: 20px;
 }
 
-.story-background {
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
-  @apply absolute top-0 right-0 bottom-0 w-24 sm:w-44;
-}
+
 
 /* Mobile layout (single column) */
 @media (max-width: 767px) {
