@@ -36,7 +36,7 @@
       <UCarousel 
         ref="carousel"
         :items="leraren" 
-        :ui="{ item: 'basis-full relative', indicators: { wrapper: 'bottom-6'} }" 
+        :ui="{ item: 'basis-full relative', indicators: { wrapper: 'bottom-6' }, arrows: { wrapper: 'absolute top-1/2 -translate-y-1/2 start-3 end-3 flex flex-row justify-between'} }" 
         class="overflow-hidden h-full grid md:min-h-[387px]" 
         indicators
         arrows
@@ -51,13 +51,13 @@
         
 
         <template #prev="{ onClick, disabled }">
-          <UButton :disabled="disabled" class="absolute start-4 top-1/2 -translate-y-1/2 focus:hidden" size="sm" square @click="onClick">
+          <UButton :disabled="disabled" class="" size="sm" square @click="onClick">
             <Arrow size="sm" fill="white" class="rotate-180" />
           </UButton>
         </template>
 
         <template #next="{ onClick, disabled }">
-          <UButton :disabled="disabled" class="absolute end-4 top-1/2 -translate-y-1/2 focus:hidden" size="sm" square @click="onClick">
+          <UButton :disabled="disabled" class="" size="sm" square @click="onClick">
             <Arrow size="sm" fill="white" />
           </UButton>
         </template>

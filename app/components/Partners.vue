@@ -174,11 +174,6 @@
             }"
             class="-ml-1 sm:-ml-2 hover:z-10"
             >
-            <NuxtLink 
-              :to="instelling.url" 
-              target="_blank"
-              tabindex="-1"
-            >
               <UAvatar 
                 :src="instelling.imageUrl"
                 :alt="instelling.name"
@@ -191,9 +186,10 @@
                 }"
                 :size="instellingenForOpleidingen.length > 24 ? 'sm' : instellingenForOpleidingen.length > 6 ? 'md' : 'lg'"
                 style="font-size: 12px;"
-                class="ring-2 ring-gray-100 dark:ring-gray-700 hover:ring-primary-500 dark:hover-ring-primary-500 text-sm "
+                class="ring-2 ring-gray-100 dark:ring-gray-700 hover:ring-primary-500 dark:hover-ring-primary-500 text-sm cursor-pointer"
+                tabindex="-1"
+                @click="handleInstellingNav(instelling.url)"
               />
-            </NuxtLink>
 
             <template #panel>
               <p class="text-xs font-bol px-3 py-2">Naar website van {{ instelling.name }}</p>
@@ -298,6 +294,13 @@ const instellingenForOpleidingen = computed(() => {
   return Array.from(onderwijsinstellingMap.values());
 })
 
+
+const handleInstellingNav = (url?: string) => {
+  if (!url) return
+  navigateTo(url, {
+    external: true
+  })
+}
 
 </script>
 

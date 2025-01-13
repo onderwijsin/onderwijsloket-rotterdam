@@ -29,6 +29,7 @@ export default defineNuxtConfig({
       robots: false,
       sitemap: false
     },
+    '/': { ssr: true, prerender: false, swr: 60 }, 
   },
 
   $production: {

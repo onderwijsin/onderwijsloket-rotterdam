@@ -5,7 +5,7 @@
       </ArrowHeading>
       <p class="mb-8">
         <span class="mr-2">De adviseurs van het landelijke</span> 
-        <LogoOnderwijsloket class="w-36 mr-1 relative top-1 inline-block" to="https://onderwijsloket.com" /> 
+        <LogoOnderwijsloket class="w-36 mr-1 relative top-1 inline-block" to="https://onderwijsloket.com" target="_blank" /> 
         <span>denken graag mee over jouw mogelijkheden in het onderwijs en de route daar naartoe.</span>
       </p>
       <div class="flex flex-wrap gap-y-2">

@@ -172,7 +172,6 @@ const getFullDateTimeRange = (item: Activity) => {
   const end = getDateTime(item.endDateTime, { timeOnly: true })
   return `${start} - ${end}`
 }
-const { getSectorBackgroundColor } = useContent()
 
 </script>
 

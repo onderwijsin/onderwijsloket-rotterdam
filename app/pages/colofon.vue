@@ -13,12 +13,12 @@
     <h2 class="mb-2">Ontwikkeling en ondersteuning</h2>
     <p class="mb-3">
       <span class="mr-2">De inhoud van deze website is samengesteld in samenwerking met de partners van het Onderwijsloket Rotterdam en het</span>
-      <LogoOnderwijsloket class="w-28 inline-block relative top-0.5" />
+      <LogoOnderwijsloket class="w-28 inline-block relative top-0.5" to="https://onderwijsloket.com"  target="_blank" />
       <span>. Wij baseren ons op actuele informatie en inzichten vanuit de onderwijssector in Rotterdam.</span>
     </p>
     
     <h2 class="mb-2">Ontwikkeling en ondersteuning</h2>
-    <p class="mb-6">Deze website is ontwikkeld met technische ondersteuning en ontwerp door <LogoOnderwijsIn class="w-28 inline-block relative top-1.5 ml-2" /></p>
+    <p class="mb-6">Deze website is ontwikkeld met technische ondersteuning en ontwerp door <LogoOnderwijsIn class="w-28 inline-block relative top-1.5 ml-2"  target="_blank" /></p>
 
     <h2 class="mb-2">Contact</h2>
     <p class="mb-12 md:mb-6">Voor vragen of opmerkingen kun je contact opnemen via <NuxtLink to="mailto:info@onderwijsloketrotterdam.nl" target="_blank">info@onderwijsloketrotterdam.nl</NuxtLink>.</p>
