@@ -104,7 +104,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     // The private keys which are only available server-side
-    indexable: !isPreview,
+    indexable: isProd,
     notion: {
       token: process.env.NOTION_TOKEN,
     },
@@ -128,7 +128,7 @@ export default defineNuxtConfig({
   site: {
     name: 'Onderwijsloket Rotterdam',
     description: 'Ontdek jouw mogelijkheden in het Rotterdamse onderwijs. Met een actueel overzicht van vacatures, oriëntatie-activiteiten en informatie over het vinden van een werkplek of opleiding.',
-    indexable: !isPreview,
+    indexable: isProd,
   },
 
   tailwindcss: {
