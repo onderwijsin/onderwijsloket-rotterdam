@@ -4,6 +4,17 @@
       class="w-full bg-main-25 dark:bg-gray-800"
     >
       <InnerContainer class="py-12 sm:py-20 lg:py-32 flex flex-col lg:flex-row gap-12">
+        <SchemaOrgEvent 
+          :id="primary.id"
+          :name="primary.title"
+          :url="primary.url"
+          :description="primary.description"
+          :start-date="primary.startDateTime"
+          :end-date="primary.endDateTime"
+          :event-status="'EventScheduled'"
+          :event-attendance-mode="primary.type === 'op locatie' ? 'OfflineEventAttendanceMode' : primary.type === 'online' ? 'OnlineEventAttendanceMode' : 'MixedEventAttendanceMode'"
+          :organizer="!!primary.organizer ? { name: primary.organizer } : undefined"
+        />
         <div class="flex flex-col gap-8 shrink-0 basis-1/2">
           <div class="flex gap-4 md:gap-8 items-center ">
             <div class="bg-primary-500 dark:bg-primary-900/50 w-14 h-14 md:w-20 md:h-20 grid place-items-center shrink-0">
@@ -69,6 +80,17 @@
           target="_blank" 
           class="grid group w-full transition-all hover:scale-[101%]"
         >
+          <SchemaOrgEvent 
+            :id="item.id"
+            :name="item.title"
+            :url="item.url"
+            :description="item.description"
+            :start-date="item.startDateTime"
+            :end-date="item.endDateTime"
+            :event-status="'EventScheduled'"
+            :event-attendance-mode="item.type === 'op locatie' ? 'OfflineEventAttendanceMode' : item.type === 'online' ? 'OnlineEventAttendanceMode' : 'MixedEventAttendanceMode'"
+            :organizer="!!item.organizer ? { name: item.organizer } : undefined"
+          />
           <UCard
             :ui="{
               background: 'bg-gray-100 dark:bg-gray-800',

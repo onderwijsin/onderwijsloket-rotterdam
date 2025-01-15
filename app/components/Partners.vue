@@ -265,7 +265,8 @@ const { data, error } = await useAsyncData(async () => {
       attributesToHighlight: [],
       aroundLatLng: `${coords.lat},${coords.lng}`,
       getRankingInfo: true,
-      aroundRadius: parseInt(distance.value) * 1000
+      aroundRadius: parseInt(distance.value) * 1000,
+      filters: 'NOT onderwijsinstellingen.name:"LOI"'
     })
 
   return result

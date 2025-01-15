@@ -85,8 +85,8 @@ function transformActivities(rawData: RawActivity[]): Activity[] {
       ...transformBaseProperties(raw),
       title: getPlainText(raw.properties.title.title),
       soort: getMultiSelect(raw.properties.soort),
-      type: (['offline', 'online'] as const).includes(raw.properties.type.select?.name as any) 
-        ? raw.properties.type.select?.name as 'offline' | 'online' 
+      type: (['op locatie', 'online'] as const).includes(raw.properties.type.select?.name as any) 
+        ? raw.properties.type.select?.name as 'op locatie' | 'online' 
         : null,
       uitgelicht: raw.properties.uitgelicht.checkbox,
       // kosten: Math.max(0, raw.properties.kosten.number || 0),
@@ -97,7 +97,6 @@ function transformActivities(rawData: RawActivity[]): Activity[] {
       description: transformToHtml(raw.properties.description.rich_text),
       url: raw.properties.url.url || null,
       button_label: getPlainText(raw.properties.button_label.rich_text),
-      sectoren: getMultiSelect(raw.properties.sectoren) as Sector[],
       organizer: getPlainText(raw.properties.organizer.rich_text)
     }
   })

@@ -167,9 +167,9 @@ export default defineNuxtConfig({
       name: 'Onderwijsloket Rotterdam',
       url: 'https://onderwijsloketrotterdam.nl',
       logo: "https://res.cloudinary.com/onderwijsin/image/upload/w_600,c_scale/regios/rotterdam/logo_onderwijsloketrotterdam_fill_aikiip.png",
-      sameAs: [
-        "https://www.linkedin.com/company/onderwijs-in",
-      ],
+      // sameAs: [
+      //   "https://www.linkedin.com/company/onderwijs-in",
+      // ],
     email: 'info@onderwijsloketrotterdam.nl',
     contactPoints: [
         
