@@ -48,7 +48,7 @@ export default defineNuxtConfig({
   devtools: { enabled: isDev && useDevtools },
 
   extends: [
-    [`github:onderwijsin/onderwijsloket-layer-core#v0.8.9`, { auth: process.env.GIGET_AUTH, install: true }],
+    [`github:onderwijsin/onderwijsloket-layer-core#v0.8.10`, { auth: process.env.GIGET_AUTH, install: true }],
   ],
 
   nitro: {
@@ -104,7 +104,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     // The private keys which are only available server-side
-    indexable: isProd,
+    indexable: !isPreview,
     notion: {
       token: process.env.NOTION_TOKEN,
     },
@@ -128,7 +128,7 @@ export default defineNuxtConfig({
   site: {
     name: 'Onderwijsloket Rotterdam',
     description: 'Ontdek jouw mogelijkheden in het Rotterdamse onderwijs. Met een actueel overzicht van vacatures, oriëntatie-activiteiten en informatie over het vinden van een werkplek of opleiding.',
-    indexable: isProd,
+    indexable: !isPreview,
   },
 
   tailwindcss: {
