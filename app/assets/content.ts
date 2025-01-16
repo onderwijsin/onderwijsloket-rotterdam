@@ -67,9 +67,9 @@ export const bevoegdheden = [
 
 
 export const advies = {
-    btnLabel: 'plan een gratis adviesgesprek',
-    bannerImage: 'stichting/site/Team_website_02_z4ucym',
-    bannerImageAlt: 'Adviseur van het Onderwijsloket',
+    btnLabel: 'Plan een gratis adviesgesprek',
+    bannerImage: 'regios/rotterdam/onderwijsloket_3_m8z43o',
+    bannerImageAlt: 'Adviseurs van het Onderwijsloket',
     info: `
         <p>Tijdens een adviesgesprek met het Onderwijsloket denkt een adviseur met je mee over je mogelijke routes naar het onderwijs. Onze adviseurs geven jou graag een advies op maat. Of je nou wilt weten welke opleiding het best bij jou situatie en beoogde functie past, of voor welk type functies je in aanmerking komt; onze adviseurs helpen je graag verder. De adviseur belt je op een door jou gekozen moment om je ingestuurde vragen met je door te nemen.</p>
         <p>Een adviesgesprek met het Onderwijsloket duurt ongeveer 20 minuten. We vragen je bij het inplannen van het gesprek om wat informatie over jezelf met ons te delen, zoals het telefoonnummer waarop we je kunnen bereiken, informatie over je eerder afgeronde opleiding(en) en waar je het over zou willen hebben tijdens het gesprek. Ook sturen we je na het inplannen van het adviesgesprek alvast wat handige informatie toe, die je ter voorbereiding kunt doornemen.</p>

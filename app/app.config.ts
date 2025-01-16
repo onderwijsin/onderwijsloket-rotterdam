@@ -59,9 +59,13 @@ export default defineAppConfig({
     },
 
     savvycal: {
-      bookingId: 'f29bd3ff',
-      bookingLink: 'onderwijsloket/f29bd3ff',
-      bookingUrl: 'https://savvycal.com/onderwijsloket/f29bd3ff',
+      app: 'onderwijsloket-rotterdam',
+      bookingId: 'plan-een-adviesgesprek',
+      bookingLink: 'onderwijsloket/plan-een-adviesgesprek',
+      bookingUrl: 'https://savvycal.com/onderwijsloket/plan-een-adviesgesprek',
+      questions: {
+        0: "Onderwijsloket Rotterdam"
+      }
     },
 
     feedback: {
