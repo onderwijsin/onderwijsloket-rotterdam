@@ -16,6 +16,6 @@ export default defineCachedEventHandler(async (event) => {
   return data
 }, {
   maxAge:         process.env.MODE === 'dev' ? 1 : 60 * 60 * 12,
-  staleMaxAge:    process.env.MODE === 'dev' ? 0 : 60 * 60 * 24 * 3,
+  staleMaxAge:    process.env.MODE === 'dev' ? 0 : 60 * 60 * 24,
   name:           'activiteiten',
 })

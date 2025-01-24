@@ -169,12 +169,9 @@ const createNotionFilters = (additionalFilters: any[] = []) => ({
 
 const createPageSize = (amount: number) => ({ page_size: amount })
 
-const cacheConfig = {
-  maxAge: process.env.MODE === 'dev' ? 1 : 60 * 60 * 12,
-  staleMaxAge: process.env.MODE === 'dev' ? 0 : 60 * 60 * 24 * 3
-}
 
-export const getActivities = defineCachedFunction(async (amount = 8) => {
+
+export const getActivities = async (amount = 8) => {
   const today = new Date().toISOString().split('T')[0]
   
   const payload = {
@@ -193,12 +190,9 @@ export const getActivities = defineCachedFunction(async (amount = 8) => {
 
   const data = await useNotion('161b66e1be698084ae8ee8381d5f184b', payload) as NotionDatabase<RawActivity>
   return data?.results ? transformActivities(data.results) : null
-}, {
-  ...cacheConfig,
-  name: 'getActiviteiten'
-})
+}
 
-export const getVerhalen = defineCachedFunction(async (amount = 8) => {
+export const getVerhalen = async (amount = 8) => {
   const payload = {
     ...createNotionFilters(),
     ...createPageSize(amount),
@@ -207,12 +201,9 @@ export const getVerhalen = defineCachedFunction(async (amount = 8) => {
 
   const data = await useNotion('161b66e1be698089b9a8ce58a4590e42', payload) as NotionDatabase<RawVerhaal>
   return data?.results ? transformVerhalen(data.results) : null
-}, {
-  ...cacheConfig,
-  name: 'getVerhalen'
-})
+}
 
-export const getLeraren = defineCachedFunction(async (amount = 5) => {
+export const getLeraren = async (amount = 5) => {
   const payload = {
     ...createNotionFilters(),
     ...createPageSize(amount),
@@ -221,13 +212,10 @@ export const getLeraren = defineCachedFunction(async (amount = 5) => {
 
   const data = await useNotion('161b66e1be6980ecaadcefe40bc68001', payload) as NotionDatabase<RawLeraar>
   return data?.results ? transformLeraren(data.results) : null
-}, {
-  ...cacheConfig,
-  name: 'getLeraren'
-})
+}
 
 
-export const getArtikelen = defineCachedFunction(async (amount = 8) => {
+export const getArtikelen = async (amount = 8) => {
   const payload = {
     ...createNotionFilters(),
     ...createPageSize(amount),
@@ -236,7 +224,4 @@ export const getArtikelen = defineCachedFunction(async (amount = 8) => {
 
   const data = await useNotion('16db66e1be6980fa94c6f295a9ae16a9', payload) as NotionDatabase<RawArtikel>
   return data?.results ? transformArtikelen(data.results) : null
-}, {
-  ...cacheConfig,
-  name: 'getArtikelen'
-})
+}

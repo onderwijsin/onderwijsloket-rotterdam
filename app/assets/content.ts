@@ -82,7 +82,7 @@ export const advies = {
 
 export const routes = {
     btnLabel: 'Naar routetool',
-    bannerImage: 'regios/rotterdam/routes_uxrtg6',
+    bannerImage: 'regios/rotterdam/905_OCW_WmdT_Beeldbank_5_sd3ptl',
     bannerImageAlt: 'Routes naar het onderwijs',
     article: {
         title: 'Routes naar het leraarschap',

@@ -8,6 +8,7 @@ export const useContent = () => {
   const colors = {
     'basisschool': 'secondary',
     'middelbare school': 'tertiary',
+    'voortgezet onderwijs': 'tertiary',
     'mbo': 'aux1',
     'speciaal onderwijs': 'aux2',
     'hoger onderwijs': 'aux3',

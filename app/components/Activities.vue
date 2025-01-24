@@ -32,14 +32,14 @@
               <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 mr-0.5"/>
               <time :datetime="primary.startDateTime">{{ getFullDateTimeRange(primary) }}</time>
             </UBadge>
-            <UBadge 
+            <!-- <UBadge 
               v-for="badge in primary.soort" 
               variant="soft"
               size="lg"
             >
               <span>{{ badge }}</span>
-            </UBadge>
-            <UBadge v-for="bevoegdheid in primary.bevoegdheden" size="lg" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" />
+            </UBadge> -->
+            <!-- <UBadge v-for="bevoegdheid in primary.bevoegdheden" size="lg" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" /> -->
             <UBadge v-if="!!primary.organizer" size="lg" variant="soft" color="gray">
               <UIcon name="i-heroicons-users-20-solid" class="w-4 h-4 mr-0.5"/>
               <span>{{ primary.organizer }}</span>
@@ -104,8 +104,8 @@
               <div class="skew-background transition-colors bg-tertiary-100 group-hover:bg-tertiary-200 dark:bg-tertiary-950 dark:group-hover:bg-tertiary-800" />
               <div class="relative flex flex-col w-full items-start justify-between gap-8 h-full">
                 <div>
-                  <h5 class="text-lg">{{item.title}}</h5>
-                  <BadgeGroup wrap>
+                  
+                  <BadgeGroup wrap class="mb-4">
                     <UBadge 
                       variant="solid"
                       size="xs"
@@ -114,21 +114,22 @@
                       <UIcon name="i-heroicons-calendar-days-20-solid" class="w-4 h-4 mr-0.5"/>
                       <time :datetime="item.startDateTime">{{ getFullDateTimeRange(item) }}</time>
                     </UBadge>
-                    <UBadge 
+                    <!-- <UBadge 
                       v-for="badge in item.soort" 
                       variant="soft"
                       size="xs"
                       color="tertiary"
                     >
                       <span>{{ badge }}</span>
-                    </UBadge>
-                    <UBadge v-for="bevoegdheid in item.bevoegdheden" size="xs" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" />
+                    </UBadge> -->
+                    <!-- <UBadge v-for="bevoegdheid in item.bevoegdheden" size="xs" variant="soft" :label="bevoegdheid" class="whitespace-nowrap" color="tertiary" /> -->
                     <UBadge v-if="!!item.organizer" size="xs" variant="soft" color="gray">
                       <UIcon name="i-heroicons-users-20-solid" class="w-4 h-4 mr-0.5"/>
                       <span>{{ item.organizer }}</span>
                     </UBadge>
                     
                   </BadgeGroup>
+                  <h5 class="text-lg">{{item.title}}</h5>
                 </div>
                 
                 <UButton size="lg" color="white" variant="solid">

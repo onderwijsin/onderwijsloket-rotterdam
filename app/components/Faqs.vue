@@ -45,12 +45,7 @@
             <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
           </template>
         </UButton>
-        <UButton color="gray"  size="lg" variant="soft" @click="scrollTo('contact')">
-          Neem contact op
-          <template #trailing>
-            <UIcon name="i-heroicons-chat-bubble-left-right-20-solid" class="w-4 h-4 ml-2" />
-          </template>
-        </UButton>
+      
       </div>
       
     </div>

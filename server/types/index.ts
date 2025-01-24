@@ -98,7 +98,7 @@ type FileField = {
   files: any[]
 }
 
-export type Sector = 'basisschool' | 'middelbare school' | 'speciaal onderwijs' | 'mbo'
+export type Sector = 'basisschool' | 'middelbare school' | 'voortgezet onderwijs' | 'speciaal onderwijs' | 'mbo'
 
 type SectorSelect = {
   id: string

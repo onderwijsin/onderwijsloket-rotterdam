@@ -63,6 +63,21 @@ const aux1 = {
 };
 
 
+export const aux2 = {
+  25: '#EAF2F7',
+  50: '#E0EDF6',
+  100: '#D1E7F3',
+  200: '#BEDCF0',
+  300: '#A5CFEB',
+  400: '#8BC3E6',
+  500: '#72B7E1',
+  600: '#659BBF',
+  700: '#577E9F',
+  800: '#49637C',
+  900: '#3A4A5E',
+  950: '#2D3846',
+};
+
 export const theme = {
   extend: {
     fontFamily: {
@@ -73,6 +88,7 @@ export const theme = {
       secondary,
       tertiary,
       aux1,
+      aux2,
 
       start: main[300],
       end: main[600],

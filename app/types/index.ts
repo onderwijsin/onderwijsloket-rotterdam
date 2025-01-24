@@ -35,7 +35,7 @@ export type Activity = {
 
 
 
-export type Sector = 'basisschool' | 'middelbare school' | 'mbo' | 'speciaal onderwijs'
+export type Sector = 'basisschool' | 'middelbare school' | 'voortgezet onderwijs' | 'mbo' | 'speciaal onderwijs'
 
 
 export type OwlFaq = {
