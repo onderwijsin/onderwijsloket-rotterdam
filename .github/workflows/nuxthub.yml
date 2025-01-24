@@ -69,7 +69,7 @@ jobs:
         run: |
           RESPONSE=$(curl -s -o response.json -w "%{http_code}" -X POST https://onderwijsloketrotterdam.nl/api/__webhooks__/invalidate-cache \
             -H "Content-Type: application/json" \
-            -H "token: $WEBHOOK_TOKEN")
+            -H "token: $CACHE_INVALIDATION_TOKEN")
           if [ $RESPONSE -eq 200 ]; then
             KEYS=$(jq -r '.keys' response.json)
             curl -X POST $SLACK_WEBHOOK_URL \
