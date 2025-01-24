@@ -15,23 +15,71 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+
       - name: Enable Corepack
         run: corepack enable
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: ${{ vars.NODE_VERSION }}
           cache: 'npm'
 
       - name: Install dependencies
         run: npm install
+        env: 
+          GIGET_AUTH: ${{ secrets.GIGET_AUTH }}
+          ONDERWIJSIN_API: ${{ vars.ONDERWIJSIN_API }}
+          ONDERWIJSIN_API_KEY: ${{ vars.ONDERWIJSIN_API_KEY }}
+          CACHE_INVALIDATION_TOKEN: ${{ secrets.CACHE_INVALIDATION_TOKEN }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+
 
       - name: Build application
         run: npm run build
+        env: 
+          FRONT_END_DOMAIN: ${{ vars.FRONT_END_DOMAIN }}
+          PLAUSIBLE_DOMAIN: ${{ vars.PLAUSIBLE_DOMAIN }}
+          USE_DEVTOOLS: ${{ vars.USE_DEVTOOLS }}
+          MODE: ${{ vars.MODE }}
+          ONDERWIJSIN_API: ${{ vars.ONDERWIJSIN_API }}
+          ONDERWIJSIN_API_KEY: ${{ vars.ONDERWIJSIN_API_KEY }}
+          USE_DEV_API: ${{ vars.USE_DEV_API }}
+          GIGET_AUTH: ${{ secrets.GIGET_AUTH }}
+          NODE_VERSION: ${{ vars.NODE_VERSION }}
+          ALGOLIA_APPLICATION_ID: ${{ vars.ALGOLIA_APPLICATION_ID }}
+          ALGOLIA_PUBLIC_SEARCH_API_KEY: ${{ vars.ALGOLIA_PUBLIC_SEARCH_API_KEY }}
+          GMAPS_KEY: ${{ vars.GMAPS_KEY }}
+          BASE_GMAP_ID: ${{ vars.BASE_GMAP_ID }}
+          ICON_CLD_CLOUD: ${{ vars.ICON_CLD_CLOUD }}
+          FAVICON: ${{ vars.FAVICON }}
+          APPICON: ${{ vars.APPICON }}
+          MASKABLE_ICON: ${{ vars.MASKABLE_ICON }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          CACHE_INVALIDATION_TOKEN: ${{ secrets.CACHE_INVALIDATION_TOKEN }}
 
       - name: Deploy to NuxtHub
         uses: nuxt-hub/action@v1
         id: deploy
         with:
           project-key: onderwijsloket--pq46
+
+      - name: Invalidate Cache
+        if: ${{ github.ref == 'refs/heads/prod' && steps.deploy.outcome == 'success' }}
+        run: |
+          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -X POST https://onderwijsloketrotterdam.nl/api/__webhooks__/invalidate-cache \
+            -H "Content-Type: application/json" \
+            -H "token: $WEBHOOK_TOKEN")
+          if [ $RESPONSE -eq 200 ]; then
+            KEYS=$(jq -r '.keys' response.json)
+            curl -X POST $SLACK_WEBHOOK_URL \
+              -H "Content-Type: application/json" \
+              -d "{\"text\": \"Successfully invalidated cache for ${#KEYS[@]} routes\"}"
+          else
+            curl -X POST $SLACK_WEBHOOK_URL \
+              -H "Content-Type: application/json" \
+              -d "{\"text\": \"Failed to invalidate route cache after deployment\"}"
+          fi
+        env:
+          CACHE_INVALIDATION_TOKEN: ${{ secrets.CACHE_INVALIDATION_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
