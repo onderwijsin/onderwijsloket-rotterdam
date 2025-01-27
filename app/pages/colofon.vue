@@ -10,7 +10,7 @@
       <li><NuxtLink to="https://onderwijs010.nl/" class="text-primary-500 font-bold underline" target="_blank">Onderwijs010, Gemeente Rotterdam</NuxtLink></li>
     </ul>
 
-    <h2 class="mb-2">Ontwikkeling en ondersteuning</h2>
+    <h2 class="mb-2">Inhoud en redactie</h2>
     <p class="mb-3">
       <span class="mr-2">De inhoud van deze website is samengesteld in samenwerking met de partners van het Onderwijsloket Rotterdam en het</span>
       <LogoOnderwijsloket class="w-28 inline-block relative top-0.5" to="https://onderwijsloket.com"  target="_blank" />
