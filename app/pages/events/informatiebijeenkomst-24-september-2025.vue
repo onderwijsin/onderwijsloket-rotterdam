@@ -205,7 +205,7 @@ const successMessage = computed(() => {
               <h1 class="text-white"> {{ data.title }}</h1>
               <div>
                 
-                  <ClientOnly><UBadge v-if="!hasEnded" color="warn" variant="subtle" class="mb-6">Deze activiteit is geweest</UBadge></ClientOnly>
+                  <ClientOnly><UBadge v-if="hasEnded" color="warn" variant="subtle" class="mb-6">Deze activiteit is geweest</UBadge></ClientOnly>
                   <div class="space-y-4">
                     <ClientOnly>
                       <p class="text-white flex flex-row gap-2 items-start leading-none text-lg">
