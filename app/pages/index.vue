@@ -59,7 +59,7 @@ const { scrollTo } = useSnapScroll()
         <RouteBanner />
       </section>
       <section>
-        <Faqs />
+        <SearchableFaqs />
       </section>
       <section id="ervaar">
         <InnerContainer class="mb-20 md:mb-32 md:pt-20">

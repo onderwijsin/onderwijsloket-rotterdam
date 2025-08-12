@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="site">
+  <NuxtLayout name="site" >
     <InfoBanner />
     <slot />
   </NuxtLayout>

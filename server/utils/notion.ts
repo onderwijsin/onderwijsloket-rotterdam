@@ -10,7 +10,7 @@ interface NotionRequestConfig {
 const delay = (ms: number): Promise<void> => 
   new Promise(resolve => setTimeout(resolve, ms))
 
-const createNotionRequest = async (
+export const createNotionRequest = async (
   path: string,
   token: string,
   data?: Record<string, any>
@@ -18,7 +18,7 @@ const createNotionRequest = async (
   const response = await $fetch<NotionResponse>(`https://api.notion.com/v1/${path}`, {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Notion-Version': '2022-02-22'
+      'Notion-Version': '2022-06-28'
     },
     method: 'POST',
     body: data
@@ -98,3 +98,4 @@ export const useNotion = async (
     return null
   }
 }
+

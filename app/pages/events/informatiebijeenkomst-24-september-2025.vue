@@ -25,6 +25,7 @@ interface BaseEventData {
     title: string;
     description: string;
   }>;
+  faqs?: Array<{ label: string, content: string }>;
 }
 
 interface PhysicalEventData extends BaseEventData {
@@ -50,6 +51,49 @@ interface OnlineEventData extends BaseEventData {
 }
 
 type EventData = PhysicalEventData | OnlineEventData;
+
+const faqs: Array<{ label: string; content: string }> = [
+  {
+    label: "Is de bijeenkomst vrijblijvend?",
+    content: "Ja, de bijeenkomst is vrijblijvend. Je kunt na de bijeenkomst beslissen of je interesse hebt in een van de zij-instroomtrajecten."
+  },
+  {
+    label: "Hoe weet ik zeker dat een baan in het onderwijs iets voor mij is?",
+    content: "De informatiebijeenkomst is een goede eerste stap in je oriëntatie; praat ook met familie, vrienden of collega’s over je ambities. Je kunt op verschillende scholen een dag meelopen om te ervaren of het onderwijs bij je past. Online is er veel informatie te vinden; onderaan deze pagina vind je handige linkjes."
+  },
+  {
+    label: "Wat is het zij-instroomtraject?",
+    content: "Er zijn mogelijkheden voor professionals om zich te laten omscholen tot leraar in het basisonderwijs. Afhankelijk van je vooropleiding en/of werkervaring zijn er verschillende trajecten, waaronder zij-instroom in beroep voor mensen met een hbo- of wo-diploma en de deeltijd-pabo voor mensen met een mbo-4-diploma of via de 21+-toets."
+  },
+  {
+    label: "Wat is het zij-instroomtraject in beroep?",
+    content: "Zij-instroom in beroep is een tweejarig traject waarin je tegelijkertijd werkt en leert: je staat vanaf dag 1 voor de klas en volgt vakken aan de lerarenopleiding. Je krijgt direct betaald en je studiekosten worden door het schoolbestuur waarvoor je werkt betaald. Voor toelating heb je minimaal een hbo- of wo-diploma nodig."
+  },
+  {
+    label: "Vanaf dag 1 betaald voor de klas…?",
+    content: "Voldoe je aan de voorwaarden voor zij-instroom in beroep? Dan sta je vanaf dag 1 betaald voor de klas. Je combineert werken en leren en past de theorie direct toe in de praktijk."
+  },
+  {
+    label: "Kom ik direct alleen voor de klas te staan?",
+    content: "Je staat er niet alleen voor; je wordt stap voor stap begeleid. Het doel is dat je aan het eind van het traject met zelfvertrouwen je eigen klas runt, inclusief alles wat daarbij komt kijken."
+  },
+  {
+    label: "Hoelang duurt de pabo?",
+    content: "De voltijd-pabo duurt vier jaar. Als zij-instromer in beroep kun je een verkort traject volgen van ongeveer twee jaar. Er zijn ook flexibele en deeltijdvarianten van de pabo (bijvoorbeeld met mbo-4, havo of vwo + 21+-toets). Afhankelijk van je vooropleiding en eventuele vrijstellingen duurt jouw traject tussen de twee en vier jaar. Goed om te weten: de precieze duur hangt af van je achtergrond en tempo; stel je vragen op 27 mei aan de hogescholen op de informatiemarkt."
+  },
+  {
+    label: "Wat is het startsalaris van een zij-instromer in het basisonderwijs?",
+    content: "De salarissen van leraren in het primair onderwijs zijn vastgelegd in de cao primair onderwijs. Volgens de huidige cao verdient een basisschooldocent tussen de € 3.001,- en € 6.568,- bruto per maand."
+  },
+  {
+    label: "Studiekosten? Hoe zit dat?",
+    content: "In vrijwel alle zij-instroom-in-beroep-trajecten wordt de opleiding vergoed via de zij-instroomsubsidie, die schoolbesturen kunnen aanvragen. Studiekosten voor de deeltijd-pabo zijn in de meeste gevallen voor eigen rekening."
+  },
+  {
+    label: "Op welke school kan ik aan de slag (als zij-instromer)?",
+    content: "Studiekosten voor de deeltijdpabo (bijvoorbeeld voor mensen met een mbo-4-diploma) zijn in de meeste gevallen voor eigen rekening."
+  }
+];
 
 const data: EventData = {
   title: 'Informatiebijeenkomst carrièreswitch Rotterdamse onderwijs',
@@ -85,7 +129,8 @@ const data: EventData = {
       title: 'Hoe kom ik in aanmerking?',
       description: 'Met een hbo- óf wo-diploma kom je als werkend professional in aanmerking voor het zij-instroomtraject in beroep. Hierdoor kan je direct starten aan het leer-werktraject.'
     },
-  ]
+  ],
+  faqs
 }
 
 
@@ -102,6 +147,11 @@ const hasEnded = computed(() => {
   const end = data.endDate || data.startDate;
   const eventDate = new Date(end);
   return eventDate < today;
+});
+
+const prettyStartDate = computed(() => {
+  const date = new Date(data.startDate);
+  return date.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
 });
 
 const dateString = computed(() => {
@@ -125,11 +175,28 @@ const location = computed(() => {
   return `${data.location}, ${data.address} ${data.city}`;
 });
 
-const { routes } = useContent()
+
+const successMessage = computed(() => {
+  let message = `Leuk dat je er bij bent op ${prettyStartDate.value}.`
+  if (data.isOnline) {
+    message += ' Je ontvangt een paar dagen voor de bijeenkomst een link naar de online meeting room.';
+  } else {
+    if (data.startTime) {
+      message += ` We ontvangen je graag om ${data.startTime} uur bij ${data.location}.`;
+    } else {
+      message += ` We ontvangen je graag op ${data.location}`;
+    }
+    message += ' Een paar dagen voor de bijeenkomst ontvang je een e-mail met meer informatie.'
+  }
+
+  return message;
+});
+
+
 </script>
 
 <template>
-  <div class="fluid relative z-10">
+  <div class="fluid relative z-20 pb-12 md:pb-20">
     <UContainer>
       <section style="padding-top: 0px">
         <div class="relative grid min-h-[500px] bg-gradient-to-br from-secondary-800 to-secondary-600 dark:from-gray-700/40 dark:to-secondary-800/50">
@@ -257,17 +324,30 @@ const { routes } = useContent()
             <p>De Rotterdamse schoolbesturen zijn erbij – een unieke kans om je goed te oriënteren op jouw volgende stap.</p>
             <p><strong>Nieuwsgierig? Kom naar de informatiebijeenkomst op 27 mei 2025. Meld je aan via de website van de gemeente Rotterdam.</strong></p>
           </section>
-          <UButton size="xl" color="primary" label="Meld je aan" @click="scrollTo('#aanmelden')" />
         </Prose> 
-        <InnerContainer>
-          <div>
-            <h3>TODO: add signup form</h3>
-            <h3>TODO: add faqs</h3>
-          </div>
+        <InnerContainer class="mb-12 md:mb-20" from="xl">
+          <ClientOnly>
+            <ArrowHeading type="h2">
+              Meld je aan
+            </ArrowHeading>
+            <p class="mb-6">Door onderstaand je gegevens achter te laten, laat je ons weten dat je aanwezig bent bij {{ data.title }} op {{ prettyStartDate }}.</p>
+            <SignupForm 
+              :event="data.title"
+              :success-message="successMessage"
+            />
+          </ClientOnly>
+          
         </InnerContainer>
+        <Faqs
+          heading="Veelgestelde vragen"
+          description="Wil je meer weten over zij-instromen in het onderwijs? Of heb je vragen over de aanstaande informatiebijeenkomst? Lees dan snel de veelgestelde vragen."
+          :data="data.faqs || []"
+          class="relative z-20"
+        />
 
 
-        
+
+         
     </UContainer>
   </div>
 </template>
