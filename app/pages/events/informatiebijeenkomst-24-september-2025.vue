@@ -225,7 +225,7 @@ const successMessage = computed(() => {
                         color="secondary"
                         variant="soft"
                         class="px-6"
-                        @click="scrollTo('#aanmelden')"
+                        @click="scrollTo('aanmelden')"
                       />
                       <UButton
                         label="Bekijk route"
@@ -293,7 +293,7 @@ const successMessage = computed(() => {
             
             <h2 v-if="data.content.subHeading" class="sm:text-lg uppercase text-primary-500 dark:text-primary-400">Meld je aan</h2>
             <h3 class="text-3xl md:text-5xl ">Kom naar de {{ data.title }}</h3>
-            <UButton size="xl" color="primary" label="Meld je aan" @click="scrollTo('#aanmelden')" />
+            <UButton size="xl" color="primary" label="Meld je aan" @click="scrollTo('aanmelden')" />
 
             <span class="absolute -bottom-8 md:-bottom-16 left-[calc(50%-16px)] animate-bounce">
               <Arrow variant="outline" type="triangle" class="rotate-90 " animated size="sm" :amount="2" />
@@ -301,7 +301,7 @@ const successMessage = computed(() => {
           </div>
           
         </InnerContainer>
-        <Prose class="mb-12 md:mb-20">
+        <Prose>
           <section>
             <h3>Wat kun je verwachten?</h3>
             <p>Op de informatieavond woon je een presentatie bij over werken in het onderwijs en bijbehorend leer-werktrajecten, die jou aanspreken en passen bij jouw vooropleiding. Docenten van de hogescholen nemen je mee in alle ins en outs. Geen saaie theorie, maar concrete routes die jou helpen om je om te scholen en snel aan de slag te gaan in de klas.</p>
@@ -325,6 +325,7 @@ const successMessage = computed(() => {
             <p><strong>Nieuwsgierig? Kom naar de informatiebijeenkomst op 27 mei 2025. Meld je aan via de website van de gemeente Rotterdam.</strong></p>
           </section>
         </Prose> 
+        <div id="aanmelden" class="mb-12 md:mb-20" />
         <InnerContainer class="mb-12 md:mb-20" from="xl">
           <ClientOnly>
             <ArrowHeading type="h2">
