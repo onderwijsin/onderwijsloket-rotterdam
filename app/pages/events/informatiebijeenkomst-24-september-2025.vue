@@ -15,6 +15,13 @@ interface BaseEventData {
   city: string | null;
   locationDescription: string | null;
   mapsLink: string | null;
+  signup?: {
+    enabled: boolean;
+    externaLSignupLink: string | null;
+    signupImage: string | null;
+    signupImageAlt: string | null;
+    signupText: string | null;
+  },
   roomLink: string | null;
   content: {
     subHeading?: string;
@@ -110,6 +117,13 @@ const data: EventData = {
   city: 'Rotterdam',
   locationDescription: 'Wolfert College is een school voor voortgezet onderwijs in Rotterdam, op loopafstand van Rotterdam Centraal Station.',
   mapsLink: 'https://maps.app.goo.gl/vwTYnmUAkkr4T1fF8',
+  signup: {
+    enabled: true,
+    externaLSignupLink: 'https://registratie.rotterdam.nl/informatiebijeenkomstonderwijsenkinderopvang/?utm-source=onderwijsloketrotterdam.nl&utm-medium=referral&utm-campaign=events/informatiebijeenkomst-24-september-2025',
+    signupImage: 'regios/rotterdam/Beeldbank_Image_901_bf0pnx_1600_gonwwb',
+    signupImageAlt: 'Scholier uit het voortgezet onderwijs die lacht',
+    signupText: 'Aanmelden voor deze bijeenkomst kan via de website van de gemeente Rotterdam, via de onderstaande link.',
+  },
   roomLink: null,
   content: {
     subHeading: 'Werken in Rotterdam',
@@ -193,6 +207,15 @@ const successMessage = computed(() => {
 });
 
 
+function handleSignup() {
+  if (data.signup?.externaLSignupLink) {
+    window.open(data.signup.externaLSignupLink, '_blank', 'noopener,noreferrer');
+  } else if (data.signup?.enabled) {
+    scrollTo('aanmelden');
+  }
+}
+
+
 </script>
 
 <template>
@@ -201,7 +224,7 @@ const successMessage = computed(() => {
       <section style="padding-top: 0px">
         <div class="relative grid min-h-[500px] bg-gradient-to-br from-secondary-800 to-secondary-600 dark:from-gray-700/40 dark:to-secondary-800/50">
           <InnerContainer class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-12 h-full">
-            <div class="w-full flex flex-col items-start justify-end h-full pb-6 md:pb-12 mt-12">
+            <div class="w-full flex flex-col items-start justify-end h-full pb-6 md:pb-20 mt-12">
               <h1 class="text-white"> {{ data.title }}</h1>
               <div>
                 
@@ -225,7 +248,8 @@ const successMessage = computed(() => {
                         color="secondary"
                         variant="soft"
                         class="px-6"
-                        @click="scrollTo('aanmelden')"
+                        :disabled="hasEnded || !data.signup?.enabled"
+                        @click="handleSignup"
                       />
                       <UButton
                         label="Bekijk route"
@@ -288,12 +312,12 @@ const successMessage = computed(() => {
           
         </InnerContainer>
 
-        <InnerContainer v-if="data.content.mainHeading" id="rotterdam" class="mb-20 md:mb-32 pt-12">
+        <InnerContainer v-if="data.content.mainHeading && data.signup?.enabled" id="rotterdam" class="mb-20 md:mb-32 pt-12">
           <div class="relative text-center py-6 md:py-0">
             
             <h2 v-if="data.content.subHeading" class="sm:text-lg uppercase text-primary-500 dark:text-primary-400">Meld je aan</h2>
             <h3 class="text-3xl md:text-5xl ">Kom naar de {{ data.title }}</h3>
-            <UButton size="xl" color="primary" label="Meld je aan" @click="scrollTo('aanmelden')" />
+            <UButton size="xl" color="primary" label="Meld je aan" @click="handleSignup" />
 
             <span class="absolute -bottom-8 md:-bottom-16 left-[calc(50%-16px)] animate-bounce">
               <Arrow variant="outline" type="triangle" class="rotate-90 " animated size="sm" :amount="2" />
@@ -326,7 +350,7 @@ const successMessage = computed(() => {
           </section>
         </Prose> 
         <div id="aanmelden" class="mb-12 md:mb-20" />
-        <InnerContainer class="mb-12 md:mb-20" from="xl">
+        <InnerContainer class="mb-12 md:mb-20" from="xl" v-if="data.signup?.enabled && !data.signup?.externaLSignupLink">
           <ClientOnly>
             <ArrowHeading type="h2">
               Meld je aan
@@ -339,16 +363,50 @@ const successMessage = computed(() => {
           </ClientOnly>
           
         </InnerContainer>
+        <ImageBanner v-else-if="data.signup?.enabled" :image-id="data.signup.signupImage || data.headerImage" :image-alt="data.signup.signupImageAlt || data.headerImageAlt" class="bg-main-25 dark:bg-primary-950/20">
+          <ArrowHeading>
+            <GradientText>Meld je aan</GradientText> voor dit evenement
+          </ArrowHeading>
+          <p class="mb-4">{{ data.signup.signupText }}</p>
+          <ClientOnly><UBadge v-if="hasEnded" color="warn" variant="subtle" class="mb-6">Deze activiteit is geweest</UBadge></ClientOnly>
+          <div class="space-y-4">
+            <ClientOnly>
+              <p class="flex flex-row gap-2 items-start leading-none">
+                <UIcon name="heroicons:calendar-date-range-20-solid" size="sm" />
+                <span>{{ dateString }}</span>
+              </p>
+            </ClientOnly>
+            <p class="flex flex-row gap-2 items-start leading-none">
+              <UIcon name="heroicons:map-pin-20-solid" size="sm" />
+              <span>{{ location }}</span>
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-y-2 mt-8">
+            <UButton
+              label="Meld je aan"
+              color="primary"
+              variant="solid"
+              size="lg"
+              :disabled="hasEnded"
+              @click="handleSignup"
+            />
+            <UButton
+              label="Bekijk route"
+              color="primary" 
+              variant="soft"
+              size="lg"
+              :to="data.mapsLink"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          </div>
+        </ImageBanner>
         <Faqs
           heading="Veelgestelde vragen"
           description="Wil je meer weten over zij-instromen in het onderwijs? Of heb je vragen over de aanstaande informatiebijeenkomst? Lees dan snel de veelgestelde vragen."
           :data="data.faqs || []"
-          class="relative z-20"
+          class="relative z-20 mt-16 md:mt-20"
         />
-
-
-
-         
     </UContainer>
   </div>
 </template>
