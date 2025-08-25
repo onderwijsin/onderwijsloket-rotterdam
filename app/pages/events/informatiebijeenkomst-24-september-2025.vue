@@ -119,7 +119,7 @@ const data: EventData = {
   mapsLink: 'https://maps.app.goo.gl/vwTYnmUAkkr4T1fF8',
   signup: {
     enabled: true,
-    externaLSignupLink: 'https://registratie.rotterdam.nl/informatiebijeenkomstonderwijsenkinderopvang/?utm-source=onderwijsloketrotterdam.nl&utm-medium=referral&utm-campaign=events/informatiebijeenkomst-24-september-2025',
+    externaLSignupLink: 'https://registratie.rotterdam.nl/informatiebijeenkomstonderwijsenkinderopvang',
     signupImage: 'regios/rotterdam/Beeldbank_Image_901_bf0pnx_1600_gonwwb',
     signupImageAlt: 'Scholier uit het voortgezet onderwijs die lacht',
     signupText: 'Aanmelden voor deze bijeenkomst kan via de website van de gemeente Rotterdam, via de onderstaande link.',
@@ -207,9 +207,37 @@ const successMessage = computed(() => {
 });
 
 
+
+
+function constructUtmParams(): string {
+  const { query, path } = useRoute()
+
+  const params: Record<string, string> = {
+    referrer: 'onderwijsloketrotterdam.nl',
+    referrer_page: path,
+  }
+
+  // Add UTM parameters if available
+  params.utm_source = query.utm_source?.toString() || query['utm-source']?.toString() || ''
+  params.utm_medium = query.utm_medium?.toString() || query['utm-medium']?.toString() || ''
+  params.utm_campaign = query.utm_campaign?.toString() || query['utm-campaign']?.toString() || ''
+  params.utm_term = query.utm_term?.toString() || query['utm-term']?.toString() || ''
+  params.utm_content = query.utm_content?.toString() || query['utm-content']?.toString() || ''
+
+  // Remove empty parameters
+  Object.keys(params).forEach(key => {
+    if (!params[key]) {
+      delete params[key];
+    }
+  });
+
+
+  return new URLSearchParams(params).toString();
+}
+
 function handleSignup() {
   if (data.signup?.externaLSignupLink) {
-    window.open(data.signup.externaLSignupLink, '_blank', 'noopener,noreferrer');
+    window.open(`${data.signup.externaLSignupLink}?${constructUtmParams()}`, '_blank', 'noopener,noreferrer');
   } else if (data.signup?.enabled) {
     scrollTo('aanmelden');
   }

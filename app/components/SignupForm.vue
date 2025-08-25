@@ -41,11 +41,11 @@ const route = useRoute()
 onMounted(() => {
   // Initialize UTM parameters if available
   const query = route.query
-  state.utm.source = query.utm_source?.toString() || ''
-  state.utm.medium = query.utm_medium?.toString() || ''
-  state.utm.campaign = query.utm_campaign?.toString() || ''
-  state.utm.term = query.utm_term?.toString()|| ''
-  state.utm.content = query.utm_content?.toString() || ''
+  state.utm.source = query.utm_source?.toString() || query['utm-source']?.toString() || ''
+  state.utm.medium = query.utm_medium?.toString() || query['utm-medium']?.toString() || ''
+  state.utm.campaign = query.utm_campaign?.toString() || query['utm-campaign']?.toString() || ''
+  state.utm.term = query.utm_term?.toString() || query['utm-term']?.toString() || ''
+  state.utm.content = query.utm_content?.toString() || query['utm-content']?.toString() || ''
 })
 
 async function onSubmit(event: FormSubmitEvent<SubmissionSchema>) {
