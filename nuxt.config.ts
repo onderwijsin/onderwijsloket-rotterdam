@@ -107,6 +107,7 @@ export default defineNuxtConfig({
     indexable: isProd,
     notion: {
       token: process.env.NOTION_TOKEN,
+      submissionDatabaseId: '22ab66e1be6980cf825fdecad4da4e12'
     },
 
     cache: {
