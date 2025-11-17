@@ -257,7 +257,7 @@ const { searchSingle } = useAlgoliaSearch()
 const { data, error } = await useAsyncData(async () => {
 
   const result = await searchSingle<AlgoliaOpleiding>({ 
-      indexName: 'opleidingen',
+      indexName: 'opleidingen_v1',
       query: '',
       hitsPerPage: 9999,
       facets: ['*'],
