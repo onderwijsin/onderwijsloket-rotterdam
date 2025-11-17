@@ -28,7 +28,7 @@
     "@nuxt/icon": "^1.9.0",
     "@nuxt/scripts": "^0.9.5",
     "@nuxt/ui": "^2.20.0",
-    "@nuxthub/core": "^0.8.11",
+    "@nuxthub/core": "0.8.14",
     "@nuxtjs/seo": "^2.0.2",
     "@parcel/watcher": "^2.5.0",
     "@types/lodash.isequal": "^4.5.8",
@@ -45,6 +45,6 @@
     "vue": "latest"
   },
   "engines": {
-    "node": "^18.19.0 || ^20.9.0"
+    "node": "^18.19.0 || ^20.9.0 || ^22.0.0"
   }
 }

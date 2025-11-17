@@ -68,7 +68,7 @@ import type { OwlFaq } from '~/types'
 const { data, error, refresh, status } = await useAsyncData(async () => {
 
   const res = await searchSingle<OwlFaq>({
-    indexName: 'faqs',
+    indexName: 'faqs_v1',
     query: query.value,
     hitsPerPage: 4,
     facets: ['faqCategories.name'],
