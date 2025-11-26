@@ -7,7 +7,28 @@
           <Arrow variant="outline" type="chevron" animated in-view size="md" :amount="3" class="mb-6" />
           <h2 class="sm:text-lg md:text-xl uppercase text-primary-500 dark:text-primary-400 font-black">Contact en advies</h2>
           <h3 class="text-3xl md:text-5xl font-black">Aan de slag met <GradientText from="secondary" to="secondary">jouw onderwijsdroom</GradientText></h3>
-          <p>Ben je geïnspireerd en klaar om de volgende stap te zetten? Of heb je nog vragen over jouw route naar het onderwijs? Wij helpen je graag verder. Neem rechtstreeks contact op met een schoolbestuur, lerarenopleiding of plan een adviesgesprek in het landelijke Onderwijsloket voor onafhankelijk advies.</p>
+          <p class="mb-4">Ben je geïnspireerd en wil je de volgende stap zetten? Hieronder lees je waar je met jouw vragen terecht kunt.</p>
+         <ul class="list-disc pl-6 space-y-3">
+  <li>
+    Benieuwd naar jouw kansen in het Rotterdamse onderwijs? De schoolbesturen in Rotterdam vertellen je graag meer over werkgelegenheid, hun visie en hoe jij onderdeel kunt worden van hun team.
+  </li>
+
+  <li>
+    Wil je meer weten over de opleiding tot leraar, toelatingseisen of begeleiding? Neem dan contact op met een lerarenopleiding in de regio. Zij helpen je graag verder.
+  </li>
+
+  <li>
+    Wil je een onafhankelijk gesprek over jouw route naar het onderwijs? Plan hieronder eenvoudig een gratis adviesgesprek met een adviseur van
+    <NuxtLink to="https://onderwijsloket.com" class="text-primary underline">het landelijke Onderwijsloket</NuxtLink>.
+  </li>
+
+  <li>
+    Heb je een andere vraag? Mail ons via
+    <NuxtLink to="mailto:info@onderwijsloketrotterdam.nl" class="text-primary underline">
+      info@onderwijsloketrotterdam.nl
+    </NuxtLink>.
+  </li>
+</ul>
         </div>
         <div class="flex col-span-1 flex-col items-start md:items-end md:justify-end">
          
@@ -16,7 +37,7 @@
     </InnerContainer>
   </div>
 
-  <InnerContainer from="xl" class="grid md:grid-cols-2 gap-8 md:gap-12 pb-12 md:pb-16">
+  <!-- <InnerContainer from="xl" class="grid md:grid-cols-2 gap-8 md:gap-12 pb-12 md:pb-16">
     <UCard 
       :ui="{ 
         ring: 'ring-secondary-200 dark:ring-secondary-200', 
@@ -72,7 +93,7 @@
       </template>
     </UCard>
     
-  </InnerContainer>
+  </InnerContainer> -->
 
   <div id="advies" class="mb-12 md:mb-20">
     <AdviesBanner />
@@ -82,11 +103,11 @@
 <script lang="ts" setup>
 
 
-const  { grid } = useResponsive()
+// const  { grid } = useResponsive()
 
-const { orgs } = useContent().partners
+// const { orgs } = useContent().partners
 
-const { scrollTo } = useSnapScroll()
+// const { scrollTo } = useSnapScroll()
 </script>
 
 <style>
