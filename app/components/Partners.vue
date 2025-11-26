@@ -2,6 +2,44 @@
   <div class="grid gap-8 md:grid-cols-2">
     <IconCard 
       id="vacatures"
+      :icon="orgs.icon" 
+      color="primary" 
+      size="lg"
+      use-ring
+      class="col-span-2"
+      :ui="{
+        header: { padding: 'pt-6 md:px-8 md:pt-8'},
+        body: { padding: 'py-6 md:px-8 md:py-8'},
+        footer: { padding: 'pb-6 md:px-8 md:pb-8'},
+      }"
+      heading-mode="wrap"
+    >
+      <template #header>
+        <h3 class="mb-0">Vind jouw plek in het Rotterdamse onderwijs</h3>
+      </template>
+
+      <p>Wil jij werken in het Rotterdamse onderwijs? Via <NuxtLink to="https://meesterbaan.nl" external>Meesterbaan</NuxtLink> ontdek je welke scholen in onze regio op zoek zijn naar nieuwe collega’s. Er is aanbod in het primair onderwijs, voortgezet onderwijs en mbo. Bekijk het overzicht, filter op jouw voorkeuren en vind de plek die bij jou past.</p>
+
+      <template #footer>
+        <UButtonGroup size="lg">
+          <UButton color="gray" variant="solid" size="lg" to="https://www.meesterbaan.nl/onderwijsregio/17/rotterdam-po" target="_blank">
+              Bekijk vacatures in het po
+              <template #trailing>
+                <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+              </template>
+          </UButton>
+          <UButton color="gray" variant="solid" size="lg" to="https://www.meesterbaan.nl/onderwijsregio/20/rotterdam-vo-mbo" target="_blank">
+              Bekijk vacatures in het vo & mbo
+              <template #trailing>
+                <UIcon name="i-heroicons-arrow-top-right-on-square-16-solid" class="w-4 h-4 ml-2" />
+              </template>
+          </UButton>
+        </UButtonGroup>
+        
+      </template>
+    </IconCard>
+    <!-- <IconCard 
+      id="vacatures"
       :icon="vacancies.icon" 
       color="primary" 
       size="lg"
@@ -61,7 +99,7 @@
         </UButtonGroup>
         
       </template>
-    </IconCard>
+    </IconCard> -->
 
     <UCard 
         class="bg-primary-50 dark:bg-primary-950/20"

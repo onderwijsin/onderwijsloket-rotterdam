@@ -47,9 +47,9 @@ const { scrollTo } = useSnapScroll()
       <section id="activiteiten">
         <Activities />
       </section>
-      <section id="leraren"  >
+      <!-- <section id="leraren"  >
         <LerarenBanner />
-      </section>
+      </section> -->
       <section id="ontdek">
         <Articles />
       </section>
